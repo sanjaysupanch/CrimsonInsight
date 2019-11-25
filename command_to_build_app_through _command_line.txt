@@ -1,3 +1,4 @@
+<p style="color:red"> First you need to download sdk tools</p>
 android create project -a MainActivity -n san -k com.example.san -t android-22 -g -v 5.4.1 -p app3
 
 ./gradlew assembleDebug
