@@ -25,7 +25,7 @@ SECRET_KEY = 'fa@vcnpkvm5rmhpq*^%_y39m286ls%(zk!725@01c$lk8ja$g_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ec2-18-191-22-196.us-east-2.compute.amazonaws.com  ', '127.0.0.1' ]
+ALLOWED_HOSTS = ['ec2-18-191-22-196.us-east-2.compute.amazonaws.com  ', 'localhost' ]
 
 
 # Application definition
@@ -120,6 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/accounts/apkkey/'
-
