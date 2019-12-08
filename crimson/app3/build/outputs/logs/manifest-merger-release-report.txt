@@ -1,0 +1,41 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:1-15:12
+INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:1-15:12
+INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:1-15:12
+INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:1-15:12
+INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:1-15:12
+	package
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:3:7-32
+	android:versionName
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:5:7-32
+		INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml
+		INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:4:7-30
+		INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml
+		INJECTED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml
+application
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:6:5-14:19
+	android:label
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:6:18-50
+	android:icon
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:6:51-87
+activity#com.example.san.MainActivity
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:7:9-13:20
+	android:label
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:8:19-51
+	android:name
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:7:19-46
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:9:13-12:29
+action#android.intent.action.MAIN
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:10:17-69
+	android:name
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:10:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:11:17-77
+	android:name
+		ADDED from /home/san/CrimsonInsight/crimson/app3/src/main/AndroidManifest.xml:11:27-74

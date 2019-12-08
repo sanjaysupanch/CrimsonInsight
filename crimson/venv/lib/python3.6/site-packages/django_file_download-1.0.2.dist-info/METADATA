@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: django-file-download
+Version: 1.0.2
+Summary: Django File Download
+Home-page: https://github.com/django-xxx/django-file-download
+Author: Hackathon
+Author-email: kimi.huang@brightcells.com
+License: UNKNOWN
+Keywords: Django File Download
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Office/Business :: Financial :: Spreadsheet
+Requires-Dist: TimeConvert
+Requires-Dist: django-logit (>=1.1.2)
+Requires-Dist: django-response
+Requires-Dist: requests
+
+====================
+django-file-download
+====================
+
+Django File Download
+
+Installation
+============
+
+::
+
+    pip install django-file-download
+
+
+Urls.py
+=======
+
+::
+
+    urlpatterns = [
+        url(r'^f/', include('django_file_download.urls', namespace='django_file_download')),
+    ]
+
+
+or::
+
+    from django.conf.urls import include, url
+    from django_file_download import views as file_views
+
+    urlpatterns = [
+        url(r'^download$', file_views.file_download, name='file_download'),
+    ]
+
+
+Settings.py
+===========
+
+::
+
+    INSTALLED_APPS = (
+        ...
+        'django_file_download',
+        ...
+    )
+
+
+
