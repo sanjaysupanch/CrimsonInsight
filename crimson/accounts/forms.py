@@ -17,5 +17,5 @@ class apkForm(forms.ModelForm):
 	key = forms.CharField(label='Enter your key', max_length=100 )
 	class Meta:
 		model = apk
-		fields=('key',)
+		fields=('domain_name', 'key',)
 	    

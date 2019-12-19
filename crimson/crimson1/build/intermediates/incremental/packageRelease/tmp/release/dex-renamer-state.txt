@@ -1,0 +1,4 @@
+#Wed Dec 18 22:37:02 IST 2019
+base.0=/home/san/Desktop/CrimsonInsight/crimson/crimson1/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

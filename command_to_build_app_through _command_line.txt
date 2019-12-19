@@ -1,6 +1,6 @@
 <p> First you need to download sdk tools</p>
 
-android create project -a MainActivity -n san -k com.example.san -t android-22 -g -v 5.4.1 -p app3
+android create project -a MainActivity -n naino -k com.example.naino -t android-29 -g -v 5.4.1 -p naino
 
 ./gradlew assembleDebug
 
@@ -8,8 +8,8 @@ adb devices
 ./gradlew installDebug
 
 
-./gradlew assembleRelease
-./gradlew assembleRelease --no-daemon
+//./gradlew assembleRelease
+//./gradlew assembleRelease --no-daemon
 
 keytool -genkey -v -keystore signing.keystore -alias signing -keyalg RSA -keysize 2048 -validity 10000
 
@@ -77,6 +77,8 @@ allprojects {
         
     }
 }
+
+
 
 #####################(__Modify in Code__ /gradle-wrapper.properties)#############################
 

@@ -37,18 +37,26 @@ def signup(request):
 def apkkey(request):
     if request.method == 'POST':
         form = apkForm(request.POST)
+        domain = form['domain_name'].value()
+        file=open('domain.txt', 'w')
+        file.write(domain)
+        file.close()
+        # print(form.data['key'])
         if form.is_valid():
             form.save()
             key = form.cleaned_data['key']
+            print(key)
             print("###############__Operating System Command__##################")
             os.system("ls")
-            os.chdir("app3/")
-            os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN'"%(key))
+            os.chdir("crimson1/")
+            
+            os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
+            os.system("./gradlew build")
             os.system("./gradlew assembleRelease")
             
-            with open("build/outputs/apk/release/app3-release.apk", 'rb') as fh:
+            with open("build/outputs/apk/release/crimson1-release.apk", 'rb') as fh:
                 response = HttpResponse(fh, content_type="application/vnd.android.package-archive") 
-                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/release/app3-release.apk"))
+                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/release/crimson1-release.apk"))
 
             os.chdir("../")
             

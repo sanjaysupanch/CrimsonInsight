@@ -1,0 +1,3 @@
+int style InstrumentationActivityInvokerBootstrapActivityTheme 0x7f010000
+int style InstrumentationActivityInvokerEmptyActivityTheme 0x7f010001
+int style InstrumentationActivityInvokerFloatingActivityTheme 0x7f010002
