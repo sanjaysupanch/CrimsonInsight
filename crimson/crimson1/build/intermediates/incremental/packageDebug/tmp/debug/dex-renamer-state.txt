@@ -1,7 +1,0 @@
-#Wed Dec 18 22:36:55 IST 2019
-base.0=/home/san/Desktop/CrimsonInsight/crimson/crimson1/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
-path.1=classes.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=/home/san/Desktop/CrimsonInsight/crimson/crimson1/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
