@@ -6,65 +6,65 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml
+8-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml
+9-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:7:5-67
-11-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:7:22-64
+11-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:7:5-67
+11-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:7:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:8:5-79
-12-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:8:22-76
+12-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:8:5-79
+12-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:8:22-76
 13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-13-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:9:5-76
-13-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:9:22-73
+13-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:9:5-76
+13-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:9:22-73
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:10:5-80
-14-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:10:22-78
+14-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:10:5-80
+14-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:10:22-78
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:11:5-80
-15-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:11:22-77
+15-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:11:5-80
+15-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:11:22-77
 16    <uses-permission android:name="android.permission.CAMERA" />
-16-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:12:5-64
-16-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:12:22-62
+16-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:12:5-64
+16-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:12:22-62
 17    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-17-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:13:5-79
-17-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:13:22-76
+17-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:13:5-79
+17-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:13:22-76
 18    <uses-permission android:name="android.permission.VIBRATE" />
-18-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:14:5-66
-18-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:14:22-63
+18-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:14:5-66
+18-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:14:22-63
 19    <uses-permission android:name="android.permission.WAKE_LOCK" />
-19-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:15:5-68
-19-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:15:22-65
+19-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:15:5-68
+19-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:15:22-65
 20
 21    <application
-21-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:16:5-31:19
+21-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:16:5-31:19
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 22-->[androidx.core:core:1.0.1] /home/san/.gradle/caches/transforms-2/files-2.1/c0a39027978b83a483a047f5c31d0c4e/core-1.0.1/AndroidManifest.xml:22:18-86
 23        android:icon="@drawable/ic_launcher1"
-23-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:17:9-46
+23-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:17:9-46
 24        android:label="@string/app_name"
-24-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:18:9-41
+24-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:18:9-41
 25        android:supportsRtl="true"
-25-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:19:9-35
+25-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:19:9-35
 26        android:theme="@style/AppTheme.NoActionBar" >
-26-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:20:9-52
+26-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:20:9-52
 27        <activity
-27-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:9-29:20
+27-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:9-29:20
 28            android:name="com.example.crimson.MainActivity"
-28-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:19-46
+28-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:19-46
 29            android:label="crimson" >
-29-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:19-42
+29-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:19-42
 30            <intent-filter>
-30-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:25:13-28:29
+30-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:25:13-28:29
 31                <action android:name="android.intent.action.MAIN" />
-31-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:26:17-69
-31-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:26:25-66
+31-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:26:17-69
+31-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:26:25-66
 32
 33                <category android:name="android.intent.category.LAUNCHER" />
-33-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:27:17-77
-33-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:27:27-74
+33-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:27:17-77
+33-->/home/san/email/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:27:27-74
 34            </intent-filter>
 35        </activity>
 36    </application>
