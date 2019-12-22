@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/san/crimson/build/intermediates/incremental/mergeDebugResources/merged.dir/values-kk/values-kk.xml",
+            "outputFile": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/incremental/mergeDebugResources/merged.dir/values-kk/values-kk.xml",
             "map": [
                 {
                     "source": "/home/san/.gradle/caches/transforms-2/files-2.1/906744c4ddcbc384c5a8d2d69414f8fa/appcompat-1.0.2/res/values-kk/values-kk.xml",

@@ -38,7 +38,7 @@ def apkkey(request):
     if request.method == 'POST':
         form = apkForm(request.POST)
         domain = form['domain_name'].value()
-        file=open('domain.txt', 'w')
+        file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
         file.write(domain)
         file.close()
         # print(form.data['key'])
@@ -48,17 +48,17 @@ def apkkey(request):
             print(key)
             print("###############__Operating System Command__##################")
             os.system("ls")
-            os.chdir("crimson1/")
+            os.chdir("app/crimson/")
             
             os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
             os.system("./gradlew build")
             os.system("./gradlew assembleRelease")
             
-            with open("build/outputs/apk/release/crimson1-release.apk", 'rb') as fh:
+            with open("build/outputs/apk/release/crimson-release.apk", 'rb') as fh:
                 response = HttpResponse(fh, content_type="application/vnd.android.package-archive") 
-                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/release/crimson1-release.apk"))
+                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/release/crimson-release.apk"))
 
-            os.chdir("../")
+            os.chdir("../../")
             
 
             return  response

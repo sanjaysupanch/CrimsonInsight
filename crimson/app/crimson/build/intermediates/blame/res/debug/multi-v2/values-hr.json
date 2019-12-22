@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/san/crimson/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml",
+            "outputFile": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml",
             "map": [
                 {
                     "source": "/home/san/.gradle/caches/transforms-2/files-2.1/c0a39027978b83a483a047f5c31d0c4e/core-1.0.1/res/values-hr/values-hr.xml",

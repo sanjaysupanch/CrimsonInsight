@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(url);
             System.out.println(url.getClass());
             Log.i("DDDOD", url);
-            setUpWebView("https://"+url+"/");
+            setUpWebView("http://"+url+"/");
         }
         catch (Exception e){
             e.printStackTrace();
