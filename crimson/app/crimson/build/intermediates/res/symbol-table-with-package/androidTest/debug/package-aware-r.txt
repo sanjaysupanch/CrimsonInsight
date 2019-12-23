@@ -1,4 +1,0 @@
-com.example.crimson.test
-style InstrumentationActivityInvokerBootstrapActivityTheme
-style InstrumentationActivityInvokerEmptyActivityTheme
-style InstrumentationActivityInvokerFloatingActivityTheme
