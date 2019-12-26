@@ -134,5 +134,5 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/accounts/apkkey/'
 PAYPAL_RECEIVER_EMAIL ='sb-juio8495645@business.example.com'
-PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
+# PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
 PAYPAL_TEST= True
