@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'paypal.standard.ipn',
+    'payment',
     # 'django_file_download',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/accounts/apkkey/'
-
+PAYPAL_RECEIVER_EMAIL ='sb-juio8495645@business.example.com'
+PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
+PAYPAL_TEST= True

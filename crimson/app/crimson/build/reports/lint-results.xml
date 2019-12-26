@@ -12,7 +12,7 @@
         errorLine1="        classpath &apos;com.android.tools.build:gradle:3.5.2&apos;"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/build.gradle"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
             line="7"
             column="9"/>
     </issue>
@@ -28,7 +28,7 @@
         errorLine1="    implementation &apos;androidx.appcompat:appcompat:1.0.2&apos;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/build.gradle"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
             line="66"
             column="5"/>
     </issue>
@@ -44,7 +44,7 @@
         errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.0&apos;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/build.gradle"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
             line="70"
             column="5"/>
     </issue>
@@ -60,7 +60,7 @@
         errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.1.1&apos;"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/build.gradle"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
             line="71"
             column="5"/>
     </issue>
@@ -76,7 +76,7 @@
         errorLine1="      android:versionCode=&quot;1&quot;"
         errorLine2="      ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
             line="4"
             column="7"/>
     </issue>
@@ -92,7 +92,7 @@
         errorLine1="      android:versionName=&quot;1.0&quot;>"
         errorLine2="      ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
             line="5"
             column="7"/>
     </issue>
@@ -110,7 +110,7 @@
         errorLine1="    &lt;application"
         errorLine2="     ~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
             line="16"
             column="6"/>
     </issue>
@@ -128,7 +128,7 @@
         errorLine1="    &lt;application"
         errorLine2="     ~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
             line="16"
             column="6"/>
     </issue>
@@ -144,7 +144,7 @@
         errorLine1="    &lt;dimen name=&quot;fab_margin&quot;>16dp&lt;/dimen>"
         errorLine2="           ~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/values/dimens.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/dimens.xml"
             line="2"
             column="12"/>
     </issue>
@@ -158,13 +158,13 @@
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true.">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/ic_launcher.png"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/ic_launcher.png"/>
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-ldpi/ic_launcher.png"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-ldpi/ic_launcher.png"/>
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi/ic_launcher.png"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi/ic_launcher.png"/>
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi/ic_launcher.png"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi/ic_launcher.png"/>
     </issue>
 
     <issue
@@ -178,7 +178,7 @@
         errorLine1="    &lt;string name=&quot;action_settings&quot;>Settings&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/values/strings.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/strings.xml"
             line="5"
             column="13"/>
     </issue>
@@ -194,7 +194,7 @@
         errorLine1="    &lt;style name=&quot;AppTheme.AppBarOverlay&quot; parent=&quot;ThemeOverlay.AppCompat.Dark.ActionBar&quot; />"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/values/styles.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/styles.xml"
             line="16"
             column="12"/>
     </issue>
@@ -210,7 +210,7 @@
         errorLine1="    &lt;style name=&quot;AppTheme.PopupOverlay&quot; parent=&quot;ThemeOverlay.AppCompat.Light&quot; />"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/values/styles.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/styles.xml"
             line="18"
             column="12"/>
     </issue>
@@ -226,7 +226,7 @@
         url="http://developer.android.com/guide/practices/screens_support.html"
         urls="http://developer.android.com/guide/practices/screens_support.html">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi"/>
     </issue>
 
     <issue
@@ -240,7 +240,7 @@
         url="http://developer.android.com/guide/practices/screens_support.html"
         urls="http://developer.android.com/guide/practices/screens_support.html">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi"/>
     </issue>
 
     <issue
@@ -254,7 +254,7 @@
         url="http://developer.android.com/guide/practices/screens_support.html"
         urls="http://developer.android.com/guide/practices/screens_support.html">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/res"/>
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res"/>
     </issue>
 
     <issue
@@ -270,7 +270,7 @@
         errorLine1="    &lt;application"
         errorLine2="    ^">
         <location
-            file="/home/san/Documents/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
             line="16"
             column="5"/>
     </issue>

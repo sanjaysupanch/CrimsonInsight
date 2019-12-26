@@ -24,8 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('logout/', views.user_logout, name='logout'),
+    path('paypal/', include('paypal.standard.ipn.urls')),
+    path('payment/', include('payment.urls')),
     path('accounts/login/',auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'), #login url
     path('', views.index, name='index'),
-
+ 
 
 ]
