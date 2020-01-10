@@ -9,33 +9,35 @@ from django.urls import reverse
 
 @login_required
 def payment(request):
-    # args={}
     host = request.get_host()
-    print(host)
-    # domain = request.META['HTTP_HOST']
+    print("@@@@@@@@@",host)
+    domain = request.META['HTTP_HOST']
+    print(domain, "222222222222222")
     paypal_dict = {
     'business': settings.PAYPAL_RECEIVER_EMAIL,
-    'amount': '100.00',
-    'currency_code':'IN',
+    'amount': '0.10',
+    'currency_code':'INR',
     'item_name': "CrimsonInsight",
-    'invoice': "unique-invoice-00001",
-    'notify_url':'http://{}{}'.format(host,reverse('paypal-ipn')),
-    'return_url':'http://127.0.0.1/payment/done/',
-    'cancel_return':'http://127.0.0.1/payment/canceled/',
+    'invoice': "unique-invoice-id",
+    'notify_url':'http://'+domain+'/payment/paypal/',
+    'return_url':'http://'+domain+'/payment/done/',
+    'cancel_return':'http://'+domain+'/payment/canceled/',
     }
 
+    print("aaaaaaa", paypal_dict)
     form = PayPalPaymentsForm(initial=paypal_dict)
-    # args['form']=form
+    # print(form)
     return render(request, 'payment/process.html', {'form':form})
 
 
 @csrf_exempt
 def paypal_return(request):
-    # args={'post':request.POST, 'get':request.GET}
-    return render(request, 'payment/done.html')
+    args={'post':request.POST, 'get':request.GET}
+    print("ssssssssssssss")
+    return render(request, 'payment/done.html', args)
 
 @csrf_exempt
 def paypal_cancel(request):
-    # args={'post':request.POST, 'get':request.GET}
-    return render(request, 'payment/canceled.html')
-
+    args={'post':request.POST, 'get':request.GET}
+    print("ssssssssssssss")
+    return render(request, 'payment/cancelled.html', args)

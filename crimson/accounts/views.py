@@ -9,7 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 import os
 
-
 def index(request):
     return render(request,'accounts/index.html')
 
@@ -34,18 +33,58 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
-def apkkey(request):
+def debugapk(request):
     if request.method == 'POST':
-        form = apkForm(request.POST)
+        form = debugForm(request.POST)
         domain = form['domain_name'].value()
+        # file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
+        # file.write(domain)
+        # file.close()
+        # print(form.data['domain'])
+        if form.is_valid():
+            # print("222")
+            form.save()
+            # print("111")
+            # key = form.cleaned_data['key']
+            # print(key)
+            print("###############__Operating System Command__##################")
+            os.system("ls")
+            os.chdir("app/crimson/")
+            
+            # os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
+            os.system("./gradlew build")
+            os.system("./gradlew assembleDebug")
+            
+            with open("build/outputs/apk/debug/crimson-debug.apk", 'rb') as fh:
+                response = HttpResponse(fh, content_type="application/vnd.android.package-archive") 
+                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/debug/crimson-debug.apk"))
+
+            os.chdir("../../")
+
+            return  response
+    
+    else:
+        form = debugForm()
+    return render(request, 'accounts/debugapk.html', {'form': form})
+
+
+def releaseapk(request):
+    print("aaaaa")
+    if request.method == 'POST':
+        print("aaaaa")
+        form = releaseForm(request.POST)
+        domain = form['domain_name'].value()
+        # print(domain)
         file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
         file.write(domain)
         file.close()
-        # print(form.data['key'])
+        # print(form.data['domain'])
         if form.is_valid():
+            print("222")
             form.save()
+            print("111")
             key = form.cleaned_data['key']
-            print(key)
+            print("key", key)
             print("###############__Operating System Command__##################")
             os.system("ls")
             os.chdir("app/crimson/")
@@ -53,18 +92,16 @@ def apkkey(request):
             os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
             os.system("./gradlew build")
             os.system("./gradlew assembleRelease")
-            
+            os.system("ls")
+            print("qqqqqqqqqqqqqqqqqqqqqqqqqqqq")
             with open("build/outputs/apk/release/crimson-release.apk", 'rb') as fh:
                 response = HttpResponse(fh, content_type="application/vnd.android.package-archive") 
-                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/release/crimson-release.apk"))
+                response["Content-disposition"] = "attachment; filename={}".format(os.path.basename("build/outputs/apk/debug/crimson-release.apk"))
 
             os.chdir("../../")
-            
 
             return  response
     
     else:
-        form = apkForm()
-    return render(request, 'accounts/apk.html', {'form': form})
-
-
+        form = releaseForm()
+    return render(request, 'accounts/releaseapk.html', {'form': form})

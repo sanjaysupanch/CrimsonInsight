@@ -13,6 +13,6 @@ app_name = "accounts"
 
 urlpatterns = [
     path('register/', views.signup, name='register'),
-    path('apkkey/', views.apkkey, name='apkkey'),
-
+    path('debugapk/', views.debugapk, name='debugapk'),
+    path('releaseapk/', views.releaseapk, name='releaseapk'),
 ]

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="container" style="width:30%">
+	<br/><br/><br/><br/>
+	<form method="post">
+	  {% csrf_token %}
+	  {{ form.as_p }}
+	  <br/>
+	  <button class="btn btn-dark w-25" type="submit">Go</button>
+	</form>
+</div>
+
+{% endblock %}
+
+<!-- <form method="POST" action="http://192.168.0.132:8000/accounts/debugapk/">
+	{% csrf_token %}
+
+	<input name="data" value="dev.to">
+	<button type="submit">click here</button>
+</form> -->

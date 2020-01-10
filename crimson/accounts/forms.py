@@ -12,10 +12,28 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
 
-class apkForm(forms.ModelForm):
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError(u'Email addresses must be unique.')
+        return email
+
+
+class debugForm(forms.ModelForm):
 		
-	key = forms.CharField(label='Enter your key', max_length=100 )
+	# key = forms.CharField(label='Enter your key', max_length=100 )
 	class Meta:
-		model = apk
-		fields=('domain_name', 'key',)
+		model = debugapk
+		fields=('domain_name',)
+
+
+class releaseForm(forms.ModelForm):
+		
+    key = forms.CharField(label='Enter your key', max_length=100)
+    
+    class Meta:
+        model=releaseapk
+        fields=('domain_name', 'key',)
 	    
+

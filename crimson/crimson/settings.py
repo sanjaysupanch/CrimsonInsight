@@ -25,7 +25,7 @@ SECRET_KEY = 'fa@vcnpkvm5rmhpq*^%_y39m286ls%(zk!725@01c$lk8ja$g_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'ec2-18-191-22-196.us-east-2.compute.amazonaws.com  ', '127.0.0.1' ]
+ALLOWED_HOSTS = ['*' ]
 
 
 # Application definition
@@ -127,12 +127,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+AUTH_USER_EMAIL_UNIQUE = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/accounts/apkkey/'
-PAYPAL_RECEIVER_EMAIL ='sb-juio8495645@business.example.com'
-PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
-PAYPAL_TEST= True
+LOGIN_REDIRECT_URL = '/accounts/debugapk/'
+# PAYPAL_RECEIVER_EMAIL ='finance@crimsoninsights.com'
+PAYPAL_RECEIVER_EMAIL ='sanjaykumarsupanch@gmail.com'
+
+# PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
+# PAYPAL_TEST= False
