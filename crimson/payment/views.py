@@ -1,43 +1,42 @@
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render, HttpResponse, redirect, \
+    get_object_or_404, reverse
+from django.contrib import messages
 from django.conf import settings
 from decimal import Decimal
-from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
-from django.contrib.auth.decorators import login_required
-from decimal import Decimal
-from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from .models import *
+from accounts.forms import *
 
-@login_required
-def payment(request):
+
+def process_payment(request):
+    domain=request.session.get('domain_name')
+    key = request.session.get('key')
+    print("1111111110", domain, key)
+    emails=str(request.user)
+    strings= key+" "+emails
     host = request.get_host()
-    print("@@@@@@@@@",host)
-    domain = request.META['HTTP_HOST']
-    print(domain, "222222222222222")
     paypal_dict = {
-    'business': settings.PAYPAL_RECEIVER_EMAIL,
-    'amount': '0.10',
-    'currency_code':'INR',
-    'item_name': "CrimsonInsight",
-    'invoice': "unique-invoice-id",
-    'notify_url':'http://'+domain+'/payment/paypal/',
-    'return_url':'http://'+domain+'/payment/done/',
-    'cancel_return':'http://'+domain+'/payment/canceled/',
+        'business': settings.PAYPAL_RECEIVER_EMAIL,
+        'amount': '1.00',
+        'item_name': 'Order',
+        'invoice': domain,
+        'currency_code': 'USD',
+        'custom':strings,
+        'notify_url': 'http://{}{}'.format(host,reverse('paypal-ipn')),
+        'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
+        'cancel_return': 'http://{}{}'.format(host,reverse('payment_cancelled')),
     }
-
-    print("aaaaaaa", paypal_dict)
     form = PayPalPaymentsForm(initial=paypal_dict)
-    # print(form)
     return render(request, 'payment/process.html', {'form':form})
 
-
 @csrf_exempt
-def paypal_return(request):
-    args={'post':request.POST, 'get':request.GET}
-    print("ssssssssssssss")
-    return render(request, 'payment/done.html', args)
-
+def payment_done(request):
+    return redirect('/accounts/releaseapk/')
+    # return render(request, 'payment/payment_done.html')
+ 
+ 
 @csrf_exempt
-def paypal_cancel(request):
-    args={'post':request.POST, 'get':request.GET}
-    print("ssssssssssssss")
-    return render(request, 'payment/cancelled.html', args)
+def payment_canceled(request):
+    return render(request, 'payment/payment_cancelled.html')
+

@@ -1,0 +1,112 @@
+{% extends "account/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load recaptcha2 %}
+ 
+
+{% block head %}
+    <title>CrimsonInsight
+     </title>
+     {% recaptcha_init %}
+{% endblock %}
+
+{% block body1 %}<br/><br/><br/>
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit">Sign Up &raquo;</button>
+  </form>
+{% endblock %}
+{% block body %}
+
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section ptb-100 background-img full-screen"
+             style="background: url('../../../static/accounts/imghero-bg-1.jpg')no-repeat center center / cover">
+        <div class="container">
+            <div class="row align-items-center justify-content-between pt-5 pt-sm-5 pt-md-5 pt-lg-0">
+                <div class="col-md-7 col-lg-6">
+                    <div class="hero-content-left text-white">
+                        <h1 class="text-white">Create Your Account</h1>
+                        <p class="lead">
+                            Keep your face always toward the sunshine - and shadows will fall behind you.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-5">
+                    <div class="card login-signup-card shadow-lg mb-0">
+                        <div class="card-body px-md-5 py-5">
+                            <div class="mb-5">
+                                <h6 class="h3">Create account</h6>
+                            </div>
+                            <form class="login-signup-form" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <!-- Label -->
+                                    <label for="id_email" class="pb-1">
+                                        Email Address
+                                    </label>
+                                    <!-- Input group -->
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-icon">
+                                            <span class="ti-email color-primary"></span>
+                                        </div>
+                                        <input type="email" name="email" class="form-control" placeholder="name@address.com" required_id="id_email">
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-group">
+                                    <!-- Label -->
+                                    <label for="id_password1" class="pb-1">
+                                        Password
+                                    </label>
+                                    <!-- Input group -->
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-icon">
+                                            <span class="ti-lock color-primary"></span>
+                                        </div>
+                                        <input type="password" name="password1" required_id="id_password1" class="form-control"
+                                               placeholder="Enter your password">
+                                    </div>
+                                </div>
+                                <!-- Password -->
+                                <div class="form-group">
+                                    <!-- Label -->
+                                    <label for="id_password2" class="pb-1">
+                                    Enter Password Again
+                                    </label>
+                                    <!-- Input group -->
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-icon">
+                                            <span class="ti-lock color-primary"></span>
+                                        </div>
+                                        <input type="password" name="password2" required_id="id_password2" class="form-control"
+                                               placeholder="Enter your password (again)">
+                                    </div>
+                                </div>
+                                <p><label for="id_captcha">Captcha:</label> <div class="g-recaptcha" id="recaptcha-captcha" data-sitekey="6Lc189IUAAAAALiLOPk9cuEZw_oh5UL3P3ZlzCgI" ></div></p>
+                                <!-- Submit -->
+                                <button class="btn btn-lg btn-block solid-btn border-radius mt-4 mb-3">
+                                    Sign up
+                                </button>
+                            </form>
+
+                        </div>
+                        <div class="card-footer px-md-5 bg-transparent border-top"><small>Already have an acocunt?</small>
+                            <a href="login.html" class="small">Sign in</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-img-absolute">
+            <img src="../../../static/accounts/img/wave-shap.svg" alt="wave shape" class="img-fluid">
+        </div>
+    </section>
+    <!--hero section end-->
+
+
+</div>
+{% endblock %}

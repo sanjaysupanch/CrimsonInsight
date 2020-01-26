@@ -16,18 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from accounts import views
-from django.contrib.auth import views as auth_views
 from django.conf.urls import url,include 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('logout/', views.user_logout, name='logout'),
-    path('paypal/', include('paypal.standard.ipn.urls')),
     path('payment/', include('payment.urls')),
-    path('accounts/login/',auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'), #login url
+    path('payment/paypal/', include('paypal.standard.ipn.urls')),
     path('', views.index, name='index'),
- 
+    path('accounts/', include('allauth.urls')),
 
+   
 ]

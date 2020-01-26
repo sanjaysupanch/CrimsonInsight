@@ -1,0 +1,141 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description"
+         content="AppCo App Landing Page Template. agency landing page template helps you easily create websites for your business, marketing landing page template form promotion and many more.">
+      <meta name="author" content="ThemeTags">
+      <meta property="og:site_name" content=""/>
+      <meta property="og:site" content=""/>
+      <meta property="og:title" content=""/>
+      <meta property="og:description" content=""/>
+      <meta property="og:image" content=""/>
+      <meta property="og:url" content=""/>
+      <meta property="og:type" content="article"/>
+      
+      <link rel="icon" href="/../../../static/accounts/img/" type="image/png" sizes="16x16">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7COpen+Sans&amp;display=swap"
+         rel="stylesheet">
+      <link rel="stylesheet" href="/../../../static/accounts/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/magnific-popup.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/themify-icons.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/animate.min.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/jquery.mb.YTPlayer.min.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/style.css">
+      <link rel="stylesheet" href="/../../../static/accounts/css/responsive.css">
+      <link rel="stylesheet" href="/static/accounts/css/san.css">
+      {% block head %}
+      <title>CrimsonInsight </title>
+      {% endblock %}
+   </head>
+   
+   <body>
+      <header class="header">
+         <!--start navbar-->
+         <nav class="navbar navbar-expand-lg fixed-top custom-nav white-bg" >
+            <div class="container">
+               <a class="navbar-brand" href="/"><img src="/../../../static/accounts/img/logo-color-1x.jpg" width="120" alt="logo" class="img-fluid"></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-menu"></span>
+            </button>
+               <div class="collapse navbar-collapse main-menu text-danger" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                  {% if user.is_authenticated %}
+                  
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"  href="/">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#about">About</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#features">Features</a>
+                     </li>
+                     <!-- <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#pricing">Pricing</a>
+                     </li> -->
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#demo">Demo</a>
+                     </li>
+                     
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/accounts/payment/">App</a>
+                     </li>
+                     <!-- <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">Profile</a>
+                     </li> -->
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/accounts/logout/">Logout</a>
+                     </li>
+                     
+                     {% else %}
+                     <li class="nav-item">
+                        <a class="nav-link text-dark"  href="/">Home</a>
+                     
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#about">About Us</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#features">Features</a>
+                     </li>
+                     <!-- <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#pricing">Pricing</a>
+                     </li> -->
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/#demo">Demo</a>
+                     </li>
+                     
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/accounts/signup/">Sign Up</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link " href="/accounts/debugapk/"><span class="text-danger">Try for free</span</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark" href="/accounts/login/">Login</a>
+                     </li>
+                  
+                  {% endif %}
+               </ul>
+               </div>
+            </div>
+         </nav>
+         <!--end navbar-->
+      </header>
+      {% block body %}
+      This is base for you
+      {% endblock %}
+      {% block extra_body %}
+      {% endblock %}
+      
+      
+      <!--jQuery-->
+      <script src="/../../../static/accounts/js/jquery-3.4.1.min.js"></script>
+      <!--Popper js-->
+      <script src="/../../../static/accounts/js/popper.min.js"></script>
+      <!--Bootstrap js-->
+      <script src="/../../../static/accounts/js/bootstrap.min.js"></script>
+      <!--Magnific popup js-->
+      <script src="/../../../static/accounts/js/jquery.magnific-popup.min.js"></script>
+      <!--jquery easing js-->
+      <script src="/../../../static/accounts/js/jquery.easing.min.js"></script>
+      <!--jquery ytplayer js-->
+      <script src="/../../../static/accounts/js/jquery.mb.YTPlayer.min.js"></script>
+      <!--wow js-->
+      <script src="/../../../static/accounts/js/wow.min.js"></script>
+      <!--owl carousel js-->
+      <script src="/../../../static/accounts/js/owl.carousel.min.js"></script>
+      <!--countdown js-->
+      <script src="/../../../static/accounts/js/jquery.countdown.min.js"></script>
+      <!--custom js-->
+      <script src="/../../../static/accounts/js/scripts.js"></script>
+     
+   </body>
+</html>

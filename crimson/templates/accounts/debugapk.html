@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+
+<title>Wep2App</title>
+<style>
+	@media only screen and (max-width: 600px) {
+		.mob {
+			width: 100%;
+			padding-top: 20px;
+		}
+	}
+
+	@media only screen and (min-width: 720px) {
+		.web {
+			/* padding-left: 170px; */
+			padding-top: 50px;
+			width: 40%;
+		}
+	}
+</style>
+{% endblock %}
+{% block body %}
+
+<br /><br /><br /><br />
+<br /><br /><br />
+<div class="container mob web border border-info border-rounded">
+
+	<form method="POST" action="/accounts/debugapk/">
+		{% csrf_token %}
+		<div class="flip-card w-100"><br />
+			<div class="flip-card-inner ">
+				<div class="flip-card-front">
+					<h4>Please enter the hompage url of your website</h4><br /><br />
+					<input type="text" class="w-50 text-dark" name="domain" placeholder="www.google.com">
+					<br /><br /><br />
+					<span class="demo  btn btn-outline-info w-50">Submit</span>
+				</div>
+				<div class="flip-card-back">
+					<h4><span class="text-danger">Hurray! </span>Your trial app has been created. Please enter your
+						email below to
+						get the app.</h4><br />
+
+					<input class="w-50 text-dark" type="email" name="email" placeholder="xyz@gmail.com"><br /><br />
+					<button class="btn btn-outline-info w-50" type="submit">Submit</button>
+				</div>
+			</div>
+		</div>
+	</form><br /><br /><br /><br />
+</div>
+
+<br /><br />
+<div class="shape-img subscribe-wrap">
+    <img src="../../../static/accounts/img/footer-top-shape.png" alt="footer shape" class="img-fluid">
+</div>
+    <div class="footer-top pt-150 pb-5 background-img-1"
+        style="background: url('../../../static/accounts/img/footer-bg.png')no-repeat center top / cover">
+    </div>
+
+<script>
+	document.getElementsByClassName('demo')[0].onclick = function changeContent() {
+		document.getElementsByClassName('flip-card-inner')[0].style.transform = "rotateY(180deg)";
+	}
+</script>
+{% endblock %}

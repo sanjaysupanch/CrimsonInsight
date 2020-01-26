@@ -1,17 +1,12 @@
-from django.urls import path, include
-from .import views 
-from django.contrib.auth import views as auth_views
 from django.conf.urls import url
-from .views import *
+from django.urls import path
+from . import views
 
-
-
-app_name = "payment"
-
+# app_name = "payment"
 
 urlpatterns = [
-    path('process/', views.payment, name='process'),
-    path('done/', views.paypal_return, name='done'),
-    path('canceled/', views.paypal_cancel, name='canceled'),
-
+    # path('', views.index, name='index'),
+    path('process/', views.process_payment, name='process_payment'),
+    path('done/', views.payment_done, name='payment_done'),
+    path('cancelled/', views.payment_canceled, name='payment_cancelled'),
 ]

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block head %}
+
+<title>Wep2App</title>
+<style>
+    @media only screen and (max-width: 600px) {
+        .mob {
+            width: 100%;
+            padding-top: 20px;
+        }
+    }
+
+    @media only screen and (min-width: 720px) {
+        .web {
+            /* padding-left: 170px; */
+            padding-top: 50px;
+            width: 40%;
+        }
+    }
+</style>
+{% endblock %}
+{% block body %}
+<br /><br /><br /><br />
+<br /><br /><br />
+<div class="container mob web border border-dark border-rounded ">
+    <h4 class="text-dark">Please enter the hompage url of your website<hr/></h4><br />
+    <form method="POST" class="text-success">
+        {% csrf_token %}
+        {{form1|crispy}}
+        <br />
+        <button type="submit" class="demo btn btn-outline-dark w-50">Submit</button>
+        <br /><br />
+    </form>
+
+</div>
+
+{% endblock %}
+<div class="flip-card w-100"><br />
+    <div class="flip-card-inner ">
+        <div class="flip-card-front">
+            <h4>Please enter the hompage url of your website</h4><br /><br />
+            <form method="POST">
+                {% csrf_token %}
+                {{form1|crispy}}<br />
+                <button type="submit" class="demo btn btn-outline-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementsByClassName('demo')[0].onclick = function changeContent() {
+        document.getElementsByClassName('flip-card-inner')[0].style.transform = "rotateY(180deg)";
+    }
+</script>

@@ -14,6 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,17 +35,25 @@ ALLOWED_HOSTS = ['*' ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'allauth',
+    'allauth.account', # new
+    'allauth.socialaccount',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'accounts',
     'paypal.standard.ipn',
     'payment',
+    'crispy_forms',
+    'snowpenguin.django.recaptcha2',
+    
+    
     # 'django_file_download',
 ]
-
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,7 +70,7 @@ ROOT_URLCONF = 'crimson.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +95,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # DATABASES = {
 #     'default': {
@@ -125,16 +137,53 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-AUTH_USER_EMAIL_UNIQUE = True
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 MEDIA_URL = '/media/'
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/accounts/debugapk/'
-# PAYPAL_RECEIVER_EMAIL ='finance@crimsoninsights.com'
-PAYPAL_RECEIVER_EMAIL ='sanjaykumarsupanch@gmail.com'
 
-# PAYPAL_BUY_BUTTON_IMAGE="http://spiritdrumcorps.org/wp-content/uploads/2018/08/paynow-button.png"
-# PAYPAL_TEST= False
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pioneer.deo@gmail.com'
+EMAIL_HOST_PASSWORD = 'tommyjerry'
+
+PAYPAL_RECEIVER_EMAIL='sb-k1pa1892678@business.example.com'
+# PAYPAL_RECEIVER_EMAIL='finance@crimsoninsights.com'
+PAYPAL_TEST =True
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGOUT_ON_GET =True
+LOGIN_REDIRECT_URL = '/accounts/payment/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.AllauthSignupForm'
+RECAPTCHA_PUBLIC_KEY = '6Lc189IUAAAAALiLOPk9cuEZw_oh5UL3P3ZlzCgI'
+RECAPTCHA_PRIVATE_KEY = '6Lc189IUAAAAAHDW6D3xfN-_dEVXnqndN84di2OZ'
+
+
+
+
+
+
+
+
+
+
