@@ -70,6 +70,7 @@ def debugapk_view(request):
             receiver_mail=email_id
             send_mail('Crimson Insight WebApp', 'Hello!! Your WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
+            return redirect("/")
     return render(request, 'accounts/debugapk.html', {})
 
 @login_required
@@ -122,7 +123,7 @@ def releaseapk_view(request):
         receiver_mail=str(request.user)
         send_mail('Crimson Insight Sign WebApp', 'Hello!! Your WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
-        # return redirect('/payment/process/')
+        return redirect('/payment/process/')
     else:
         return redirect('/accounts/payment/')
     return  render(request, 'accounts/releaseapk.html', {})
