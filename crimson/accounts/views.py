@@ -22,26 +22,6 @@ count2=1
 def index(request):
     return render(request,'accounts/index.html')
 
-
-# @login_required
-# def user_logout(request):
-#     logout(request)
-#     return HttpResponseRedirect(reverse('index'))
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('/')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'accounts/signup.html', {'form': form})
-
 def debugapk_view(request):
     domain=None
     email_id=None
@@ -123,7 +103,7 @@ def releaseapk_view(request):
         receiver_mail=str(request.user)
         send_mail('Crimson Insight Sign WebApp', 'Hello!! Your WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
-        return redirect('/payment/process/')
+        # return redirect('/payment/process/')
     else:
         return redirect('/accounts/payment/')
     return  render(request, 'accounts/releaseapk.html', {})

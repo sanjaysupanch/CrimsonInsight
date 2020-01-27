@@ -18,7 +18,7 @@ def process_payment(request):
     host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '1.00',
+        'amount': '29.00',
         'item_name': 'Order',
         'invoice': domain,
         'currency_code': 'USD',
