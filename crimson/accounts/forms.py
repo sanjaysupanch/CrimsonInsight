@@ -40,19 +40,12 @@ class AllauthSignupForm(forms.Form):
     def signup(self, request, user):
         """ Required, or else it throws deprecation warnings """
         pass
-# class debugForm(forms.ModelForm):
-		
-# 	# key = forms.CharField(label='Enter your key', max_length=100 )
-# 	class Meta:
-# 		model = debugapk
-# 		fields=('domain_name',)
 
 
 class releaseForm(forms.ModelForm):
 		
-    key = forms.CharField(label='Enter your key', max_length=100)
-    # email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Enter email ID.'}), required=True, max_length=50)
-
+    key = forms.CharField(label='Enter your Key',min_length=8, max_length=100, help_text='_')
+    domain_name = forms.CharField(label='Enter your Domain name', max_length=100, help_text='Ex: www.google.com', )
     
     class Meta:
         model=releaseapk

@@ -10,6 +10,9 @@
             width: 100%;
             padding-top: 20px;
         }
+        .but{
+            width: 50%;
+        }
     }
 
     @media only screen and (min-width: 720px) {
@@ -18,39 +21,57 @@
             padding-top: 50px;
             width: 40%;
         }
+        .but1{
+            width: 30%;
+        }
     }
 </style>
 {% endblock %}
 {% block body %}
-<br /><br /><br /><br />
-<br /><br /><br />
-<div class="container mob web border border-dark border-rounded ">
-    <h4 class="text-dark">Please enter the hompage url of your website<hr/></h4><br />
-    <form method="POST" class="text-success">
-        {% csrf_token %}
-        {{form1|crispy}}
-        <br />
-        <button type="submit" class="demo btn btn-outline-dark w-50">Submit</button>
-        <br /><br />
-    </form>
-
-</div>
-
-{% endblock %}
-<div class="flip-card w-100"><br />
-    <div class="flip-card-inner ">
-        <div class="flip-card-front">
-            <h4>Please enter the hompage url of your website</h4><br /><br />
-            <form method="POST">
-                {% csrf_token %}
-                {{form1|crispy}}<br />
-                <button type="submit" class="demo btn btn-outline-info">Submit</button>
-            </form>
+<div class="main">
+    <section class="hero-section pt-100 background-img"
+        style="background: url('/static/accounts/img/hero-bg-1.jpg')no-repeat center center / cover">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-9 col-lg-7">
+                    <div class="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0"><br />
+                        <h1 class="text-white mb-0">Build Your Own App</h1><br /><br />
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <section id="download" class="video-promo ptb-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-7">
+
+                    <div class="container mob web border border-primary border-rounded w-100">
+                        <h4 class="text-secondary">Please enter the hompage url of your website***
+                            <hr />
+                        </h4><br />
+                        <form method="POST"  class="text-secondary">
+                            {% csrf_token %}
+                            {{form1|crispy }}
+                            <br />
+                            <button type="submit"  class="btn outline-btn but but1">Submit</button>
+                            <br /><br />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="download-img mt-lg-5 mt-md-5 mt-sm-0">
+                        <img src="/static/accounts/img/image-11.png" alt="download" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-<script>
-    document.getElementsByClassName('demo')[0].onclick = function changeContent() {
-        document.getElementsByClassName('flip-card-inner')[0].style.transform = "rotateY(180deg)";
-    }
-</script>
+<div class="shape-img subscribe-wrap">
+    <img src="../../../static/accounts/img/footer-top-shape.png" alt="footer shape" class="img-fluid">
+</div>
+<div class="footer-top pt-150 pb-5 background-img-1"
+    style="background: url('../../../static/accounts/img/footer-bg.png')no-repeat center top / cover">
+</div>
+{% endblock %}

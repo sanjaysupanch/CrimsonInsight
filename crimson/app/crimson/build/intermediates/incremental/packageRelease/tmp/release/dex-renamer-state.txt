@@ -1,4 +1,4 @@
-#Sun Jan 26 22:32:22 UTC 2020
+#Mon Jan 27 10:10:19 UTC 2020
 base.0=/home/san/Documents/CrimsonInsight/crimson/app/crimson/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
