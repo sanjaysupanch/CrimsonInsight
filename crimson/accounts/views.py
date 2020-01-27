@@ -17,7 +17,7 @@ import mimetypes
 from random import randint
 from django.core.mail import send_mail
 from time import sleep
-count=1
+count2=1
 
 def index(request):
     return render(request,'accounts/index.html')
@@ -100,15 +100,12 @@ def apk_data(request):
 def releaseapk_view(request):
     domain=request.session.get('domain_name')
     key =request.session.get('key')
-    
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
     file.close()
-    # print(sleep(40))
+    print(sleep(40))
     apk=releaseapk.objects.get(domain_name=domain)
-    
     print(domain)
-    
     apk_id=str(randint(100, 999))+str(apk.id)
     app="app-sign"+apk_id+".apk"
     
