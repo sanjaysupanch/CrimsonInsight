@@ -4,33 +4,8 @@
 {% block head %}
 
 <title>Wep2App</title>
-<style>
-    @media only screen and (max-width: 600px) {
-        .mob {
-            width: 100%;
-            padding-top: 20px;
-        }
-    }
-
-    @media only screen and (min-width: 720px) {
-        .web {
-            /* padding-left: 170px; */
-            padding-top: 50px;
-            width: 40%;
-        }
-    }
-</style>
 {% endblock %}
 {% block body %}
-<br /><br /><br /><br />
-<br /><br /><br />
-<div class="container mob web border border-info border-rounded ">
-
-                {{form.render}}
-                <br/><br/><br/><br/><br/><br/>
-</div>
-
-<!--our pricing packages section start-->
 <section id="pricing" class="package-section ptb-100">
     <div class="container">
         <div class="row justify-content-center">
@@ -38,85 +13,38 @@
                 <div class="section-heading text-center mb-5">
                     <h2>Pricing Packages</h2>
                     <p class="lead">
-                        Monotonectally grow strategic process improvements vis-a-vis integrated resources.
+                        Build app without coding knowledge.
                     </p>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md">
-                <div class="card text-center single-pricing-pack">
-                    <div class="card-header py-5 border-0 pricing-header">
-                        <div class="h1 text-center mb-0">$<span class="price font-weight-bolder">29</span></div>
-                        <span class="h6 text-muted">Basic License</span>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled text-sm mb-4 pricing-feature-list">
-                            <li>Push Notifications</li>
-                            <li>Data Transfer</li>
-                            <li>SQL Database</li>
-                            <li>Search & SEO Analytics</li>
-                            <li>24/7 Phone Support</li>
-                            <li>2 months technical support</li>
-                            <li>2+ profitable keyword</li>
-                        </ul>
-                        <a href="#" class="btn solid-btn mb-3" target="_blank">Purchase now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md">
-                <div class="card primary-bg text-center single-pricing-pack">
-                    <div class="card-header py-5 border-0 pricing-header">
-                        <div class="h1 text-white text-center mb-0">$<span class="price font-weight-bolder">149</span>
-                        </div>
-                        <span class="h6 text-white">Extended License</span>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled text-white text-sm mb-4 pricing-feature-list">
-                            <li>Push Notifications</li>
-                            <li>Data Transfer</li>
-                            <li>SQL Database</li>
-                            <li>Search & SEO Analytics</li>
-                            <li>24/7 Phone Support</li>
-                            <li>1 Year technical support</li>
-                            <li>50+ profitable keyword</li>
-                        </ul>
-                        <a href="#" class="btn app-store-btn mb-3" target="_blank">Purchase now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md">
-                <div class="card text-center single-pricing-pack">
-                    <div class="card-header py-5 border-0 pricing-header">
-                        <div class="h1 text-center mb-0">$<span class="price font-weight-bolder">39</span></div>
-                        <span class="h6 text-muted">Standard License</span>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled text-sm mb-4 pricing-feature-list">
-                            <li>Push Notifications</li>
-                            <li>Data Transfer</li>
-                            <li>SQL Database</li>
-                            <li>Search & SEO Analytics</li>
-                            <li>24/7 Phone Support</li>
-                            <li>6 months technical support</li>
-                            <li>10+ profitable keyword</li>
-                        </ul>
-                        <a href="#" class="btn solid-btn mb-3" target="_blank">Purchase now</a>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <div class="mt-5 text-center">
-            <p class="mb-2">If you need custom services or Need more? <a href="#" class="color-secondary">
-                    Contact us
-                </a></p>
-
+            <div class="col-lg-5 col-md">
+                <div class="card text-center single-pricing-pack  bg-gradient-info">
+                    <div class="card-header py-5 border-0 pricing-header ">
+                        <div class="h1 text-center mb-0">$<span class="price font-weight-bolder">19</span></div>
+                        <span class="h6 text-muted">Build 1 App</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled  mb-4 pricing-feature-list ">
+                            <li>One time payment</li>
+                            <li>Platform-Android</li>
+                            <li>Works for any site</li>
+                            <li>Instant Access</li>
+                            <li>Auto Updates</li>
+                            <li>24/7 support</li>
+                            <li>Earn money with AdMob</li>
+                            <li>No monthly fees</li>
+                            
+                        </ul>
+                        {{form.render}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<!--our pricing packages section end-->
 
 {% endblock %}
-
 

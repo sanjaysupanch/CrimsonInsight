@@ -84,7 +84,7 @@ def releaseapk_view(request):
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
     file.close()
-    print(sleep(40))
+    sleep(40)
     apk=releaseapk.objects.get(domain_name=domain)
     print(domain)
     apk_id=str(randint(100, 999))+str(apk.id)
