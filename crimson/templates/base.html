@@ -16,19 +16,24 @@
       <meta property="og:url" content=""/>
       <meta property="og:type" content="article"/>
       
+
+
       <link rel="icon" href="/../../../static/accounts/img/" type="image/png" sizes="16x16">
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7COpen+Sans&amp;display=swap"
          rel="stylesheet">
-      <link rel="stylesheet" href="/../../../static/accounts/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/magnific-popup.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/themify-icons.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/animate.min.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/jquery.mb.YTPlayer.min.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/owl.theme.default.min.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/style.css">
-      <link rel="stylesheet" href="/../../../static/accounts/css/responsive.css">
-      <link rel="stylesheet" href="/static/accounts/css/san.css">
+      
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/magnific-popup.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/themify-icons.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/animate.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/jquery.mb.YTPlayer.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/responsive.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/san.css' %}">
+
+
       {% block head %}
       <title>CrimsonInsight </title>
       {% endblock %}
@@ -114,28 +119,29 @@
       {% endblock %}
       {% block extra_body %}
       {% endblock %}
-      
+      <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/san.css' %}">
+  
       
       <!--jQuery-->
-      <script src="/../../../static/accounts/js/jquery-3.4.1.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/jquery-3.4.1.min.js' %}"></script>
       <!--Popper js-->
-      <script src="/../../../static/accounts/js/popper.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/popper.min.js' %}"></script>
       <!--Bootstrap js-->
-      <script src="/../../../static/accounts/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/bootstrap.min.js' %}"></script>
       <!--Magnific popup js-->
-      <script src="/../../../static/accounts/js/jquery.magnific-popup.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/jquery.magnific-popup.min.js' %}"></script>
       <!--jquery easing js-->
-      <script src="/../../../static/accounts/js/jquery.easing.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/jquery.easing.min.js' %}"></script>
       <!--jquery ytplayer js-->
-      <script src="/../../../static/accounts/js/jquery.mb.YTPlayer.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/jquery.mb.YTPlayer.min.js' %}"></script>
       <!--wow js-->
-      <script src="/../../../static/accounts/js/wow.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/wow.min.js' %}"></script>
       <!--owl carousel js-->
-      <script src="/../../../static/accounts/js/owl.carousel.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/owl.carousel.min.js' %}"></script>
       <!--countdown js-->
-      <script src="/../../../static/accounts/js/jquery.countdown.min.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/jquery.countdown.min.js' %}"></script>
       <!--custom js-->
-      <script src="/../../../static/accounts/js/scripts.js"></script>
+      <script type="text/javascript" src="{% static 'accounts/js/scripts.js' %}"></script>
      
    </body>
 </html>
