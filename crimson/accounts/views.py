@@ -17,7 +17,7 @@ import mimetypes
 from random import randint
 from django.core.mail import send_mail
 from time import sleep
-count2=1
+
 
 def index(request):
     return render(request,'accounts/index.html')
@@ -46,8 +46,6 @@ def debugapk_view(request):
             file=open('app/crimson/src/main/res/raw/domain.txt', 'r')
             text=file.readline()
             file.close()
-            send_mail('Crimson Insight WebApp', text, 'sanjaykumarsupanch@gmail.com' ,[receiver_mail])
-
             print("###############__Operating System Command__##################")
             os.system("ls")
             os.chdir("app/crimson/")
@@ -57,7 +55,7 @@ def debugapk_view(request):
             os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
             link='http://'+request.get_host()+'/accounts/debug/'+app 
             
-            send_mail('Crimson Insight WebApp', 'Hello!! Your WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+            send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
             return redirect("/")
     return render(request, 'accounts/debugapk.html', {})
@@ -91,12 +89,13 @@ def releaseapk_view(request):
     domain=request.session.get('domain_name')
     key =request.session.get('key')
     app=request.session.get('app')
+    print(domain, key, app, "===============================================")
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
     file.close()
-    sleep(5)
+    # sleep(5)
     apk=releaseapk.objects.get(domain_name=domain)
-    
+    print("""apkkkkkkkkkkk""")
     if (apk.paid == True):
         print("###############__Operating System Command__##################")
         os.system("ls")
@@ -109,7 +108,7 @@ def releaseapk_view(request):
         link='http://'+request.get_host()+'/accounts/release/'+app 
         receiver_mail=str(request.user)
         print(link, "lllllllllliiiiiiiiiinnnnnnnnnnkkkkkkkkk")
-        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
         # return redirect('/payment/process/')
     else:

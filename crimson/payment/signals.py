@@ -23,29 +23,28 @@ def payment_notification(sender, **kwargs):
             if i==j:
                 app_name.remove(i)
     app=app_name[0]+".apk"
-    # keystore_data=keystore_table.objects.all()
-
-
-
     print(domain,"domain===========================>1")
+    
     if ipn_obj.payment_status == ST_PP_COMPLETED:
         print("ok111111111111111111111111111111111111111")
         user_instance=CustomUser.objects.get(email=emails)
         
         if (flag==1):
-            keystore_data=keystore_table.objects.create(keystore=keystore, keystore_link=keystore_link, key=key, user=user_instance)
+            keystore_data=keystore_table.objects.create(keystore=keystore, keystore_link=keystore_link, user=user_instance)
             keystore_data.save()
             print("flag===============1")
         else:
             keystore_data=get_object_or_404(keystore_table, keystore=keystore)
-            keystore_data.key=key
             keystore_data.keystore_link=keystore_link
             keystore_data.save()
             print("flag===============0")
         
-        apk=releaseapk.objects.create(domain_name=domain, key=key, keystore=keystore, keystore_link=keystore_link, app_name=app, user=user_instance)
+        keystore_instance=keystore_table.objects.get(keystore=keystore)
+        key_data=key_table.objects.create(key=key, keystore=keystore_instance)
+        key_data.save()
+
+        apk=releaseapk.objects.create(domain_name=domain, app_name=app, user=user_instance)
         apk.save()
-        print("ok2222222222222222222222222222222222222222")
         apk2=get_object_or_404(releaseapk, domain_name=domain)
         apk2.paid=True
         apk2.save()
