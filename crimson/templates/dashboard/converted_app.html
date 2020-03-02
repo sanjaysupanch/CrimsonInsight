@@ -1,0 +1,47 @@
+{% extends "dashboard.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="main-content">
+  <section class="section ">
+    <div class="section-body">
+      <div class="row ">
+        <div class="col-md-6 col-lg-12 col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>S.No.</th>
+                      <th>App Name</th>
+                      <th>Website Domain URL</th>
+                      <th>Debug Apk</th>
+                      <th>Signed Apk</th>
+                      <th>Signed Apk Version</th>
+                      <th>version</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in data %}
+                    <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.app_name}} </td>
+                      <td><a href="http://{{i.domain_name}}/">{{i.domain_name}}</a></td>
+                      <td><a href="/accounts/debug/{{i.app_name}}" >Download</a></td>
+                      <td><a href="/accounts/release/{{i.app_name}}" >Download</a></td>
+                      <td>1.0.0</td>
+                      <td>View all version</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

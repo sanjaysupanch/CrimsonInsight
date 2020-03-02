@@ -1,31 +1,67 @@
-{% extends 'base.html' %}
+{% extends 'dashboard.html' %}
 {% load staticfiles %}
+{% block head %}
+<title>Wep2App</title>
+<style>
+@media only screen and (max-width: 600px) {
+    .mob {
+      width: 100%;
+    }
 
+    .mob1 {
+      padding-top: 25px;
+    }
+
+    .sm {
+      font-size: 15px;
+    }
+  }
+
+  @media only screen and (min-width: 720px) {
+    .web {
+      width: 50%;
+    }
+
+    .web1 {
+      padding-top: 80px;
+    }
+  }
+</style>
+{% endblock %}
 {% block body %}
-<div class="main">
-    <section class="hero-section ptb-100 background-img full-screen"
-        style="background: url('/static/accounts/img/hero-bg-1.jpg')no-repeat center center / cover">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-9 col-lg-7">
-                    <div class="hero-content-left text-white text-center">
-                        <h1 class="text-white">Your App is builded please check your Email !</h1>
 
-                        <p class="lead">We will be in touch shortly. We're looking forward to your demo. If you have any
-                            questions prior to your demo feel free to give us a call.</p>
-
-                        <div class="mb-5">
-                            <h5 class="mb-0 text-white"> <span class="ti-mobile mr-2 align-items-center"></span> +1 415
-                                800 3584</h5><br/>
-                                <h5 class="mb-0 text-white"> <span class="ti-email mr-2 align-items-center"></span>info@crimsoninsights.com</h5>
+<div class="main-content">
+    <section class="section ">
+        <div class="section-body">
+            <div class="row ">
+                <div class="col-12 col-sm-12 col-lg-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="visitorMap4" data-height="440"><br>
+                                <div class="container mob1 web1 border border-info border-rounded text-center ">
+                                    <div class="loader loader-display"></div>
+                                    <div class="after-submit"><br>
+                                        <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been
+                                            sent to
+                                            your email address
+                                            for your testing. Please check
+                                            your inbox with email <span class="text-success">{{form}}</span> now.</span>
+                                        </h4><br><br>
+                                        <h4 class="sm"><a href="/accounts/releaseapk/">Didn't receive the email. Click
+                                                here to
+                                                retry after 2
+                                                minutes.</a></h4><br /><br>
+                                        <span class="btn btn-outline-grey mob web sm w-100 payment" > <a href="#">Click here to know
+                                            about how to publish your app on Google Play.</a></span>
+                                        <br><br><br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
-
 {% endblock %}
-

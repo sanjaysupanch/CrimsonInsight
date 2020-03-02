@@ -28,7 +28,7 @@ SECRET_KEY = 'fa@vcnpkvm5rmhpq*^%_y39m286ls%(zk!725@01c$lk8ja$g_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*' ]
+ALLOWED_HOSTS = [ '*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'accounts',
+    'dashboard',
     'paypal.standard.ipn',
     'payment',
     'crispy_forms',
@@ -167,8 +168,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGOUT_ON_GET =True
-LOGIN_REDIRECT_URL = '/accounts/payment/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
 ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.AllauthSignupForm'
 RECAPTCHA_PUBLIC_KEY = '6Lc189IUAAAAALiLOPk9cuEZw_oh5UL3P3ZlzCgI'
 RECAPTCHA_PRIVATE_KEY = '6Lc189IUAAAAAHDW6D3xfN-_dEVXnqndN84di2OZ'

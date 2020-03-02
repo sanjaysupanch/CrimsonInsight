@@ -18,6 +18,14 @@
 			width: 40%;
 		}
 	}
+
+	.form-submit {
+		display: block;
+	}
+
+	.text {
+		display: none;
+	}
 </style>
 {% endblock %}
 {% block body %}
@@ -26,7 +34,7 @@
 <br /><br /><br />
 <div class="container mob web border border-info border-rounded">
 
-	<form method="POST" action="/accounts/debugapk/">
+	<form method="POST" action="/accounts/debugapk/" class="form-submit">
 		{% csrf_token %}
 		<div class="flip-card w-100"><br />
 			<div class="flip-card-inner ">
@@ -42,11 +50,20 @@
 						get the app.</h4><br />
 
 					<input class="w-50 text-dark" type="email" name="email" placeholder="xyz@gmail.com"><br /><br />
-					<button class="btn btn-outline-info w-50" type="submit">Submit</button>
+					<button onclick="myFunction()" class="btn btn-outline-info w-50 after-submit" type="submit">Submit</button>
 				</div>
 			</div>
-		</div>
-	</form><br /><br /><br /><br />
+		</div><br /><br /><br /><br />
+	</form>
+	
+	<div class="text">
+		<h4 class=""><span class="text-danger">Hurray!</span> A debug has been sent to your email address
+			for your testing. Please check
+			your inbox with email email@email.com now.</span></h4><br><br>
+		<button class=" btn btn-outline-light w-100"><a href="/accounts/debugapk/">Didn't receive the email. Click here to retry after 2
+				minutes.</a></button><br /><br>
+	</div>
+
 </div>
 
 <br /><br />
@@ -60,6 +77,13 @@
 <script>
 	document.getElementsByClassName('demo')[0].onclick = function changeContent() {
 		document.getElementsByClassName('flip-card-inner')[0].style.transform = "rotateY(180deg)";
+	}
+	function myFunction(){
+		document.querySelector('.form-submit').style.display='none';
+		document.querySelector('.text').style.display="block";
+
+	setTimeout(function(){
+	},2000);
 	}
 </script>
 {% endblock %}
