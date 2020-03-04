@@ -173,17 +173,17 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 17 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 18 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Mon Jan 27 10:30:25 UTC 2020      </nav>
+Check performed at Mon Mar 02 23:50:21 UTC 2020      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
-      <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (4)</a>
+      <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (5)</a>
       <a class="mdl-navigation__link" href="#GradleOverrides"><i class="material-icons warning-icon">warning</i>Value overridden by Gradle build script (2)</a>
       <a class="mdl-navigation__link" href="#AllowBackup"><i class="material-icons warning-icon">warning</i>AllowBackup/FullBackupContent Problems (2)</a>
       <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (5)</a>
@@ -205,7 +205,7 @@ Check performed at Mon Jan 27 10:30:25 UTC 2020      </nav>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
 </td></tr>
 <tr>
-<td class="countColumn">4</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
 <tr>
 <td class="countColumn">2</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
@@ -251,7 +251,7 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:7</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.5.3</span><br /><pre class="errorlines">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:7</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1</span><br /><pre class="errorlines">
 <span class="lineno">  4 </span>        jcenter()
 <span class="lineno">  5 </span>    }
 <span class="lineno">  6 </span>    dependencies {
@@ -268,6 +268,15 @@ Dismiss</button>            </div>
 <span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
 <span class="lineno"> 68 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
 <span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span></pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:68</span>: <span class="message">A newer version of com.google.android.material:material than 1.0.0 is available: 1.1.0</span><br /><pre class="errorlines">
+<span class="lineno"> 65 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+<span class="lineno"> 66 </span>    implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>
+<span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="caretline"><span class="lineno"> 68 </span>    <span class="warning">implementation <span class="string">'com.google.android.material:material:1.0.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="lineno"> 70 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
+<span class="lineno"> 71 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></pre>
 
 <span class="location"><a href="../../build.gradle">../../build.gradle</a>:70</span>: <span class="message">A newer version of androidx.test.ext:junit than 1.1.0 is available: 1.1.1</span><br /><pre class="errorlines">
 <span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>

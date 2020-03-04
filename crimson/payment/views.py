@@ -12,13 +12,15 @@ from accounts.forms import *
 def process_payment(request):
     domain=request.session.get('domain_name')
     key = request.session.get('key')
-    print("1111111110", domain, key)
+    keystore=request.session.get('keystore')
+    flag=request.session.get('flag')
+    
     emails=str(request.user)
-    strings= key+" "+emails
+    strings= key+" "+emails+" "+keystore+" "+str(flag)
     host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '1.00',
+        'amount': '19.00',
         'item_name': 'Order',
         'invoice': domain,
         'currency_code': 'USD',

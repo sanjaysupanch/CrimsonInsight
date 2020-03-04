@@ -17,30 +17,10 @@ import mimetypes
 from random import randint
 from django.core.mail import send_mail
 from time import sleep
-count2=1
+
 
 def index(request):
     return render(request,'accounts/index.html')
-
-
-# @login_required
-# def user_logout(request):
-#     logout(request)
-#     return HttpResponseRedirect(reverse('index'))
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('/')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'accounts/signup.html', {'form': form})
 
 def debugapk_view(request):
     domain=None
@@ -49,28 +29,36 @@ def debugapk_view(request):
         form=request.POST
         domain = form['domain']
         email_id=form['email']
-        global count2
-        count2=count2+1
-        apk_id=str(randint(100, 999))+str(count2)
-        app="app-debug"+apk_id+".apk"
-        
+        arr=["www", "com",]
+        app_name=list(domain.split("."))
+        for i in app_name:
+            for j in arr:
+                if i==j:
+                    app_name.remove(i)
+        app=app_name[0]+".apk"
+
         if domain and email_id :
+            receiver_mail=email_id
             file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
             file.write(domain)
             file.close()
             print(domain, email_id)
+            file=open('app/crimson/src/main/res/raw/domain.txt', 'r')
+            text=file.readline()
+            file.close()
             print("###############__Operating System Command__##################")
             os.system("ls")
             os.chdir("app/crimson/")
             os.system("./gradlew build")
             os.system("./gradlew assembleDebug")
             os.system("ls")
-            os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/app-debug%s.apk" % apk_id)
+            os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
             link='http://'+request.get_host()+'/accounts/debug/'+app 
-            receiver_mail=email_id
-            send_mail('Crimson Insight WebApp', 'Hello!! Your WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+            
+            send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
             
+            return redirect("/")
     return render(request, 'accounts/debugapk.html', {})
 
 @login_required
@@ -101,15 +89,14 @@ def apk_data(request):
 def releaseapk_view(request):
     domain=request.session.get('domain_name')
     key =request.session.get('key')
+    app=request.session.get('app')
+    print(domain, key, app, "===============================================")
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
     file.close()
-    print(sleep(40))
+    # sleep(5)
     apk=releaseapk.objects.get(domain_name=domain)
-    print(domain)
-    apk_id=str(randint(100, 999))+str(apk.id)
-    app="app-sign"+apk_id+".apk"
-    
+    print("""apkkkkkkkkkkk""")
     if (apk.paid == True):
         print("###############__Operating System Command__##################")
         os.system("ls")
@@ -118,15 +105,16 @@ def releaseapk_view(request):
         os.system("./gradlew build")
         os.system("./gradlew assembleRelease")
         os.system("ls")
-        os.system("cp build/outputs/apk/release/crimson-release.apk ../../apk_store/release/app-sign%s.apk" % apk_id)
+        os.system("cp build/outputs/apk/release/crimson-release.apk ../../apk_store/release/%s" % app)
         link='http://'+request.get_host()+'/accounts/release/'+app 
         receiver_mail=str(request.user)
-        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+        print(link, "lllllllllliiiiiiiiiinnnnnnnnnnkkkkkkkkk")
+        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
         # return redirect('/payment/process/')
     else:
         return redirect('/accounts/payment/')
-    return  render(request, 'accounts/releaseapk.html', {})
+    return  render(request, 'accounts/releaseapk.html', {'form':receiver_mail})
             
 def download_file_release(request, filename):
     fl_path='apk_store/release/'+filename
