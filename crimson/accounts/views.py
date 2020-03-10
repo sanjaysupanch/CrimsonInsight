@@ -57,6 +57,7 @@ def debugapk_view(request):
             
             send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
+            
             return redirect("/")
     return render(request, 'accounts/debugapk.html', {})
 
