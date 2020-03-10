@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Invoice</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     -->
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+            color: rgb(46, 42, 42);
+        }
+
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+            color: rgb(170, 36, 36);
+        }
+
+        .colour {
+            color: rgb(170, 36, 36);
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br>
+        <table >
+            <tr>
+                <td class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Crimson Insights
+                </td>
+                <td>Crimson Insights Technologies LLP <br>
+                    853B, Phase 10, Mohali, Punjab, India, PIN-160062</td>
+            </tr>
+        </table><br><br>
+        <table>
+            <tr>
+                <td> <span class="colour">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Bill To</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ username }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ user }} </td>
+                <td ><br><span class="title">&nbsp;&nbsp;&nbsp;
+                    Invoice</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;INV-0000{{invoice_no}}</span></td>
+            </tr>
+        </table><hr><br>
+        <table>
+            <tr>
+                <td style="text-align: center;"><span class="colour">Invoice Date</td>
+                    <td>{{date}}</td>
+                    <td></td>
+                    <td></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><span class="colour">P.O.#</td>
+                    <td>0000{{invoice_no}}</td>
+                    <td></td>
+                    <td></td>
+            </tr>
+        </table><br><br>
+        <table>
+            <tr class="colour">
+                
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                #</td>
+                <td>Item & Description</td>
+                <td>Qty</td>
+                <td>Rate</td>
+                <td>Amount</td>
+                <td>Payment Method</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                1</td>
+                <td>App Conversion</td>
+                <td>1.00</td>
+                <td>$19.0</td>
+                <td>$19.0</td>
+                <td>Paypal</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    <h3 style="background-color: rgb(170, 36, 36);text-align: center;"><br> <span style="color: #fff;">Paid  $19.00<span></h3></td>
+
+                </td>
+            </tr>
+        </table>
+
+        <p style="text-align: center;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            ALL DISPUTES ARE SUBJECT TO JURISDICTION OF COURTS OF MOHALI - PUNJAB (INDIA) <br>
+                    IEC CODE: AAKFC8501C
+        </p>
+
+
+
+</body>
+
+</html>

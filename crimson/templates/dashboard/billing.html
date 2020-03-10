@@ -1,22 +1,75 @@
 {% extends "dashboard.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block body %}
 <div class="main-content">
   <section class="section ">
     <div class="section-body">
       <div class="row ">
-        <div class="col-12 col-sm-12 col-lg-9">
+        <div class="col-md-8 col-sm-12 col-lg-8 col-xl-8">
           <div class="card">
-            <div class="card-header">
-              <h4>Visitors</h4>
-            </div>
             <div class="card-body">
-              <div id="visitorMap4" data-height="300"></div>
+              <div class="table-responsive-sm">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr> <center><h5>My Invoices</h5><hr></center>
+                      
+                    </tr>
+                    <tr>
+                      <th>S.No.</th>
+                      <th>Invoice Number</th>
+                      <th>Date</th>
+                      <th>Download Invoice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in data %}
+                    <tr>
+                      <td>{{i.invoice}}</td>
+                      <td>INV-0000{{i.invoice}}</td>
+                      <td>{{i.date}}</td>
+                      <td>
+                        <button class="btn-primary" onclick="request_access(this)" id="{{ i.invoice }}">Download</button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+
+                </table>
+                
+                         
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 </div>
+{% endblock %}
+{% block jquery_body %}
+<script>
+
+function request_access($this){
+    var request_data = $this.id;
+    console.log("data: " + request_data)
+    
+    $.ajaxSetup({
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+            })
+    $.ajax({
+      type: "POST",
+      url: '/dashboard/pdf/data/',
+      data: {invoice:request_data},
+      
+      success: function (data) {
+        window.location.href = "/dashboard/pdf/pdf/";
+      },
+      error: function () {
+        alert('Please retry :)');
+      },
+    })
+    
+};
+</script>
 {% endblock %}

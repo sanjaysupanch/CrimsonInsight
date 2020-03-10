@@ -11,6 +11,8 @@ class releaseapk(models.Model):
 	user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
 	domain_name=models.CharField(max_length=2048, unique=True, blank=True)
 	app_name=models.CharField(max_length=120, default="app")
+	invoice=models.AutoField(primary_key=True)
+	date=models.DateField(blank=True)
 	paid=models.BooleanField(default=False)
 	
 class keystore_table(models.Model):

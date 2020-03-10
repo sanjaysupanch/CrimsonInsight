@@ -89,6 +89,8 @@ def releaseapk_view(request):
     domain=request.session.get('domain_name')
     key =request.session.get('key')
     app=request.session.get('app')
+    keystore=request.session.get('keystore')
+    keystore_data=keystore+".keystore"
     print(domain, key, app, "===============================================")
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
@@ -100,6 +102,7 @@ def releaseapk_view(request):
         print("###############__Operating System Command__##################")
         os.system("ls")
         os.chdir("app/crimson/")
+        os.system("keytool -genkey -v -keystore %s -alias %s -keyalg RSA -keysize 2048 -validity 10000 " % (keystore_data, keystore))
         os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
         os.system("./gradlew build")
         os.system("./gradlew assembleRelease")

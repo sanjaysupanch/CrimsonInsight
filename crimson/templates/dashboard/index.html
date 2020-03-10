@@ -1,5 +1,5 @@
 {% extends "dashboard.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block head %}
 <title>Wep2App</title>
@@ -62,18 +62,17 @@
   <section class="section ">
     <div class="section-body">
       <div class="row ">
-        <div class="col-12 col-sm-12 col-lg-9">
+        <div class="col-xl-9 col-sm-12 col-lg-9">
           <div class="card">
             <div class="card-body">
               <div id="visitorMap4" data-height="440"><br>
                 <div class="container mob1 web1 border border-info border-rounded text-center ">
                   <div class="loader loader-display"></div>
-
                   <form id="converted_web">
                     {% csrf_token %}
                     <h4 class="sm">Convert your website to an <span class="text-danger"> Android app!</span></h4><br>
                     <h4 class="sm">Please enter the hompage url of your website***</h4><br /><br />
-                    <input type="text" class="mob web text-dark" name="domain" placeholder="www.google.com" id="domain">
+                    <input type="text" class="mob web " name="domain" placeholder="www.google.com" id="domain">
                     <br /><br /><br />
                     <button class="btn btn-outline-info mob web build-app-submit"
                       type="submit">Submit</button><br><br><br><br>
@@ -82,7 +81,7 @@
                   <div class="after-submit">
                     <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been sent to your email address
                       for your testing. Please check
-                      your inbox with email email@email.com now.</span></h4><br><br>
+                      your inbox with email {{user}} now.</span></h4><br><br>
                     <h4 class="sm"><a href="/dashboard/">Didn't receive the email. Click here to retry after 2
                         minutes.</a></h4><br /><br>
 
@@ -92,7 +91,7 @@
                   </div>
 
                   <div class="debug-signed">
-                    <h4 class="sm text-grey">What type of app do you want to create ?</h4><br><br><br>
+                    <h4 class="sm text-grey">What type of app do you want to create<span class="text-danger">?</span></h4><br><br><br>
 
                     <button class="btn btn-outline-info mob web sm w-75 debug-app">Debug (for
                       testing purposes) (Free)
@@ -108,23 +107,23 @@
                     {% csrf_token %}
 
                     <span class="keystore-span">
-                      <h4 class="sm">Enter the name for your new keystore or from given keystore that will be used to
+                      <h4 class="sm">Enter the name for your <b>new keystore</b> or from <b>given keystore</b> that will be used to
                         sign your app for publication on google play:</h4> <br /><br />
-                      <input type="text" class="mob web text-dark" name="keystore" placeholder="Enter Keystore Name"
+                      <input type="text" class="mob web " name="keystore" placeholder="Enter Keystore Name"
                         id="keystore">
                       <br /><br /><br />
                       <span class="btn btn-outline-info mob web keystore-submit">Submit</span><br><br><br><br>
                     </span>
 
                     <span class="key-form">
-                      <h4 class="sm"> Enter your key for publish your app***</h4><br>
-                      <h4 class="sm">Enter the name for your new key below that will be used to sign your app for
-                        publication on google play:</h4><br /><br />
-                      <input type="text" class="mob web text-dark" name="key" placeholder="Enter key name" id="key">
+                      <h4 class="sm "> Enter your key for publish your app***</h4>
+                      <h4 class="sm  ">Enter the name for your New Key below that will be used to <span class="text-danger">sign</span> your app for
+                        publication on <span class="text-danger">Google Play</span>:</h4></br>
+                      <input type="text" class="mob web " name="key" placeholder="Enter key name" id="key">
                       <br /><br /><br />
                       
                       <button class="btn btn-outline-info mob web keys-submit session-data app-link"
-                        type="submit">Submit</button><br><br><br><br>
+                        type="submit">Submit</button><br><br><br></br>
                     </span>
 
                   </form>
@@ -136,7 +135,7 @@
         <div class="col-md-3 col-sm-6 col-lg-3 col-xl-3 keystore-list">
           <div class="card">
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive-sm">
                 <table class="table table-hover mb-0">
                   <thead>
                     <tr>
@@ -246,8 +245,12 @@
 
       },
       success:function(data){
-        console.log(data);
-        window.location = "/payment/process/";
+        if(data.flag2==0 && data.flag==0)
+          alert("This key already exist for this keystore");
+          
+        else
+          window.location = "/payment/process/";
+        // window.location = "/payment/process/";
       }
     });
   });
