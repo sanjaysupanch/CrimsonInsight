@@ -247,7 +247,9 @@
 
       },
       success:function(data){
-        if(data.flag2==0 && data.flag==0)
+        if(data.flag3==0)
+          ''
+        else if(data.flag2==0 && data.flag==0)
           alert("This key already exist for this keystore");
           
         else

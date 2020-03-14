@@ -106,13 +106,18 @@ def session_data(request):
         key = form['key']
         flag = 0
         flag2= 0
+        flag3=0
         keystore_data = keystore_table.objects.all()
         for i in keystore_data:
-            if(i.keystore == keystore):
+            if(i.keystore==None):
+                flag3=0
+                break
+            elif(i.keystore == keystore):
                 flag = 0
                 break
             else:
                 flag = 1
+                flag3= 1
         request.session['flag'] = flag
         request.session['domain_name'] = domain
         request.session['key'] = key
@@ -128,6 +133,7 @@ def session_data(request):
         data={
             'flag':flag,
             'flag2':flag2,
+            'flag3':flag3,
         }
         return JsonResponse(data)
         
