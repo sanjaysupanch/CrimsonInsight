@@ -15,6 +15,7 @@ def payment_notification(sender, **kwargs):
     keystore=str(li[2])
     keystore_link="/dashboard/"+keystore+".keystore"
     flag=int(li[3])
+    flag3=int(li[4])
     
     arr=["www", "com",]
     app_name=list(domain.split("."))
@@ -23,13 +24,18 @@ def payment_notification(sender, **kwargs):
             if i==j:
                 app_name.remove(i)
     app=app_name[0]+".apk"
-    print(domain,"domain===========================>1")
+    print(domain,"domain===========================>1", emails)
     
     if ipn_obj.payment_status == ST_PP_COMPLETED:
-        print("ok111111111111111111111111111111111111111")
+        print(key, keystore, keystore_link, flag, flag3, "ok111111111111111111111111111111111111111")
         user_instance=CustomUser.objects.get(email=emails)
+        apk=releaseapk.objects.create(domain_name=domain, app_name=app, user=user_instance)
+        apk.save()
+        apk2=get_object_or_404(releaseapk, domain_name=domain)
+        apk2.paid=True
+        apk2.save()
         
-        if (flag==1):
+        if (flag==1 or flag3==0):
             keystore_data=keystore_table.objects.create(keystore=keystore, keystore_link=keystore_link, user=user_instance)
             keystore_data.save()
             print("flag===============1")
@@ -43,10 +49,6 @@ def payment_notification(sender, **kwargs):
         key_data=key_table.objects.create(key=key, keystore=keystore_instance)
         key_data.save()
 
-        apk=releaseapk.objects.create(domain_name=domain, app_name=app, user=user_instance)
-        apk.save()
-        apk2=get_object_or_404(releaseapk, domain_name=domain)
-        apk2.paid=True
-        apk2.save()
+        
         print(domain,"domain===========================>2")
        

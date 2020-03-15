@@ -14,9 +14,10 @@ def process_payment(request):
     key = request.session.get('key')
     keystore=request.session.get('keystore')
     flag=request.session.get('flag')
+    flag3=request.session.get('flag3')
     
     emails=str(request.user)
-    strings= key+" "+emails+" "+keystore+" "+str(flag)
+    strings= key+" "+emails+" "+keystore+" "+str(flag)+" "+str(flag3)
     host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,

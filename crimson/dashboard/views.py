@@ -104,9 +104,9 @@ def session_data(request):
         domain = form['domain']
         keystore = form['keystore']
         key = form['key']
-        flag = 0
-        flag2= 0
-        flag3=0
+        flag = 1
+        flag2= 1
+        flag3=1
         keystore_data = keystore_table.objects.all()
         for i in keystore_data:
             if(i.keystore==None):
@@ -122,6 +122,7 @@ def session_data(request):
         request.session['domain_name'] = domain
         request.session['key'] = key
         request.session['keystore'] = keystore
+        request.session['flag3'] = flag3
         key_data=key_table.objects.all()
         if(flag==0):
             for i in key_data:
