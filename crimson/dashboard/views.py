@@ -185,7 +185,7 @@ def pdf_get_data(request):
 
 
 class KeydataView(generics.ListAPIView):
-    yourdata = [{"keystore": "signing1", "key": "qwerty1cd zz"}]
+    yourdata = [{"keystore": "signing1", "key": "qwerty1"}]
     results = dataSerializer(yourdata, many=True).data
     queryset =results
     serializer_class = dataSerializer
