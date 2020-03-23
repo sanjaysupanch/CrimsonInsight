@@ -173,16 +173,17 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 18 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 19 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Sun Mar 15 08:29:41 UTC 2020      </nav>
+Check performed at Sun Mar 22 15:55:15 IST 2020      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
+      <a class="mdl-navigation__link" href="#SdCardPath"><i class="material-icons warning-icon">warning</i>Hardcoded reference to <code>/sdcard</code> (1)</a>
       <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (5)</a>
       <a class="mdl-navigation__link" href="#GradleOverrides"><i class="material-icons warning-icon">warning</i>Value overridden by Gradle build script (2)</a>
       <a class="mdl-navigation__link" href="#AllowBackup"><i class="material-icons warning-icon">warning</i>AllowBackup/FullBackupContent Problems (2)</a>
@@ -204,6 +205,9 @@ Check performed at Sun Mar 15 08:29:41 UTC 2020      </nav>
 <table class="overview">
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
 </td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#SdCardPath">SdCardPath</a>: Hardcoded reference to <code>/sdcard</code></td></tr>
 <tr>
 <td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
@@ -242,7 +246,55 @@ Dismiss</button>            </div>
             </div>
           </section>
 <a name="Correctness"></a>
-<a name="GradleDependency"></a>
+<a name="SdCardPath"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="SdCardPathCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Hardcoded reference to /sdcard</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/com/example/crimson/MainActivity.java">../../src/main/java/com/example/crimson/MainActivity.java</a>:50</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  47 </span>  webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);
+<span class="lineno">  48 </span>  webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);
+<span class="lineno">  49 </span>  webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);
+<span class="caretline"><span class="lineno">  50 </span>  webView.getSettings().setDatabasePath(<span class="warning"><span class="string">"/data/data/"</span></span> + webView.getContext().getPackageName() + <span class="string">"/databases/"</span>);</span>
+<span class="lineno">  51 </span>
+<span class="lineno">  52 </span>  webView.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);
+<span class="lineno">  53 </span>  webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationSdCardPath" style="display: none;">
+Your code should not reference the <code>/sdcard</code> path directly; instead use <code>Environment.getExternalStorageDirectory().getPath()</code>.<br/>
+<br/>
+Similarly, do not reference the <code>/data/data/</code> path directly; it can vary in multi-user scenarios. Instead, use <code>Context.getFilesDir().getPath()</code>.<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal">http://developer.android.com/guide/topics/data/data-storage.html#filesExternal</a>
+</div>To suppress this error, use the issue id "SdCardPath" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">SdCardPath</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 6/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationSdCardPathLink" onclick="reveal('explanationSdCardPath');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="SdCardPathCardLink" onclick="hideid('SdCardPathCard');">
+Dismiss</button>            </div>
+            </div>
+          </section><a name="GradleDependency"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="GradleDependencyCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">

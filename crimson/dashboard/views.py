@@ -21,13 +21,16 @@ from django.views.generic import View
 from django.template.loader import get_template
 from paypal.standard.models import *
 from django.http import JsonResponse
+from rest_framework.response import Response
+from .serializers import dataSerializer
+from rest_framework import permissions, status, generics, mixins
 
 @login_required
 def index(request):
-    user=request.user
+    user = request.user
     user_instance = CustomUser.objects.get(email=request.user)
     data = keystore_table.objects.filter(user=user_instance)
-    return render(request, 'dashboard/index.html', {'data': data, 'user':user})
+    return render(request, 'dashboard/index.html', {'data': data, 'user': user})
 
 
 @login_required
@@ -105,40 +108,39 @@ def session_data(request):
         keystore = form['keystore']
         key = form['key']
         flag = 1
-        flag2= 1
-        flag3=1
+        flag2 = 1
+        flag3 = 1
         keystore_data = keystore_table.objects.all()
         for i in keystore_data:
-            if(i.keystore==None):
-                flag3=0
+            if(i.keystore == None):
+                flag3 = 0
                 break
             elif(i.keystore == keystore):
                 flag = 0
                 break
             else:
                 flag = 1
-                flag3= 1
+                flag3 = 1
         request.session['flag'] = flag
         request.session['domain_name'] = domain
         request.session['key'] = key
         request.session['keystore'] = keystore
         request.session['flag3'] = flag3
-        key_data=key_table.objects.all()
-        if(flag==0):
+        key_data = key_table.objects.all()
+        if(flag == 0):
             for i in key_data:
-                if(i.key==key):
-                    flag2=0
+                if(i.key == key):
+                    flag2 = 0
                     break
                 else:
-                    flag2=1
-        data={
-            'flag':flag,
-            'flag2':flag2,
-            'flag3':flag3,
+                    flag2 = 1
+        data = {
+            'flag': flag,
+            'flag2': flag2,
+            'flag3': flag3,
         }
         return JsonResponse(data)
-        
-    
+
     return HttpResponse('')
 
 
@@ -151,12 +153,13 @@ def download_keystore(request, filename):
     response['Content-disposition'] = "attachment; filename=%s" % filename
     return response
 
+
 @login_required
 def genrate(request):
-    invoice=request.session.get('invoice')
-    user=request.user
-    data=releaseapk.objects.get(invoice=int(invoice))
-    date=data.date
+    invoice = request.session.get('invoice')
+    user = request.user
+    data = releaseapk.objects.get(invoice=int(invoice))
+    date = data.date
     template = get_template('dashboard/invoice.html')
     context = {
         "invoice_no": str(invoice),
@@ -169,6 +172,7 @@ def genrate(request):
     response = HttpResponse(pdf, content_type='application/pdf')
     return response
 
+
 @login_required
 def pdf_get_data(request):
     if request.method == 'POST':
@@ -177,3 +181,14 @@ def pdf_get_data(request):
         request.session['invoice'] = invoice
         redirect('/dashboard/pdf/pdf/')
     return HttpResponse('')
+
+
+
+class KeydataView(generics.ListAPIView):
+    yourdata = [{"keystore": "signing1", "key": "qwerty1cd zz"}]
+    results = dataSerializer(yourdata, many=True).data
+    queryset =results
+    serializer_class = dataSerializer
+    print(yourdata[0]['keystore'])
+    
+    

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from accounts import views
 from django.conf.urls import url,include 
+from rest_framework_jwt.views import obtain_jwt_token
 
 
 urlpatterns = [
@@ -27,6 +28,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('accounts/', include('allauth.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('token-auth/', obtain_jwt_token),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     
 
    

@@ -41,7 +41,7 @@
 21    <application
 21-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:16:5-31:19
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.0.1] /home/san/.gradle/caches/transforms-2/files-2.1/c0a39027978b83a483a047f5c31d0c4e/core-1.0.1/AndroidManifest.xml:22:18-86
+22-->[androidx.core:core:1.0.1] /home/san/.gradle/caches/transforms-2/files-2.1/ef4647ccbd12b5a4e484c902942a1ed2/core-1.0.1/AndroidManifest.xml:22:18-86
 23        android:icon="@drawable/ic_launcher1"
 23-->/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:17:9-46
 24        android:label="@string/app_name"

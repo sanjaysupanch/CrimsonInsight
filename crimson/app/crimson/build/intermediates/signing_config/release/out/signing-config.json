@@ -1,1 +1,1 @@
-{"mName":"release","mStoreFile":"/home/san/CrimsonInsight/crimson/app/crimson/signing.keystore","mStorePassword":"qwerty","mKeyAlias":"signing","mKeyPassword":"qwerty","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
+{"mName":"release","mStoreFile":"/home/san/CrimsonInsight/crimson/app/crimson/signing1.keystore","mStorePassword":"qwerty1","mKeyAlias":"signing1","mKeyPassword":"qwerty1","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}

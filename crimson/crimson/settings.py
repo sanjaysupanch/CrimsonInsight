@@ -44,12 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'rest_framework',
+    'rest_framework.authtoken',
     'accounts',
     'dashboard',
     'paypal.standard.ipn',
     'payment',
     'crispy_forms',
     'snowpenguin.django.recaptcha2',
+    
     
     
     # 'django_file_download',

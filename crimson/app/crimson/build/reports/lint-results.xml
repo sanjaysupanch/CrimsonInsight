@@ -2,6 +2,24 @@
 <issues format="5" by="lint 3.5.2">
 
     <issue
+        id="SdCardPath"
+        severity="Warning"
+        message="Do not hardcode &quot;`/data/`&quot;; use `Context.getFilesDir().getPath()` instead"
+        category="Correctness"
+        priority="6"
+        summary="Hardcoded reference to `/sdcard`"
+        explanation="Your code should not reference the `/sdcard` path directly; instead use `Environment.getExternalStorageDirectory().getPath()`.&#xA;&#xA;Similarly, do not reference the `/data/data/` path directly; it can vary in multi-user scenarios. Instead, use `Context.getFilesDir().getPath()`."
+        url="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal"
+        urls="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal"
+        errorLine1="        webView.getSettings().setDatabasePath(&quot;/data/data/&quot; + webView.getContext().getPackageName() + &quot;/databases/&quot;);"
+        errorLine2="                                              ~~~~~~~~~~~~~">
+        <location
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/java/com/example/crimson/MainActivity.java"
+            line="50"
+            column="47"/>
+    </issue>
+
+    <issue
         id="GradleDependency"
         severity="Warning"
         message="A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1"

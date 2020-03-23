@@ -1,7 +1,9 @@
 from django.urls import path
 from .import views 
 from django.conf.urls import url
-from .views import *
+from dashboard.views import *
+# from rest_framework import views
+
 
 
 urlpatterns = [
@@ -15,4 +17,6 @@ urlpatterns = [
     path('<filename>/', views.download_keystore, name="keystore_file"),
     path('pdf/pdf/', views.genrate, name="pdf"),
     path('pdf/data/', views.pdf_get_data, name="pdf_data"),
+    path('keydata/data/', KeydataView.as_view(), name="data"),
+
 ]
