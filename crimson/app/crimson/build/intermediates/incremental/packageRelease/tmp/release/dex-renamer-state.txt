@@ -1,4 +1,4 @@
-#Mon Mar 23 05:19:58 IST 2020
+#Wed Mar 25 18:53:23 UTC 2020
 base.0=/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

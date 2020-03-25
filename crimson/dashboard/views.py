@@ -1,29 +1,26 @@
-from django.shortcuts import render
-from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import *
 from django.http import HttpResponseRedirect, HttpResponse, response
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from accounts.models import *
-from .models import *
 import os
 import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
-import mimetypes
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
+# from email.mime.base import MIMEBase
+# from email import encoders
+# import mimetypes
 from django.core.mail import send_mail
 from .utils import render_to_pdf
 from django.views.generic import View
 from django.template.loader import get_template
-from paypal.standard.models import *
+# from paypal.standard.models import *
 from django.http import JsonResponse
 from rest_framework.response import Response
 from .serializers import dataSerializer
 from rest_framework import permissions, status, generics, mixins
+# from rest_framework.decorators import api_view
 
 @login_required
 def index(request):
@@ -107,6 +104,9 @@ def session_data(request):
         domain = form['domain']
         keystore = form['keystore']
         key = form['key']
+        # user_instance=CustomUser.objects.get(email=request.user)
+        temp_data=temp.objects.create(keystore=keystore, key=key)
+        temp_data.save()
         flag = 1
         flag2 = 1
         flag3 = 1
@@ -183,12 +183,39 @@ def pdf_get_data(request):
     return HttpResponse('')
 
 
-
 class KeydataView(generics.ListAPIView):
-    yourdata = [{"keystore": "signing1", "key": "qwerty1"}]
-    results = dataSerializer(yourdata, many=True).data
-    queryset =results
-    serializer_class = dataSerializer
-    print(yourdata[0]['keystore'])
+    queryset= temp.objects.all()
+    serializer_class=dataSerializer
+
+    def get_queryset(self):
+        tempdata=temp.objects.all()
+        last = tempdata[len(tempdata) - 1] if tempdata else None
+        return temp.objects.filter(id=last.id)
+
+
+
+
+
+# @api_view()
+# def KeydataView(request):
+#     keystore=None
+#     key=None 
+#     if(keystore==None and key==None):
+#         print("step==1")
+#         user_instance=CustomUser.objects.get(email=request.user)
+#         temp_data=temp.objects.get(user=user_instance)
+#         print("step==2")
+#         keystore=temp_data.keystore
+#         key=temp_data.key
+#         print("step==3")
+#     else:
+#         print(keystore, key, "11111111")
+#     # except:
+#     #     print('222222222222')
+#     # if(keystore==None and key == None):
+#     #     keystore='signing'
+#     #     key='qwerty'
     
+#     print(keystore, key)
+#     return Response([{"keystore": keystore, "key": key}])
     

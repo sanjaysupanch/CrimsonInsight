@@ -176,7 +176,7 @@ document.getElementById(id).style.display = 'none';
       <span class="mdl-layout-title">Lint Report: 19 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Sun Mar 22 15:55:15 IST 2020      </nav>
+Check performed at Wed Mar 25 19:05:42 UTC 2020      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -255,14 +255,14 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/java/com/example/crimson/MainActivity.java">../../src/main/java/com/example/crimson/MainActivity.java</a>:50</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
-<span class="lineno">  47 </span>  webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);
-<span class="lineno">  48 </span>  webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);
-<span class="lineno">  49 </span>  webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);
-<span class="caretline"><span class="lineno">  50 </span>  webView.getSettings().setDatabasePath(<span class="warning"><span class="string">"/data/data/"</span></span> + webView.getContext().getPackageName() + <span class="string">"/databases/"</span>);</span>
-<span class="lineno">  51 </span>
-<span class="lineno">  52 </span>  webView.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);
-<span class="lineno">  53 </span>  webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+<span class="location"><a href="../../src/main/java/com/example/crimson/MainActivity.java">../../src/main/java/com/example/crimson/MainActivity.java</a>:49</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  46 </span>  webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);
+<span class="lineno">  47 </span>  webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);
+<span class="lineno">  48 </span>  webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);
+<span class="caretline"><span class="lineno">  49 </span>  webView.getSettings().setDatabasePath(<span class="warning"><span class="string">"/data/data/"</span></span> + webView.getContext().getPackageName() + <span class="string">"/databases/"</span>);</span>
+<span class="lineno">  50 </span>
+<span class="lineno">  51 </span>  webView.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);
+<span class="lineno">  52 </span>  webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 </pre>
 
 </div>
@@ -303,50 +303,51 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:7</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1</span><br /><pre class="errorlines">
-<span class="lineno">  4 </span>        jcenter()
-<span class="lineno">  5 </span>    }
-<span class="lineno">  6 </span>    dependencies {
-<span class="caretline"><span class="lineno">  7 </span>        <span class="warning">classpath <span class="string">'com.android.tools.build:gradle:3.5.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno">  8 </span>    }
-<span class="lineno">  9 </span>}
-<span class="lineno"> 10 </span>apply plugin: <span class="string">'com.android.application'</span></pre>
-
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:66</span>: <span class="message">A newer version of androidx.appcompat:appcompat than 1.0.2 is available: 1.1.0</span><br /><pre class="errorlines">
-<span class="lineno"> 63 </span>
-<span class="lineno"> 64 </span>dependencies {
-<span class="lineno"> 65 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
-<span class="caretline"><span class="lineno"> 66 </span>    <span class="warning">implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="lineno"> 68 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span></pre>
-
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:68</span>: <span class="message">A newer version of com.google.android.material:material than 1.0.0 is available: 1.1.0</span><br /><pre class="errorlines">
-<span class="lineno"> 65 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
-<span class="lineno"> 66 </span>    implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>
-<span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="caretline"><span class="lineno"> 68 </span>    <span class="warning">implementation <span class="string">'com.google.android.material:material:1.0.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="lineno"> 70 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
-<span class="lineno"> 71 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></pre>
-
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:70</span>: <span class="message">A newer version of androidx.test.ext:junit than 1.1.0 is available: 1.1.1</span><br /><pre class="errorlines">
-<span class="lineno"> 67 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="lineno"> 68 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="caretline"><span class="lineno"> 70 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 71 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span>
-<span class="lineno"> 72 </span>
-<span class="lineno"> 73 </span>}
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:15</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1</span><br /><pre class="errorlines">
+<span class="lineno">  12 </span>        jcenter()
+<span class="lineno">  13 </span>    }
+<span class="lineno">  14 </span>    dependencies {
+<span class="caretline"><span class="lineno">  15 </span>        <span class="warning">classpath <span class="string">'com.android.tools.build:gradle:3.5.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno">  16 </span>        classpath <span class="string">'org.codehaus.groovy.modules.http-builder:http-builder:0.5.2'</span>
+<span class="lineno">  17 </span>    }
+<span class="lineno">  18 </span>}
 </pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:71</span>: <span class="message">A newer version of androidx.test.espresso:espresso-core than 3.1.1 is available: 3.2.0</span><br /><pre class="errorlines">
-<span class="lineno"> 68 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 69 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="lineno"> 70 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
-<span class="caretline"><span class="lineno"> 71 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 72 </span>
-<span class="lineno"> 73 </span>}
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:101</span>: <span class="message">A newer version of androidx.appcompat:appcompat than 1.0.2 is available: 1.1.0</span><br /><pre class="errorlines">
+<span class="lineno">  98 </span>
+<span class="lineno">  99 </span>dependencies {
+<span class="lineno"> 100 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+<span class="caretline"><span class="lineno"> 101 </span>    <span class="warning">implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span></pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:103</span>: <span class="message">A newer version of com.google.android.material:material than 1.0.0 is available: 1.1.0</span><br /><pre class="errorlines">
+<span class="lineno"> 100 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+<span class="lineno"> 101 </span>    implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>
+<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="caretline"><span class="lineno"> 103 </span>    <span class="warning">implementation <span class="string">'com.google.android.material:material:1.0.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="lineno"> 105 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
+<span class="lineno"> 106 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:105</span>: <span class="message">A newer version of androidx.test.ext:junit than 1.1.0 is available: 1.1.1</span><br /><pre class="errorlines">
+<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="caretline"><span class="lineno"> 105 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 106 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span>
+<span class="lineno"> 107 </span>    
+</pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:106</span>: <span class="message">A newer version of androidx.test.espresso:espresso-core than 3.1.1 is available: 3.2.0</span><br /><pre class="errorlines">
+<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="lineno"> 105 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
+<span class="caretline"><span class="lineno"> 106 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 107 </span>    
+<span class="lineno"> 108 </span>
+<span class="lineno"> 109 </span>}
 </pre>
 
 </div>

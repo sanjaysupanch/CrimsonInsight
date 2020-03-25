@@ -15,7 +15,7 @@
         errorLine2="                                              ~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/java/com/example/crimson/MainActivity.java"
-            line="50"
+            line="49"
             column="47"/>
     </issue>
 
@@ -31,7 +31,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="7"
+            line="15"
             column="9"/>
     </issue>
 
@@ -47,7 +47,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="66"
+            line="101"
             column="5"/>
     </issue>
 
@@ -63,7 +63,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="68"
+            line="103"
             column="5"/>
     </issue>
 
@@ -79,7 +79,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="70"
+            line="105"
             column="5"/>
     </issue>
 
@@ -95,7 +95,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="71"
+            line="106"
             column="5"/>
     </issue>
 

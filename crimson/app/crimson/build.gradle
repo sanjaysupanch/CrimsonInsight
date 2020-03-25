@@ -20,23 +20,32 @@ buildscript {
 String keystore1;
 String key1;
 String keystore2;
+
+
 task hello {
-    def http = new HTTPBuilder("http://127.0.0.1:8000/")
-        http.get(path:'dashboard/keydata/data/',)
-        {
-            resp, reader ->
-            // println( reader[0]['keystore']);
-            keystore1=reader[0]['keystore'];
-            key1=reader[0]['key'];
-            // println( reader[0]['key']);
-            // println(key1);
-        }
+
+    try { 
+        def http = new HTTPBuilder("http://127.0.0.1:8000/")
+            http.get(path:'dashboard/keydata/data/',)
+            {
+                resp, reader ->
+                keystore1=reader[0]['keystore'];
+                key1=reader[0]['key'];
+                // println( reader[0]['key']);
+                // println(key1);
+            }
+    }
+    catch(Exception e){
+        // keystore1="signing";
+        // key1='qwerty';
+        println("Error1111111111111111111");
+    }
 
 }
-println(keystore1);
-println(key1);
+// println(keystore1);
+// println(key1);
 keystore2=keystore1+".keystore";
-println(keystore2);
+// println(keystore2);
 
 
 

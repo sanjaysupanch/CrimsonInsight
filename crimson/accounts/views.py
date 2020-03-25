@@ -1,20 +1,17 @@
-from django.shortcuts import render
-from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import *
 from django.http import HttpResponseRedirect, HttpResponse, response
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from accounts.models import *
 import os
 import smtplib 
-from email.mime.multipart import MIMEMultipart 
-from email.mime.text import MIMEText 
-from email.mime.base import MIMEBase 
-from email import encoders
-import mimetypes
-from random import randint
+# from email.mime.multipart import MIMEMultipart 
+# from email.mime.text import MIMEText 
+# from email.mime.base import MIMEBase 
+# from email import encoders
+# import mimetypes
+# from random import randint
 from django.core.mail import send_mail
 from time import sleep
 
@@ -97,10 +94,10 @@ def releaseapk_view(request):
     file.write(domain)
     file.close()
     print(domain)
-    # sleep(5)
+    sleep(5)
     apk=releaseapk.objects.get(domain_name=str(domain))
     print("""apkkkkkkkkkkk""", apk.domain_name)
-    if (apk.paid == True):
+    if (apk.paid==True):
         print("###############__Operating System Command__##################")
         os.system("ls")
         os.chdir("app/crimson/")
@@ -115,6 +112,7 @@ def releaseapk_view(request):
         print(link, "lllllllllliiiiiiiiiinnnnnnnnnnkkkkkkkkk")
         send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
+        temp.objects.all().delete()
         # return redirect('/payment/process/')
     else:
         return redirect('/accounts/payment/')

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, releaseapk, keystore_table, key_table
+from .models import  *
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -15,3 +15,4 @@ admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(releaseapk)
 admin.site.register(keystore_table)
 admin.site.register(key_table)
+admin.site.register(temp)

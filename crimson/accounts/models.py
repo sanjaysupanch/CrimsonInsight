@@ -24,3 +24,10 @@ class keystore_table(models.Model):
 class key_table(models.Model):
 	keystore=models.ForeignKey(keystore_table, on_delete=models.CASCADE)
 	key=models.CharField(max_length=2048)
+
+class temp(models.Model):
+	keystore=models.CharField(max_length=120)
+	key=models.CharField(max_length=120)
+
+	class Meta:
+		get_latest_by='keystore'
