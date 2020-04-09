@@ -105,15 +105,17 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/san/.
 	android:label
 		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:18:9-41
 	android:icon
-		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:17:9-46
+		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:17:9-38
 	android:theme
-		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:20:9-52
+		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:21:9-52
+	android:usesCleartextTraffic
+		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:20:9-44
 activity#com.example.crimson.MainActivity
-ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:9-29:20
+ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:9-29:20
 	android:label
-		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:19-42
+		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:47-90
 	android:name
-		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:23:19-46
+		ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:24:19-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN

@@ -6,12 +6,6 @@ from django.contrib.auth import authenticate, login, logout
 from accounts.models import *
 import os
 import smtplib 
-# from email.mime.multipart import MIMEMultipart 
-# from email.mime.text import MIMEText 
-# from email.mime.base import MIMEBase 
-# from email import encoders
-# import mimetypes
-# from random import randint
 from django.core.mail import send_mail
 from time import sleep
 
@@ -39,10 +33,7 @@ def debugapk_view(request):
             file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
             file.write(domain)
             file.close()
-            print(domain, email_id)
-            file=open('app/crimson/src/main/res/raw/domain.txt', 'r')
-            text=file.readline()
-            file.close()
+            
             print("###############__Operating System Command__##################")
             os.system("ls")
             os.chdir("app/crimson/")
@@ -54,9 +45,9 @@ def debugapk_view(request):
             
             send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
-            
-            return redirect("/")
-    return render(request, 'accounts/debugapk.html', {})
+            sleep(5)
+            return redirect("/accounts/login/")
+    return render(request, 'accounts/debugapk.html', {'email':email_id})
 
 @login_required
 def apk_data(request):
@@ -84,39 +75,60 @@ def apk_data(request):
 
 @login_required
 def releaseapk_view(request):
-    domain=request.session.get('domain_name')
-    key =request.session.get('key')
-    app=request.session.get('app')
-    keystore=request.session.get('keystore')
-    keystore_data=keystore+".keystore"
-    print(domain, key, app, "===============================================")
+    
+    keystore1=request.session.get('keystore1')
+    domain=request.session.get('domain')
+    app=request.session.get('app')+".apk"
+    key_data=request.session.get('key_data')
+    if(key_data==None):
+        key_data={}
+    
     file=open('app/crimson/src/main/res/raw/domain.txt', 'w')
     file.write(domain)
     file.close()
-    print(domain)
+    
+    if(keystore1 !=None):
+        key_data['flag']=0
+        key_data['flag3']=0
     sleep(5)
+    
     apk=releaseapk.objects.get(domain_name=str(domain))
-    print("""apkkkkkkkkkkk""", apk.domain_name)
     if (apk.paid==True):
         print("###############__Operating System Command__##################")
         os.system("ls")
         os.chdir("app/crimson/")
-        # os.system("keytool -genkey -v -keystore %s -alias %s -keyalg RSA -keysize 2048 -validity 10000 " % (keystore_data, keystore))
-        os.system("keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias %s -dname 'CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN' qwerty" % (key))
+        if(key_data['flag']==1 or key_data['flag3']==1):
+            os.system("keytool -genkey -v -keystore %s -storepass %s -alias %s -keypass %s -keyalg RSA -keysize 2048 -validity 10000 -dname 'CN=%s, OU=%s, O=%s, L=%s, S=%s, C=%s'" % (key_data['keystore']+".keystore", key_data['keystore_pass'], key_data['key'], key_data['key_pass'], key_data['key_user_name'], key_data['key_organization_unit'], key_data['key_organization'], key_data['key_city'], key_data['key_state'], key_data['key_country']))
+            user_instance=CustomUser.objects.get(email=request.user)
+            keystore_link="/dashboard/"+key_data['keystore']+".keystore"
+            keystore_table.objects.create(keystore=key_data['keystore'], keystore_pass=key_data['keystore_pass'], keystore_link=keystore_link, user=user_instance)
+            keystore_instance=keystore_table.objects.get(keystore=key_data['keystore'])
+            key_table.objects.create(keystore=keystore_instance, key=key_data['key'], key_pass=key_data['key_pass'], key_user_name=key_data['key_user_name'], key_organization_unit=key_data['key_organization_unit'], key_organization=key_data['key_organization'],key_city= key_data['key_city'], key_state=key_data['key_state'], key_country=key_data['key_country'])
+        else:
+            
+            keystore_instance=keystore_table.objects.get(keystore=keystore1)
+            data=key_table.objects.get(keystore=keystore_instance)
+            keystore_name=keystore_instance.keystore
+            keystore_pass=keystore_instance.keystore_pass
+            key=data.key
+            key_pass=data.key_pass
+            temp.objects.create(keystore=keystore1, keystore_pass=keystore_pass, key=key, key_pass=key_pass)
+        
         os.system("./gradlew build")
         os.system("./gradlew assembleRelease")
         os.system("ls")
         os.system("cp build/outputs/apk/release/crimson-release.apk ../../apk_store/release/%s" % app)
         link='http://'+request.get_host()+'/accounts/release/'+app 
         receiver_mail=str(request.user)
-        print(link, "lllllllllliiiiiiiiiinnnnnnnnnnkkkkkkkkk")
-        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp dowload link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+        print(link)
+        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp download link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
         temp.objects.all().delete()
+        # request.session.flush()
         # return redirect('/payment/process/')
     else:
-        return redirect('/accounts/payment/')
-    return  render(request, 'accounts/releaseapk.html', {'form':receiver_mail})
+        return redirect('/payment/done/')
+    return  render(request, 'accounts/releaseapk.html', {'email':receiver_mail})
             
 def download_file_release(request, filename):
     fl_path='apk_store/release/'+filename
@@ -131,3 +143,4 @@ def download_file_debug(request, filename):
     response = HttpResponse(fl, content_type="application/vnd.android.package-archive")
     response['Content-disposition'] = "attachment; filename=%s"%filename
     return response
+

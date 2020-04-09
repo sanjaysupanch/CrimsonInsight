@@ -17,6 +17,6 @@ urlpatterns = [
     path('releaseapk/', views.releaseapk_view, name='releaseapk'),
     path('payment/', views.apk_data, name="apk_data"),
     path('release/<filename>/', views.download_file_release, name="download_file"),
-    path('debug/<filename>/', views.download_file_debug, name="download_file"),
+    path('debug/<filename>/', views.download_file_debug, name="download_file1"),
     
 ]

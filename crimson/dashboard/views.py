@@ -4,13 +4,9 @@ from django.http import HttpResponseRedirect, HttpResponse, response
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from accounts.models import *
+from accounts.forms import *
 import os
 import smtplib
-# from email.mime.multipart import MIMEMultipart
-# from email.mime.text import MIMEText
-# from email.mime.base import MIMEBase
-# from email import encoders
-# import mimetypes
 from django.core.mail import send_mail
 from .utils import render_to_pdf
 from django.views.generic import View
@@ -20,7 +16,8 @@ from django.http import JsonResponse
 from rest_framework.response import Response
 from .serializers import dataSerializer
 from rest_framework import permissions, status, generics, mixins
-# from rest_framework.decorators import api_view
+from .hooks import *
+
 
 @login_required
 def index(request):
@@ -56,30 +53,25 @@ def debugapk_view(request):
     if request.method == 'POST':
         form = request.POST
         domain = form['domain']
-        email_id = str(request.user)
-
-        print("==========>Spliting app name<=============")
-        arr = ["www", "com"]
-        app_name = list(domain.split("."))
-        for i in app_name:
-            for j in arr:
-                if i == j:
-                    app_name.remove(i)
-        app = app_name[0]+".apk"
-        request.session['app'] = app
-        print("===========>Ending app name<=============")
         user = request.user
-        # user=CustomUser.objects.get(email=user)
-        print(user.username)
-        print("=========================================")
+        user_instance=CustomUser.objects.get(email=request.user)
+        domain_data=releaseapk.objects.filter(user=user_instance)
+        flag4=0
+        for i in domain_data:
+            if(i.domain_name==domain):
+                flag4=1
+                data={'flag4':flag4}
+                return JsonResponse(data)
+        
+        request.session['domain']=domain
+        email_id = str(request.user)
+        app=request.session.get('app')
+        app = app+".apk"
+        print("=====================2222====================")
         if domain:
             receiver_mail = email_id
             file = open('app/crimson/src/main/res/raw/domain.txt', 'w')
             file.write(domain)
-            file.close()
-            print(domain, email_id)
-            file = open('app/crimson/src/main/res/raw/domain.txt', 'r')
-            text = file.readline()
             file.close()
             print("###############__Operating System Command__##################")
             os.system("ls")
@@ -87,29 +79,63 @@ def debugapk_view(request):
             os.system("./gradlew build")
             os.system("./gradlew assembleDebug")
             os.system("ls")
-            os.system(
-                "cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
+            os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
             link = 'http://'+request.get_host()+'/accounts/debug/'+app
             print("linkkk", link)
             send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link is here  %s' %
                       link, 'pioneer.deo@gmail.com', [receiver_mail])
             os.chdir("../../")
             return redirect("/dashboard/debugapk/")
+            # return HttpResponse('')
     return HttpResponse('')
 
+# @login_required
+# def debugapk_view1(request):
+#     domain=request.session.get('domain')
+#     email_id=request.user
+#     app=request.session.get('app')
+#     app = app+".apk"   
+#     if domain:
+#         receiver_mail = email_id
+#         file = open('app/crimson/src/main/res/raw/domain.txt', 'w')
+#         file.write(domain)
+#         file.close()
+#         # sasasa
+#         print("###############__Operating System Command__##################1")
+#         os.system("ls")
+#         os.chdir("app/crimson/")
+#         os.system("./gradlew build")
+#         os.system("./gradlew assembleDebug")
+#         os.system("ls")
+#         os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
+#         link = 'http://'+request.get_host()+'/accounts/debug/'+app
+#         print("linkkk", link)
+#         send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link is here  %s' %
+#                     link, 'pioneer.deo@gmail.com', [receiver_mail])
+#         os.chdir("../../")
+#         return redirect("/dashboard/debugapk/")
+            # return HttpResponse('')
 
 def session_data(request):
+    
     if request.method == "POST":
         form = request.POST
         domain = form['domain']
         keystore = form['keystore']
+        keystore_pass = form['keystore_pass']
+        print("===========================================1")
         key = form['key']
-        # user_instance=CustomUser.objects.get(email=request.user)
-        temp_data=temp.objects.create(keystore=keystore, key=key)
+        key_pass=form['key_pass']
+        key_user_name=form['key_user_name']
+        key_organization_unit=form['key_organization_unit']
+        key_organization=form['key_organization']
+        key_city=form['key_city']
+        key_state=form['key_state']
+        key_country=form['key_country']
+        app=request.session.get('app')
+        temp_data=temp.objects.create(keystore=keystore, keystore_pass=keystore_pass, key=key, key_pass=key_pass)
         temp_data.save()
-        flag = 1
-        flag2 = 1
-        flag3 = 1
+        flag = 1; flag2 = 1; flag3 = 1
         keystore_data = keystore_table.objects.all()
         for i in keystore_data:
             if(i.keystore == None):
@@ -121,27 +147,24 @@ def session_data(request):
             else:
                 flag = 1
                 flag3 = 1
-        request.session['flag'] = flag
-        request.session['domain_name'] = domain
-        request.session['key'] = key
-        request.session['keystore'] = keystore
-        request.session['flag3'] = flag3
-        key_data = key_table.objects.all()
-        if(flag == 0):
-            for i in key_data:
-                if(i.key == key):
-                    flag2 = 0
-                    break
-                else:
-                    flag2 = 1
-        data = {
-            'flag': flag,
-            'flag2': flag2,
-            'flag3': flag3,
-        }
+
+        key_data = {'domain':domain, 'keystore':keystore,'keystore_pass':keystore_pass,'key':key, 'key_pass':key_pass, 'key_user_name':key_user_name,'key_organization_unit': key_organization_unit, 'key_organization':key_organization, 'key_city': key_city,'key_state': key_state, 'key_country': key_country, 'app':app, 'flag':flag, 'flag3':flag3 }
+        
+        request.session['key_data']=key_data
+        
+        data = {'flag': flag, 'flag3': flag3,}
         return JsonResponse(data)
 
     return HttpResponse('')
+
+@login_required
+def key_data(request):
+    if request.method=="POST":
+        form=request.POST
+        keystore=form['keystore']
+        print("111111111111", keystore)
+        request.session['keystore1']=keystore
+        return HttpResponse('')
 
 
 @login_required
@@ -180,6 +203,48 @@ def pdf_get_data(request):
         invoice = form['invoice']
         request.session['invoice'] = invoice
         redirect('/dashboard/pdf/pdf/')
+    return HttpResponse('')
+
+def file_upload(request):
+    os.chdir("media/icon/")
+    os.system("rm -rf *")
+    os.chdir("../../")
+    img_path=""
+    if request.method == 'POST':
+        form = documentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            app=form['app_name'].value()
+            app=app.lower()
+            app_icon=str(form['app_icon'].value())
+            app_label(app)
+            request.session['app'] = app
+            print(app, "appppppppppppppppppppppppppppppppppppppp")
+            
+            if len(request.FILES) == 0:
+                os.chdir("app/crimson/src/main/res/drawable-hdpi/")
+                os.system('rm -rf *')
+                os.chdir("../../../../../../")
+                os.system("cp media/default/logo.png app/crimson/src/main/res/drawable-hdpi/logo.png")
+                img_path="../../media/default/logo.png"
+            
+            else:
+                li=list(app_icon.split("."))
+                app_icon1=li[0]
+                app_icon2=li[1]
+                icon="logo."+app_icon2
+                # os.system("ls")
+                os.chdir("app/crimson/src/main/res/drawable-hdpi/")
+                os.system('rm -rf *')
+                os.chdir("../../../../../../")
+                os.system("cp media/icon/%s app/crimson/src/main/res/drawable-hdpi/%s" % (app_icon, icon))
+                img_path="../../media/icon/%s" % (app_icon)
+            appname_and_image.objects.all().delete()
+            data={'app_name':app, 'app_icon':img_path}
+            
+            return JsonResponse(data)
+    else:
+        form=documentForm()
     return HttpResponse('')
 
 

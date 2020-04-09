@@ -51,4 +51,7 @@ class releaseForm(forms.ModelForm):
         model=releaseapk
         fields=('domain_name', 'key',)
 	    
-
+class documentForm(forms.ModelForm):
+    class Meta:
+        model= appname_and_image
+        fields=('app_name', 'app_icon')

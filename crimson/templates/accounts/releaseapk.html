@@ -3,7 +3,7 @@
 {% block head %}
 <title>Wep2App</title>
 <style>
-@media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     .mob {
       width: 100%;
     }
@@ -31,37 +31,37 @@
 {% block body %}
 
 <div class="main-content">
-    <section class="section ">
-        <div class="section-body">
-            <div class="row ">
-                <div class="col-12 col-sm-12 col-lg-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <div id="visitorMap4" data-height="440"><br>
-                                <div class="container mob1 web1 border border-info border-rounded text-center ">
-                                    <div class="loader loader-display"></div>
-                                    <div class="after-submit"><br>
-                                        <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been
-                                            sent to
-                                            your email address
-                                            for your testing. Please check
-                                            your inbox with email <span class="text-success">{{form}}</span> now.</span>
-                                        </h4><br><br>
-                                        <h4 class="sm"><a href="/accounts/releaseapk/">Didn't receive the email. Click
-                                                here to
-                                                retry after 2
-                                                minutes.</a></h4><br /><br>
-                                        <span class="btn btn-outline-grey mob web sm w-100 payment" > <a href="#">Click here to know
-                                            about how to publish your app on Google Play.</a></span>
-                                        <br><br><br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <section class="section ">
+    <div class="section-body">
+      <div class="row ">
+        <div class="col-12 col-sm-12 col-lg-9">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="container mob1 web1 border border-info border-rounded text-center ">
+                <div class="loader loader-display"></div>
+                <div class="after-submit"><br>
+                  <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been
+                    sent to
+                    your email address
+                    for your testing. Please check
+                    your inbox with email <span class="text-success">{{form}}</span> now.</span>
+                  </h4><br><br>
+                  <h4 class="sm"><a href="/accounts/releaseapk/">Didn't receive the email. Click
+                      here to
+                      retry after 2
+                      minutes.</a></h4><br /><br>
+                  <span class="btn btn-outline-grey mob web sm w-100 payment"> <a href="#">Click here to know
+                      about how to publish your app on Google Play.</a></span>
+                  <br><br><br>
                 </div>
+              </div>
+
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

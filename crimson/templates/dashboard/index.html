@@ -26,6 +26,11 @@
     .web1 {
       padding-top: 80px;
     }
+
+    .pad {
+      margin-top: 90px;
+    }
+
   }
 
   .after-submit {
@@ -48,10 +53,35 @@
     display: none;
   }
 
-  .keystore-span {
+  .keystore-list {
+    display: none;
+  }
+
+  .domain-name {
+    display: none;
+  }
+
+  .file-upload {
     display: block;
   }
-  .keystore-list{
+
+  .data-display {
+    display: none;
+  }
+
+  .cert-form {
+    display: none;
+  }
+
+  .sec-25 {
+    display: none;
+  }
+
+  .sec-26 {
+    display: none;
+  }
+
+  .cool{
     display: none;
   }
 </style>
@@ -65,71 +95,129 @@
         <div class="col-xl-9 col-sm-12 col-lg-9">
           <div class="card">
             <div class="card-body">
-              <div id="visitorMap4" data-height="440"><br>
-                <div class="container mob1 web1 border border-info border-rounded text-center ">
-                  <div class="loader loader-display"></div>
-                  <!-- <img src="../../dashboard/static/dashboard/assets/img/1.gif" alt="kk"> -->
-                  <!-- <img src="{% static '/dashboard/static/dashboard/assets/img/2.gif' %}" alt="sss"> -->
-                  <form id="converted_web">
-                    {% csrf_token %}
-                    <h4 class="sm">Convert your website to an <span class="text-danger"> Android app!</span></h4><br>
-                    <h4 class="sm">Please enter the hompage url of your website***</h4><br /><br />
-                    <input type="text" class="mob web " name="domain" placeholder="www.google.com" id="domain">
-                    <br /><br /><br />
-                    <button class="btn btn-outline-info mob web build-app-submit"
-                      type="submit">Submit</button><br><br><br><br>
-                  </form>
-
-                  <div class="after-submit">
-                    <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been sent to your email address
-                      for your testing. Please check
-                      your inbox with email {{user}} now.</span></h4><br><br>
-                    <h4 class="sm"><a href="/dashboard/">Didn't receive the email. Click here to retry after 2
-                        minutes.</a></h4><br /><br>
-
-                    <button class="btn btn-outline-info mob web sm w-100 payment">Liked the Debug App?
-                      Click here to create a ready to publish app for Google Play Store.</button>
-                    <br><br><br>
-                  </div>
-
-                  <div class="debug-signed">
-                    <h4 class="sm text-grey">What type of app do you want to create<span class="text-danger">?</span></h4><br><br><br>
-
-                    <button class="btn btn-outline-info mob web sm w-75 debug-app">Debug (for
-                      testing purposes) (Free)
-                    </button>
-                    <br><br><br>
-                    <button class="btn btn-outline-success mob web sm w-75 signed-app">Signed (for publishing on Google
-                      Play store)(Paid)
-                    </button>
-                    <br><br><br><br>
-                  </div>
-
-                  <form class="keystore-form">
-                    {% csrf_token %}
-
-                    <span class="keystore-span">
-                      <h4 class="sm">Enter the name for your <b>new keystore</b> or from <b>given keystore</b> that will be used to
-                        sign your app for publication on google play:</h4> <br /><br />
-                      <input type="text" class="mob web " name="keystore" placeholder="Enter Keystore Name"
-                        id="keystore">
-                      <br /><br /><br />
-                      <span class="btn btn-outline-info mob web keystore-submit">Submit</span><br><br><br><br>
-                    </span>
-
-                    <span class="key-form">
-                      <h4 class="sm "> Enter your key for publish your app***</h4>
-                      <h4 class="sm  ">Enter the name for your New Key below that will be used to <span class="text-danger">sign</span> your app for
-                        publication on <span class="text-danger">Google Play</span>:</h4></br>
-                      <input type="text" class="mob web " name="key" placeholder="Enter key name" id="key">
-                      <br /><br /><br />
-                      
-                      <button class="btn btn-outline-info mob web keys-submit session-data app-link"
-                        type="submit">Submit</button><br><br><br></br>
-                    </span>
-
-                  </form>
+              <div class="container mob1 web1 border border-info border-rounded text-center ">
+                <div class="loader loader-display"></div>
+                <div class="sec-25">
+                  <h1>Your app is building please wait.</h1>
+                  <img src="../../media/default/30.gif" alt="25">
                 </div>
+                <div class="sec-26">
+                  <h1>Your app is building please wait.</h1>
+                  <img src="../../media/default/31.gif" alt="25">
+                </div>
+                <div class="cool">
+                  <h1>You already builded this app.</h1>
+                  <img src="../../media/default/cool.gif" alt="25"><br><br>
+                  <!-- <button class="btn btn-outline-info  new-app ">Click here for new app.</button><br><br> -->
+                </div>
+                <form enctype="multipart/form-data" id="id_ajax_upload_form" method="POST" novalidate=""
+                  class="file-upload">
+                  {% csrf_token %}
+                  <h4 class="sm">Enter the <span class="text-danger">app name</span> of your website***</h4><br />
+                  <input type="text" name="app_name" class="mob web " maxlength="120" placeholder="Ex: Google" required
+                    id="id_app_name">
+                  <br><br>
+                  <h4 class="sm">Choose your <span class="text-success">app icon</span> for your website*** </h4>
+                  <br />
+                  <input type="file" class="border w-50" name="app_icon" accept="image/*" required id="id_app_icon">
+                  </p>
+                  <br />
+                  <button class="btn btn-outline-info mob web file-upload-submit" type="submit">Submit</button><br><br>
+
+                </form>
+
+                <form id="converted_web" class="domain-name" method="POST">
+                  {% csrf_token %}
+                  <h4 class="sm">Convert your website to an <span class="text-danger"> Android app!</span></h4>
+                  <h4 class="sm">Please enter the hompage url of your website***</h4><br /><br /><br>
+                  <input type="text" class="mob web " name="domain" placeholder="www.google.com" id="domain">
+                  <br /><br /><br />
+                  <button class="btn btn-outline-info mob web build-app-submit"
+                    type="submit">Submit</button><br><br><br><br>
+                </form>
+                <!-- <hr> -->
+
+
+                <div class="after-submit">
+                  <h4 class="sm"><span class="text-danger">Hurray!</span> A debug has been sent to your email address
+                    for your testing. Please check
+                    your inbox with email {{user}} now.</span></h4><br><br>
+                  <h4 class="sm  retry-submit text-secondary btn btn-outline-info mob web w-100">Didn't receive the
+                    email. Click here to retry after 2
+                    minutes.</h4><br /><br>
+
+                  <button class="btn btn-outline-info mob web sm w-100 payment">Liked the Debug App?
+                    Click here to create a ready to publish app for Google Play Store.</button>
+                  <br><br><br>
+                </div>
+
+                <div class="debug-signed">
+                  <h4 class="sm text-grey">What type of app do you want to create<span class="text-danger">?</span>
+                  </h4><br><br><br>
+
+                  <button class="btn btn-outline-info mob web sm w-75 debug-app"><a href="/dashboard/">Debug (for
+                      testing purposes) (Free)</a>
+                  </button>
+                  <br><br><br>
+                  <button class="btn btn-outline-success mob web sm w-75 signed-app">Signed (for publishing on Google
+                    Play store)(Paid)
+                  </button>
+                  <br><br><br><br>
+                </div>
+
+                <form class="keystore-form" method="POST">
+                  {% csrf_token %}
+                  <h4 class="sm">Enter the name for your <b>new keystore</b> or choose <b>from given keystore</b> that
+                    will be used to sign your app for publication on google play:</h4> <br /><br /><br>
+                  <input type="text" class="mob web " name="keystore" placeholder="Enter Keystore Name"
+                    id="keystore"><br><span id="keystore1"></span><br>
+                  <input type="password" class="mob web " name="keystore_pass" placeholder="Enter Keystore Password"
+                    id="keystore_pass">
+                  <br /><span id="keystore_pass1" class="text-left"></span><br /><br />
+                  <button class="btn btn-outline-info mob web keystore-submit">Submit</button><br><br><br><br>
+                </form>
+
+                <form class="key-form" method="POST">
+                  <h4 class="sm"> Enter your key for publish your app***</h4>
+                  <h4 class="sm">Enter the name for your New Key below that will be used to <span
+                      class="text-danger">sign</span> your app for publication on <span class="text-danger">Google
+                      Play</span>:</h4></br>
+                  <br>
+                  <input type="text" class="mob web " name="key" placeholder="Enter key name" id="key"><br><span
+                    id="key1"></span><br>
+                  <input type="password" class="mob web " name="key_pass" placeholder="Enter Key Password" minlength="6"
+                    id="key_pass">
+                  <br /><span id="key_pass1"></span><br /><br />
+                  <button class="btn btn-outline-info mob web key-submit" type="submit">Submit</button><br><br><br></br>
+                </form>
+
+                <form class="cert-form" style="margin-top: -9%;" class="sm" method="POST"><br>
+                  <h2 class="sm "> Certificate Form for <span class="text-danger">Sign App!</span></h1><br>
+                    <label for="key_user_name" class=" sm ">&nbsp;&nbsp;&nbsp;First & Last Name :</label>
+                    <input type="text" class="mob web sm " name="key_user_name" placeholder="John Doe"
+                      id="key_user_name" required autofocus><br>
+                    <label for="key_organization_unit" class=" sm ">&nbsp;&nbsp;&nbsp;Organization Unit :</label>
+                    <input type="text" class="mob web sm" name="key_organization_unit" placeholder="Software Developer"
+                      id="key_organization_unit" required autofocus><br>
+                    <label for="key_organization" class=" sm ">Organization Name :</label>
+                    <input type="text" class="mob web sm" name="key_organization" placeholder="MyCompany"
+                      id="key_organization" required autofocus><br>
+                    <label for="key_city" class=" sm ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City Name
+                      &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" class="mob web sm" name="key_city" placeholder="MyCity" id="key_city" required
+                      autofocus><br>
+                    <label for="key_state" class=" sm ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State Name
+                      &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" class="mob web sm" name="key_state" placeholder="MyState" id="key_state" required
+                      autofocus><br>
+                    <label for="key_country" class=" sm ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country Name
+                      &nbsp;:&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" class="mob web sm" name="key_country" placeholder="IN" id="key_country" required
+                      autofocus><br><br>
+                    <button class="btn btn-outline-info w-75 mob web final-submit  app-link"
+                      type="submit">Submit</button><br><br>
+                </form>
+
               </div>
             </div>
           </div>
@@ -149,11 +237,26 @@
                     {% for i in data %}
                     <tr>
                       <td>{{i.id}}</td>
-                      <td>{{i.keystore}} </td>
+                      <td> <span onclick="request_access(this)" id="{{i.keystore}}"
+                          class="btn btn-outline-primary">{{i.keystore}}</span></td>
                     </tr>
                     {% endfor %}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-lg-3 col-xl-3 data-display">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <img src="../../media/default/phone-frame2.png" style="width: 100%;">
+                <img class="app_icons" alt="dd"
+                  style="width:16%;position: absolute; left: 40%; top: 25%; border-radius: 60%;">
+                <p class="app_names" style="position: absolute; left: 41%; top: 33%; "></p>
+                <h5 class="text-danger" style="position: absolute; left: 25%; top: 55%; ">Your app icon <br>look like
+                  this!!!</h5>
               </div>
             </div>
           </div>
@@ -166,13 +269,54 @@
 
 {% block jquery_body %}
 <script type="text/javascript">
+
+  $('#id_ajax_upload_form').submit(function (e) {
+    e.preventDefault();
+    var val = document.querySelector('#id_app_name').value;
+    console.log(val)
+    val === '' ? alert('Please Enter App Name') : document.querySelector('.file-upload').style.display = 'none';
+    document.querySelector('.loader-display').style.display = 'block';
+
+    $form = $(this)
+    var formData = new FormData(this);
+    $.ajax({
+      url: '/dashboard/file/file_upload/',
+      type: 'POST',
+      data: formData,
+      success: function (data, response) {
+
+        document.querySelector('.loader-display').style.display = 'none';
+        val !== '' ? document.querySelector('.domain-name').style.display = 'block' : '';
+        if (data.app_name !== undefined) {
+          document.querySelector('.data-display').style.display = 'block';
+          document.querySelector('.app_names').innerHTML = data.app_name;
+          document.querySelector('.app_icons').src = data.app_icon;
+        }
+        else {
+          document.querySelector('.data-display').style.display = 'none';
+          document.querySelector('.app_names').innerHTML = data.app_name;
+          document.querySelector('.app_icons').src = data.app_icon;
+        }
+
+      },
+      error: function () {
+        alert('Please upload logo of your app');
+        document.querySelector('.loader-display').style.display = 'none';
+        document.querySelector('.file-upload').style.display = 'block';
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+  });
   var domain_val = document.querySelector('#domain').value;
 
   $('.build-app-submit').on('click', function (e) {
     e.preventDefault();
     var val = document.querySelector('#domain').value;
     val === '' ? alert('Please Enter Domain Name') : document.querySelector('#converted_web').style.display = 'none';
-    document.querySelector('.loader-display').style.display = "block";
+    document.querySelector('.sec-26').style.display = "block";
+    document.querySelector('.data-display').style.display = 'none';
     $.ajax({
       type: "POST",
       url: '/dashboard/debugapk/',
@@ -181,16 +325,181 @@
         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
       },
       success: function (data) {
-        document.querySelector('.loader-display').style.display = "none";
-        val !== '' ? document.querySelector('.after-submit').style.display = 'block' : '';
-        // document.querySelector('.app-link').href = "/dashboard/"
+        console.log(data.flag4)
+        if (data.flag4 === 1) {
+          // alert("You already builded this app.");
+          document.querySelector('.sec-26').style.display = "none";
+          document.querySelector('.cool').style.display = 'block';
+          setTimeout(() => {  window.location="/dashboard/"; }, 5000);
+
+          
+        }
+        else {
+          document.querySelector('.sec-26').style.display = "none";
+          val !== '' ? document.querySelector('.after-submit').style.display = 'block' : '';
+          document.querySelector('.data-display').style.display = 'none';
+          // document.querySelector('.app-link').href = "/dashboard/"
+        }
       },
       error: function () {
         alert('Please retry :)');
+        document.querySelector('.sec-26').style.display = "none";
+        document.querySelector('#converted_web').style.display = 'block';
       },
     });
 
   });
+
+  $('.retry-submit').on('click', function (e) {
+    e.preventDefault();
+    document.querySelector('.after-submit').style.display = 'none';
+    document.querySelector('.sec-25').style.display = "block";
+
+    $.ajax({
+      type: "POST",
+      url: '/dashboard/debugapk/',
+      data: {
+        domain: $('#domain').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function (data) {
+        document.querySelector('.sec-25').style.display = "none";
+        document.querySelector('.after-submit').style.display = "block";
+      },
+      error: function () {
+        alert('Please retry :');
+        document.querySelector('.sec-25').style.display = "none";
+        document.querySelector('.after-submit').style.display = 'block';
+      },
+    });
+  });
+
+
+  $('.final-submit').on('click', function (e) {
+    e.preventDefault();
+    var key_user_name = document.querySelector('#key_user_name').value;
+    var key_organization_unit = document.querySelector('#key_organization_unit').value;
+    var key_organization = document.querySelector('#key_organization').value;
+    var key_city = document.querySelector('#key_city').value;
+    var key_state = document.querySelector('#key_state').value;
+    var key_country = document.querySelector('#key_country').value;
+    if (key_user_name === '' || key_organization_unit === '' || key_organization === '' || key_city === '' || key_state === '' || key_country === '') {
+      alert("Please fill the form.");
+    }
+    else {
+      $.ajax({
+        type: "POST",
+        url: "/dashboard/data/",
+        data: {
+          csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+          domain: $('#domain').val(),
+          keystore: $('#keystore').val(),
+          keystore_pass: $('#keystore_pass').val(),
+          key: $('#key').val(),
+          key_pass: $('#key_pass').val(),
+          key_user_name: $('#key_user_name').val(),
+          key_organization_unit: $('#key_organization_unit').val(),
+          key_organization: $('#key_organization').val(),
+          key_city: $('#key_city').val(),
+          key_state: $('#key_state').val(),
+          key_country: $('#key_country').val(),
+
+        },
+        success: function (data) {
+          window.location = "/payment/process/";
+        },
+        error: function () {
+          alert('Please retry :)');
+        },
+      });
+    }
+  });
+
+  $('.keystore-submit').on('click', function (e) {
+    e.preventDefault();
+    var keystore_val = document.querySelector('#keystore').value;
+    var keystore_pass = document.querySelector('#keystore_pass').value;
+    if (keystore_val === '' || keystore_pass === '') {
+      // alert('Please fill the form');
+      document.querySelector('#keystore1').innerHTML = 'Keystore name must be filled out';
+      document.querySelector('.keystore-form').style.display = 'block';
+      document.querySelector('.keystore-list').style.display = 'block';
+      document.querySelector('.key-form').style.display = 'none';
+    }
+    else if (keystore_pass === '' && keystore_val !== '') {
+      // alert('Password length must be 6 character.');
+      document.querySelector('#keystore1').innerHTML = '';
+      document.querySelector('#keystore_pass1').innerHTML = 'Password must be filled out';
+      document.querySelector('.keystore-form').style.display = 'block';
+      document.querySelector('.keystore-list').style.display = 'block';
+      document.querySelector('.key-form').style.display = 'none';
+    }
+    else if (keystore_pass.length < 6) {
+      // alert('Password length must be 6 character.');
+      document.querySelector('#keystore1').innerHTML = '';
+      document.querySelector('#keystore_pass1').innerHTML = 'Password length must be 6 character';
+      document.querySelector('.keystore-form').style.display = 'block';
+      document.querySelector('.keystore-list').style.display = 'block';
+      document.querySelector('.key-form').style.display = 'none';
+    }
+    else {
+      document.querySelector('#keystore1').innerHTML = '';
+      document.querySelector('#keystore_pass1').innerHTML = '';
+      $.ajax({
+        type: "POST",
+        url: "/dashboard/data/",
+        data: {
+          csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+          domain: $('#domain').val(),
+          keystore: $('#keystore').val(),
+          keystore_pass: $('#keystore_pass').val(),
+          key: $('#key').val(),
+          key_pass: $('#key_pass').val(),
+          key_user_name: $('#key_user_name').val(),
+          key_organization_unit: $('#key_organization_unit').val(),
+          key_organization: $('#key_organization').val(),
+          key_city: $('#key_city').val(),
+          key_state: $('#key_state').val(),
+          key_country: $('#key_country').val(),
+        },
+
+        success: function (data) {
+          // e.preventDefault();
+
+          if (data.flag == 0)
+            alert("Sorry! for this name you can't genrate keystore. Please try with another name.")
+          else {
+            document.querySelector('.keystore-form').style.display = 'none';
+            document.querySelector('.keystore-list').style.display = 'none';
+            document.querySelector('.key-form').style.display = 'block';
+          }
+        },
+        error: function () {
+          alert('Please retry (_/\_)');
+        },
+      });
+    }
+  });
+
+  function request_access($this) {
+    var request_data = $this.id;
+    $.ajaxSetup({
+      data: { csrfmiddlewaretoken: '{{ csrf_token }}' }
+    })
+    $.ajax({
+      type: "POST",
+      url: '/dashboard/keystore/keystorename/',
+      data: { keystore: request_data },
+
+      success: function (data) {
+        window.location = "/payment/process/";
+      },
+      error: function () {
+        alert('Please retry :)');
+      },
+    })
+
+  };
 
   document.querySelector('.payment').addEventListener('click', (e) => {
     document.querySelector('.after-submit').style.display = 'none';
@@ -203,61 +512,56 @@
   });
 
 
-  $('.debug-app').on('click', function (e) {
+
+  document.querySelector('.key-submit').addEventListener('click', (e) => {
     e.preventDefault();
-    document.querySelector('.debug-signed').style.display = 'none';
-    document.querySelector('.loader-display').style.display = "block";
-
-    $.ajax({
-      type: "POST",
-      url: '/dashboard/debugapk/',
-      data: {
-        domain: $('#domain').val(),
-        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-      },
-      success: function (data) {
-        document.querySelector('.loader-display').style.display = "none";
-        document.querySelector('.after-submit').style.display = "block";
-      },
-      error: function () {
-        alert('Please retry :)');
-      },
-    });
-  });
-
-  document.querySelector('.keystore-submit').addEventListener('click', (e) => {
-    document.querySelector('.keystore-span').style.display = 'none';
-    document.querySelector('.keystore-list').style.display = 'none';
+    var key_val = document.querySelector('#key').value;
+    var key_pass = document.querySelector('#key_pass').value;
     document.querySelector('.key-form').style.display = 'block';
+    document.querySelector('.cert-form').style.display = 'none';
+    if (key_val === '') {
+      document.querySelector('.key-form').style.display = 'block';
+      document.querySelector('.cert-form').style.display = 'none';
+      document.querySelector('#key1').innerHTML = 'Key name must be filled out';
+    }
+    else if (key_pass < 6) {
+      document.querySelector('#key1').innerHTML = '';
+      document.querySelector('.key-form').style.display = 'block';
+      document.querySelector('.cert-form').style.display = 'none';
+      document.querySelector('#key_pass1').innerHTML = 'Password length must be 6 character';
+    }
+    else {
+      document.querySelector('#key1').innerHTML = '';
+      document.querySelector('#key_pass1').innerHTML = '';
+      document.querySelector('.key-form').style.display = 'none';
+      document.querySelector('.cert-form').style.display = 'block';
+    }
+
   });
-  
-  $('.keys-submit').on('click', function(e){
-    e.preventDefault();
-    // document.querySelector('app-link').href="/payment/process/";      
 
+  // $('.debug-app').on('click', function (e) {
+  //   e.preventDefault();
+  //   document.querySelector('.debug-signed').style.display = 'none';
+  //   document.querySelector('.loader-display').style.display = "block";
 
-    $.ajax({
-      type:"POST",
-      url: "/dashboard/data/",
-      data:{
-        domain: $('#domain').val(),
-        keystore:$('#keystore').val(),
-        key:$('#key').val(),
-        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-
-      },
-      success:function(data){
-        if(data.flag3==0)
-          window.location="/payment/process/";
-        else if(data.flag2==0 && data.flag==0)
-          alert("This key already exist for this keystore");
-          
-        else
-          window.location = "/payment/process/";
-        // window.location = "/payment/process/";
-      }
-    });
-  });
+  //   $.ajax({
+  //     type: "POST",
+  //     url: '/dashboard/debugapk/',
+  //     data: {
+  //       domain: $('#domain').val(),
+  //       csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+  //     },
+  //     success: function (data) {
+  //       document.querySelector('.loader-display').style.display = "none";
+  //       document.querySelector('.after-submit').style.display = "block";
+  //     },
+  //     error: function () {
+  //       alert('Please retry :');
+  //       document.querySelector('.loader-display').style.display = "none";
+  //       document.querySelector('.debug-signed').style.display = 'block';
+  //     },
+  //   });
+  // });
 
 
 </script>

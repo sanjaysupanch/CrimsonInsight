@@ -15,14 +15,30 @@
         errorLine2="                                              ~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/java/com/example/crimson/MainActivity.java"
-            line="49"
+            line="60"
             column="47"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        severity="Warning"
+        message="Attribute `usesCleartextTraffic` is only used in API level 23 and higher (current min is 21)"
+        category="Correctness"
+        priority="6"
+        summary="Attribute unused on older versions"
+        explanation="This check finds attributes set in XML files that were introduced in a version newer than the oldest version targeted by your application (with the `minSdkVersion` attribute).&#xA;&#xA;This is not an error; the application will simply ignore the attribute. However, if the attribute is important to the appearance or functionality of your application, you should consider finding an alternative way to achieve the same result with only available attributes, and then you can optionally create a copy of the layout in a layout-vNN folder which will be used on API NN or higher where you can take advantage of the newer attribute.&#xA;&#xA;Note: This check does not only apply to attributes. For example, some tags can be unused too, such as the new `&lt;tag>` element in layouts introduced in API 21."
+        errorLine1="        android:usesCleartextTraffic=&quot;true&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
+            line="20"
+            column="9"/>
     </issue>
 
     <issue
         id="GradleDependency"
         severity="Warning"
-        message="A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1"
+        message="A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.2"
         category="Correctness"
         priority="4"
         summary="Obsolete Gradle Dependency"
@@ -47,7 +63,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="101"
+            line="119"
             column="5"/>
     </issue>
 
@@ -63,7 +79,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="103"
+            line="121"
             column="5"/>
     </issue>
 
@@ -79,7 +95,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="105"
+            line="123"
             column="5"/>
     </issue>
 
@@ -95,7 +111,7 @@
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
-            line="106"
+            line="124"
             column="5"/>
     </issue>
 
@@ -192,29 +208,11 @@
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true.">
         <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/ic_launcher.png"/>
-        <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-ldpi/ic_launcher.png"/>
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi/ic_launcher.png"/>
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi/ic_launcher.png"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.action_settings` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true."
-        errorLine1="    &lt;string name=&quot;action_settings&quot;>Settings&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/strings.xml"
-            line="5"
-            column="13"/>
     </issue>
 
     <issue
@@ -250,9 +248,37 @@
     </issue>
 
     <issue
+        id="IconLauncherShape"
+        severity="Warning"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
+        category="Usability:Icons"
+        priority="6"
+        summary="The launcher icon shape should use a distinct silhouette"
+        explanation="According to the Android Design Guide (http://developer.android.com/design/style/iconography.html) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square."
+        url="http://developer.android.com/design/style/iconography.html"
+        urls="http://developer.android.com/design/style/iconography.html">
+        <location
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/logo.jpeg"/>
+    </issue>
+
+    <issue
         id="IconDensities"
         severity="Warning"
-        message="Missing the following drawables in `drawable-mdpi`: ic_launcher1.png (found in drawable-hdpi)"
+        message="Missing the following drawables in `drawable-hdpi`: ic_launcher.png (found in drawable-mdpi, drawable-xhdpi)"
+        category="Usability:Icons"
+        priority="4"
+        summary="Icon densities validation"
+        explanation="Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.&#xA;&#xA;Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable `ANDROID_LINT_INCLUDE_LDPI=true`. For more information on current density usage, see http://developer.android.com/resources/dashboard/screens.html"
+        url="http://developer.android.com/guide/practices/screens_support.html"
+        urls="http://developer.android.com/guide/practices/screens_support.html">
+        <location
+            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi"/>
+    </issue>
+
+    <issue
+        id="IconDensities"
+        severity="Warning"
+        message="Missing the following drawables in `drawable-mdpi`: logo.jpeg (found in drawable-hdpi)"
         category="Usability:Icons"
         priority="4"
         summary="Icon densities validation"
@@ -266,7 +292,7 @@
     <issue
         id="IconDensities"
         severity="Warning"
-        message="Missing the following drawables in `drawable-xhdpi`: ic_launcher1.png (found in drawable-hdpi)"
+        message="Missing the following drawables in `drawable-xhdpi`: logo.jpeg (found in drawable-hdpi)"
         category="Usability:Icons"
         priority="4"
         summary="Icon densities validation"

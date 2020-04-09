@@ -8,4 +8,4 @@ class dataSerializer(serializers.ModelSerializer):
     # key = serializers.CharField()
     class Meta:
         model = temp
-        fields=('keystore', 'key',)
+        fields=('keystore','keystore_pass', 'key', 'key_pass',)

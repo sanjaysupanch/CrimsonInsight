@@ -144,6 +144,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 AUTHENTICATION_BACKENDS = (
@@ -157,11 +158,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pioneer.deo@gmail.com'
 EMAIL_HOST_PASSWORD = 'tommyjerry'
 
-PAYPAL_RECEIVER_EMAIL='sb-k1pa1892678@business.example.com'
-# PAYPAL_RECEIVER_EMAIL='finance@crimsoninsights.com'
-PAYPAL_TEST =True
-SITE_ID = 1
 
+PAYPAL_RECEIVER_EMAIL='sb-obwuq1334185@business.example.com'
+# PAYPAL_RECEIVER_EMAIL='finance@crimsoninsights.com'
+# PAYPAL_RECEIVER_EMAIL='sb-bsrjx909980@business.example.com'
+PAYPAL_TEST =True
+
+
+SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True

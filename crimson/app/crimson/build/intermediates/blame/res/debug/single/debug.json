@@ -584,10 +584,6 @@
         "source": "/home/san/.gradle/caches/transforms-2/files-2.1/ca9b64bdf3178a5829a3593f5e2ffc5c/appcompat-1.0.2/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
-        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/ic_launcher.png"
-    },
-    {
         "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/layout_design_layout_snackbar.xml.flat",
         "source": "/home/san/.gradle/caches/transforms-2/files-2.1/fe597c64c340b8e08744211e76a784aa/material-1.0.0/res/layout/design_layout_snackbar.xml"
     },
@@ -1528,6 +1524,10 @@
         "source": "/home/san/.gradle/caches/transforms-2/files-2.1/ef4647ccbd12b5a4e484c902942a1ed2/core-1.0.1/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
+        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/drawable-hdpi_logo.png.flat",
+        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/logo.png"
+    },
+    {
         "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/layout_abc_action_menu_item_layout.xml.flat",
         "source": "/home/san/.gradle/caches/transforms-2/files-2.1/ca9b64bdf3178a5829a3593f5e2ffc5c/appcompat-1.0.2/res/layout/abc_action_menu_item_layout.xml"
     },
@@ -1822,10 +1822,6 @@
     {
         "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/home/san/.gradle/caches/transforms-2/files-2.1/ca9b64bdf3178a5829a3593f5e2ffc5c/appcompat-1.0.2/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher1.png.flat",
-        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/ic_launcher1.png"
     },
     {
         "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",

@@ -9,6 +9,10 @@
 			width: 100%;
 			padding-top: 20px;
 		}
+
+		.sm {
+			font-size: 15px;
+		}
 	}
 
 	@media only screen and (min-width: 720px) {
@@ -18,7 +22,10 @@
 			width: 40%;
 		}
 	}
+	a{
+		font-size: 20px;
 
+	}
 	.form-submit {
 		display: block;
 	}
@@ -26,44 +33,72 @@
 	.text {
 		display: none;
 	}
+
+	.data-display {
+		display: block;
+	}
 </style>
 {% endblock %}
 {% block body %}
 
 <br /><br /><br /><br />
-<br /><br /><br />
-<div class="container mob web border border-info border-rounded">
+<br />
+<div class="container ">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-lg-2 col-xl-2"></div>
+		<div class="col-md-7 col-sm-12 col-lg-7 col-xl-7 form-submit border border-info border-rounded">
+			<form method="POST" action="/accounts/debugapk/">
+				{% csrf_token %}
+				<div class="flip-card w-100 web mob"><br />
+					<div class="flip-card-inner ">
+						<div class="flip-card-front"><br><br>
+							<h4>Please enter the <span class="text-danger">hompage url</span> of your website***</h4>
+							<br> <br />
+							<input type="text" class="w-50 text-dark" name="domain" placeholder="www.google.com">
+							<br /><br /><br />
+							<span class="demo  btn btn-outline-info w-50">Submit</span>
+						</div>
+						<div class="flip-card-back mob web">
+							<h4><span class="text-danger">Hurray! </span>Your trial app has been created. Please enter
+								your
+								email below to
+								get the app.</h4><br /><br>
 
-	<form method="POST" action="/accounts/debugapk/" class="form-submit">
-		{% csrf_token %}
-		<div class="flip-card w-100"><br />
-			<div class="flip-card-inner ">
-				<div class="flip-card-front">
-					<h4>Please enter the hompage url of your website</h4><br /><br />
-					<input type="text" class="w-50 text-dark" name="domain" placeholder="www.google.com">
-					<br /><br /><br />
-					<span class="demo  btn btn-outline-info w-50">Submit</span>
-				</div>
-				<div class="flip-card-back">
-					<h4><span class="text-danger">Hurray! </span>Your trial app has been created. Please enter your
-						email below to
-						get the app.</h4><br />
+							<input class="w-50 text-dark" type="email" name="email"
+								placeholder="xyz@gmail.com" id='email'><br /><br />
+							<button onclick="myFunction()" class="btn btn-outline-info w-50 "
+								type="submit">Submit</button>
+						</div>
+					</div>
+				</div><br><br><br><br><br><br><br><br>
+			</form>
+			<br><br>
+		</div><br><br><br>
+		<div class="col-md-7 col-sm-12 col-lg-7 col-xl-7 border border-info border-rounded text mob web"><br><br><br>
+			<h4 class="sm">&nbsp;&nbsp;&nbsp;<span class="text-danger">Hurray!</span> A debug has been sent to your email &nbsp;&nbsp;address
+				for your testing. Please check
+				your inbox &nbsp;&nbsp;with email <span id="emails" class="text-danger"></span> now.</span></h4><br><br>
+			<h5 class=" btn btn-outline-light w-100"><a href="/accounts/debugapk/" >Didn't receive the email. Click
+					here to retry after 2
+					minutes.</a></h5><br /><br>
+		</div><br>
+		<div class="col-md-3 col-sm-6 col-lg-3 col-xl-3 data-display">
+			<div class="card">
+				<div class="card-body">
+					<div>
+						<img src="../../media/default/phone-frame2.png" style="width: 100%;">
+						<img src="../../media/default/logo.png"
+							style="width:16%;position: absolute; left: 40%; top: 25%; border-radius: 60%;">
 
-					<input class="w-50 text-dark" type="email" name="email" placeholder="xyz@gmail.com"><br /><br />
-					<button onclick="myFunction()" class="btn btn-outline-info w-50 after-submit" type="submit">Submit</button>
+						<p style="position: absolute; left: 36%; top: 33%;">app name</p>
+						<h5 class="text-danger sm" style="position: absolute; left: 25%; top: 55%; "><a
+								href="/accounts/login/">Login</a> &nbsp;to &nbsp;our website &nbsp;&nbsp;for <br> more
+							features!</h5>
+					</div>
 				</div>
 			</div>
-		</div><br /><br /><br /><br />
-	</form>
-	
-	<div class="text">
-		<h4 class=""><span class="text-danger">Hurray!</span> A debug has been sent to your email address
-			for your testing. Please check
-			your inbox with email email@email.com now.</span></h4><br><br>
-		<button class=" btn btn-outline-light w-100"><a href="/accounts/debugapk/">Didn't receive the email. Click here to retry after 2
-				minutes.</a></button><br /><br>
+		</div>
 	</div>
-
 </div>
 
 <br /><br />
@@ -78,12 +113,15 @@
 	document.getElementsByClassName('demo')[0].onclick = function changeContent() {
 		document.getElementsByClassName('flip-card-inner')[0].style.transform = "rotateY(180deg)";
 	}
-	function myFunction(){
-		document.querySelector('.form-submit').style.display='none';
-		document.querySelector('.text').style.display="block";
+	function myFunction(e) {
+		// e.prevantdefault();
+		document.querySelector('.form-submit').style.display = 'none';
+		document.querySelector('.text').style.display = "block";
+		var val = document.querySelector('#email').value;
+		document.getElementById('emails').innerHTML=val;
+		setTimeout(function () {
+		}, 4000);
 
-	setTimeout(function(){
-	},2000);
 	}
 </script>
 {% endblock %}

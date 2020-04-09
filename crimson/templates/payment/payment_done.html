@@ -1,8 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    a{
+        font-size: 22px;;
+    }
+</style>
+
+{% endblock %}
+
 {% block body %}
 
-<h1> Your payment is successful</h1>
-<!-- {{args}} -->
-<a href="http://127.0.0.1/accounts/releaseapk/"  >Click here to for app</a>
 
+<div class="container "> <br> <br> <br> <br><br><br><br>
+    <h1> Your payment is successful</h1>
+    <!-- {{args}} -->
+    <a href="../../accounts/releaseapk/">Click here for your app.</a>
+</div>
 {% endblock %}

@@ -16,11 +16,21 @@ import android.content.Intent;
 import java.io.*;
 import java.net.URL;
 import java.util.Scanner;
+// import groovyx.net.http.HTTPBuilder;
+// import groovyx.net.http.EncoderRegistry;
+// import static groovyx.net.http.Method.*;
+// import static groovyx.net.http.ContentType.*;
+// import groovy.json.JsonSlurper;
+// import groovy.json.JsonOutput;
 
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
     String url = "";
+    String main_activity_title="crimson";
+    
+
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -34,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(url.getClass());
             Log.i("DDDOD", url);
             setUpWebView("http://" + url + "/");
-        } catch (final Exception e) {
+        } 
+        catch (final Exception e) {
             e.printStackTrace();
         }
     }
@@ -60,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
             // shouldOverrideUrlLoading makes this `WebView` the default handler for URLs
             // inside the app, so that links are not kicked out to other apps.
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
                 // Use an external email program if the link begins with "mailto:".
                 if (url.startsWith("mailto:")) {
                     // We use `ACTION_SENDTO` instead of `ACTION_SEND` so that only email programs
                     // are launched.
-                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                    final Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 
                     // Parse the url and set it as the data for the `Intent`.
                     emailIntent.setData(Uri.parse(url));

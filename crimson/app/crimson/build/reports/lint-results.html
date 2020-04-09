@@ -173,10 +173,10 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 19 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 21 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Wed Mar 25 19:05:42 UTC 2020      </nav>
+Check performed at Tue Apr 07 12:12:50 UTC 2020      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -184,11 +184,13 @@ Check performed at Wed Mar 25 19:05:42 UTC 2020      </nav>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
       <a class="mdl-navigation__link" href="#SdCardPath"><i class="material-icons warning-icon">warning</i>Hardcoded reference to <code>/sdcard</code> (1)</a>
+      <a class="mdl-navigation__link" href="#UnusedAttribute"><i class="material-icons warning-icon">warning</i>Attribute unused on older versions (1)</a>
       <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (5)</a>
       <a class="mdl-navigation__link" href="#GradleOverrides"><i class="material-icons warning-icon">warning</i>Value overridden by Gradle build script (2)</a>
       <a class="mdl-navigation__link" href="#AllowBackup"><i class="material-icons warning-icon">warning</i>AllowBackup/FullBackupContent Problems (2)</a>
-      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (5)</a>
-      <a class="mdl-navigation__link" href="#IconDensities"><i class="material-icons warning-icon">warning</i>Icon densities validation (2)</a>
+      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (4)</a>
+      <a class="mdl-navigation__link" href="#IconLauncherShape"><i class="material-icons warning-icon">warning</i>The launcher icon shape should use a distinct silhouette (1)</a>
+      <a class="mdl-navigation__link" href="#IconDensities"><i class="material-icons warning-icon">warning</i>Icon densities validation (3)</a>
       <a class="mdl-navigation__link" href="#IconMissingDensityFolder"><i class="material-icons warning-icon">warning</i>Missing density folder (1)</a>
       <a class="mdl-navigation__link" href="#GoogleAppIndexingWarning"><i class="material-icons warning-icon">warning</i>Missing support for Firebase App Indexing (1)</a>
     </nav>
@@ -209,6 +211,9 @@ Check performed at Wed Mar 25 19:05:42 UTC 2020      </nav>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#SdCardPath">SdCardPath</a>: Hardcoded reference to <code>/sdcard</code></td></tr>
 <tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#UnusedAttribute">UnusedAttribute</a>: Attribute unused on older versions</td></tr>
+<tr>
 <td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
 <tr>
@@ -222,12 +227,15 @@ Check performed at Wed Mar 25 19:05:42 UTC 2020      </nav>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Performance">Performance</a>
 </td></tr>
 <tr>
-<td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">4</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#UnusedResources">UnusedResources</a>: Unused resources</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Usability:Icons">Usability:Icons</a>
 </td></tr>
 <tr>
-<td class="countColumn">2</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#IconLauncherShape">IconLauncherShape</a>: The launcher icon shape should use a distinct silhouette</td></tr>
+<tr>
+<td class="countColumn">3</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#IconDensities">IconDensities</a>: Icon densities validation</td></tr>
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
@@ -255,14 +263,14 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/java/com/example/crimson/MainActivity.java">../../src/main/java/com/example/crimson/MainActivity.java</a>:49</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
-<span class="lineno">  46 </span>  webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);
-<span class="lineno">  47 </span>  webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);
-<span class="lineno">  48 </span>  webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);
-<span class="caretline"><span class="lineno">  49 </span>  webView.getSettings().setDatabasePath(<span class="warning"><span class="string">"/data/data/"</span></span> + webView.getContext().getPackageName() + <span class="string">"/databases/"</span>);</span>
-<span class="lineno">  50 </span>
-<span class="lineno">  51 </span>  webView.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);
-<span class="lineno">  52 </span>  webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+<span class="location"><a href="../../src/main/java/com/example/crimson/MainActivity.java">../../src/main/java/com/example/crimson/MainActivity.java</a>:60</span>: <span class="message">Do not hardcode "<code>/data/</code>"; use <code>Context.getFilesDir().getPath()</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  57 </span>  webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);
+<span class="lineno">  58 </span>  webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);
+<span class="lineno">  59 </span>  webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);
+<span class="caretline"><span class="lineno">  60 </span>  webView.getSettings().setDatabasePath(<span class="warning"><span class="string">"/data/data/"</span></span> + webView.getContext().getPackageName() + <span class="string">"/databases/"</span>);</span>
+<span class="lineno">  61 </span>
+<span class="lineno">  62 </span>  webView.getSettings().setDatabaseEnabled(<span class="keyword">true</span>);
+<span class="lineno">  63 </span>  webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 </pre>
 
 </div>
@@ -294,6 +302,55 @@ Similarly, do not reference the <code>/data/data/</code> path directly; it can v
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="SdCardPathCardLink" onclick="hideid('SdCardPathCard');">
 Dismiss</button>            </div>
             </div>
+          </section><a name="UnusedAttribute"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UnusedAttributeCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Attribute unused on older versions</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:20</span>: <span class="message">Attribute <code>usesCleartextTraffic</code> is only used in API level 23 and higher (current min is 21)</span><br /><pre class="errorlines">
+<span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/logo"</span>
+<span class="lineno"> 18 </span>        <span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span>
+<span class="lineno"> 19 </span>        <span class="prefix">android:</span><span class="attribute">supportsRtl</span>=<span class="value">"true"</span>
+<span class="caretline"><span class="lineno"> 20 </span>        <span class="warning"><span class="prefix">android:</span><span class="attribute">usesCleartextTraffic</span>=<span class="value">"true"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 21 </span>        <span class="prefix">android:</span><span class="attribute">theme</span>=<span class="value">"@style/AppTheme.NoActionBar"</span>
+<span class="lineno"> 22 </span>        >
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationUnusedAttribute" style="display: none;">
+This check finds attributes set in XML files that were introduced in a version newer than the oldest version targeted by your application (with the <code>minSdkVersion</code> attribute).<br/>
+<br/>
+This is not an error; the application will simply ignore the attribute. However, if the attribute is important to the appearance or functionality of your application, you should consider finding an alternative way to achieve the same result with only available attributes, and then you can optionally create a copy of the layout in a layout-vNN folder which will be used on API NN or higher where you can take advantage of the newer attribute.<br/>
+<br/>
+Note: This check does not only apply to attributes. For example, some tags can be unused too, such as the new <code>&lt;tag></code> element in layouts introduced in API 21.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "UnusedAttribute" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">UnusedAttribute</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 6/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUnusedAttributeLink" onclick="reveal('explanationUnusedAttribute');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UnusedAttributeCardLink" onclick="hideid('UnusedAttributeCard');">
+Dismiss</button>            </div>
+            </div>
           </section><a name="GradleDependency"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="GradleDependencyCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -303,7 +360,7 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:15</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.1</span><br /><pre class="errorlines">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:15</span>: <span class="message">A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.2</span><br /><pre class="errorlines">
 <span class="lineno">  12 </span>        jcenter()
 <span class="lineno">  13 </span>    }
 <span class="lineno">  14 </span>    dependencies {
@@ -313,41 +370,41 @@ Dismiss</button>            </div>
 <span class="lineno">  18 </span>}
 </pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:101</span>: <span class="message">A newer version of androidx.appcompat:appcompat than 1.0.2 is available: 1.1.0</span><br /><pre class="errorlines">
-<span class="lineno">  98 </span>
-<span class="lineno">  99 </span>dependencies {
-<span class="lineno"> 100 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
-<span class="caretline"><span class="lineno"> 101 </span>    <span class="warning">implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span></pre>
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:119</span>: <span class="message">A newer version of androidx.appcompat:appcompat than 1.0.2 is available: 1.1.0</span><br /><pre class="errorlines">
+<span class="lineno"> 116 </span>
+<span class="lineno"> 117 </span>dependencies {
+<span class="lineno"> 118 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+<span class="caretline"><span class="lineno"> 119 </span>    <span class="warning">implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 120 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="lineno"> 121 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 122 </span>    testImplementation <span class="string">'junit:junit:4.12'</span></pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:103</span>: <span class="message">A newer version of com.google.android.material:material than 1.0.0 is available: 1.1.0</span><br /><pre class="errorlines">
-<span class="lineno"> 100 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
-<span class="lineno"> 101 </span>    implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>
-<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="caretline"><span class="lineno"> 103 </span>    <span class="warning">implementation <span class="string">'com.google.android.material:material:1.0.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="lineno"> 105 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
-<span class="lineno"> 106 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></pre>
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:121</span>: <span class="message">A newer version of com.google.android.material:material than 1.0.0 is available: 1.1.0</span><br /><pre class="errorlines">
+<span class="lineno"> 118 </span>    implementation fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+<span class="lineno"> 119 </span>    implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>
+<span class="lineno"> 120 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="caretline"><span class="lineno"> 121 </span>    <span class="warning">implementation <span class="string">'com.google.android.material:material:1.0.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 122 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="lineno"> 123 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
+<span class="lineno"> 124 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:105</span>: <span class="message">A newer version of androidx.test.ext:junit than 1.1.0 is available: 1.1.1</span><br /><pre class="errorlines">
-<span class="lineno"> 102 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
-<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="caretline"><span class="lineno"> 105 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 106 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span>
-<span class="lineno"> 107 </span>    
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:123</span>: <span class="message">A newer version of androidx.test.ext:junit than 1.1.0 is available: 1.1.1</span><br /><pre class="errorlines">
+<span class="lineno"> 120 </span>    implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>
+<span class="lineno"> 121 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 122 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="caretline"><span class="lineno"> 123 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 124 </span>    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span>
+<span class="lineno"> 125 </span>    
 </pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:106</span>: <span class="message">A newer version of androidx.test.espresso:espresso-core than 3.1.1 is available: 3.2.0</span><br /><pre class="errorlines">
-<span class="lineno"> 103 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
-<span class="lineno"> 104 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
-<span class="lineno"> 105 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
-<span class="caretline"><span class="lineno"> 106 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 107 </span>    
-<span class="lineno"> 108 </span>
-<span class="lineno"> 109 </span>}
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:124</span>: <span class="message">A newer version of androidx.test.espresso:espresso-core than 3.1.1 is available: 3.2.0</span><br /><pre class="errorlines">
+<span class="lineno"> 121 </span>    implementation <span class="string">'com.google.android.material:material:1.0.0'</span>
+<span class="lineno"> 122 </span>    testImplementation <span class="string">'junit:junit:4.12'</span>
+<span class="lineno"> 123 </span>    androidTestImplementation <span class="string">'androidx.test.ext:junit:1.1.0'</span>
+<span class="caretline"><span class="lineno"> 124 </span>    <span class="warning">androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 125 </span>    
+<span class="lineno"> 126 </span>
+<span class="lineno"> 127 </span>}
 </pre>
 
 </div>
@@ -448,7 +505,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 14 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.VIBRATE"</span> />
 <span class="lineno"> 15 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.WAKE_LOCK"</span> />
 <span class="caretline"><span class="lineno"> 16 </span>    <span class="tag">&lt;</span><span class="warning"><span class="tag">application</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/ic_launcher1"</span>
+</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/logo"</span>
 <span class="lineno"> 18 </span>        <span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span>
 <span class="lineno"> 19 </span>        <span class="prefix">android:</span><span class="attribute">supportsRtl</span>=<span class="value">"true"</span></pre>
 
@@ -457,7 +514,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 14 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.VIBRATE"</span> />
 <span class="lineno"> 15 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.WAKE_LOCK"</span> />
 <span class="caretline"><span class="lineno"> 16 </span>    <span class="tag">&lt;</span><span class="warning"><span class="tag">application</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/ic_launcher1"</span>
+</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/logo"</span>
 <span class="lineno"> 18 </span>        <span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span>
 <span class="lineno"> 19 </span>        <span class="prefix">android:</span><span class="attribute">supportsRtl</span>=<span class="value">"true"</span></pre>
 
@@ -517,11 +574,10 @@ Dismiss</button>            </div>
 <span class="lineno"> 3 </span><span class="tag">&lt;/resources></span>
 </pre>
 
-<span class="location"><a href="../../src/main/res/drawable-hdpi/ic_launcher.png">../../src/main/res/drawable-hdpi/ic_launcher.png</a></span>: <span class="message">The resource <code>R.drawable.ic_launcher</code> appears to be unused</span><br />
-<ul></ul><button id="Location2DivLink" onclick="reveal('Location2Div');" />+ 3 Additional Locations...</button>
+<span class="location"><a href="../../src/main/res/drawable-ldpi/ic_launcher.png">../../src/main/res/drawable-ldpi/ic_launcher.png</a></span>: <span class="message">The resource <code>R.drawable.ic_launcher</code> appears to be unused</span><br />
+<ul></ul><button id="Location2DivLink" onclick="reveal('Location2Div');" />+ 2 Additional Locations...</button>
 <div id="Location2Div" style="display: none">
 Additional locations: <ul>
-<li> <span class="location"><a href="../../src/main/res/drawable-ldpi/ic_launcher.png">../../src/main/res/drawable-ldpi/ic_launcher.png</a></span>
 <li> <span class="location"><a href="../../src/main/res/drawable-mdpi/ic_launcher.png">../../src/main/res/drawable-mdpi/ic_launcher.png</a></span>
 <li> <span class="location"><a href="../../src/main/res/drawable-xhdpi/ic_launcher.png">../../src/main/res/drawable-xhdpi/ic_launcher.png</a></span>
 </ul>
@@ -529,19 +585,9 @@ Additional locations: <ul>
 <table>
 <tr><td><a href="../../src/main/res/drawable-ldpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/drawable-ldpi/ic_launcher.png" /></a>
 </td><td><a href="../../src/main/res/drawable-mdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/drawable-mdpi/ic_launcher.png" /></a>
-</td><td><a href="../../src/main/res/drawable-hdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/drawable-hdpi/ic_launcher.png" /></a>
 </td><td><a href="../../src/main/res/drawable-xhdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/drawable-xhdpi/ic_launcher.png" /></a>
-</td></tr><tr><th>ldpi</th><th>mdpi</th><th>hdpi</th><th>xhdpi</th></tr>
+</td></tr><tr><th>ldpi</th><th>mdpi</th><th>xhdpi</th></tr>
 </table>
-<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:5</span>: <span class="message">The resource <code>R.string.action_settings</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 2 </span><span class="tag">&lt;resources></span>
-<span class="lineno"> 3 </span>
-<span class="lineno"> 4 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"app_name"</span>>crimson<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 5 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"action_settings"</span></span>>Settings<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 6 </span>    <span class="comment">&lt;!-- &lt;string name="app_name">MainActivity&lt;/string> --></span>
-<span class="lineno"> 7 </span><span class="tag">&lt;/resources></span>
-</pre>
-
 <span class="location"><a href="../../src/main/res/values/styles.xml">../../src/main/res/values/styles.xml</a>:16</span>: <span class="message">The resource <code>R.style.AppTheme_AppBarOverlay</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 13 </span>        <span class="tag">&lt;item</span><span class="attribute"> name</span>=<span class="value">"windowNoTitle"</span>>true<span class="tag">&lt;/item></span>
 <span class="lineno"> 14 </span>    <span class="tag">&lt;/style></span>
@@ -593,7 +639,49 @@ Dismiss</button>            </div>
             </div>
           </section>
 <a name="Usability:Icons"></a>
-<a name="IconDensities"></a>
+<a name="IconLauncherShape"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconLauncherShapeCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">The launcher icon shape should use a distinct silhouette</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/drawable-hdpi/logo.jpeg">../../src/main/res/drawable-hdpi/logo.jpeg</a></span>: <img class="embedimage" align="right" src="../../src/main/res/drawable-hdpi/logo.jpeg" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
+</div>
+<div class="metadata"><div class="explanation" id="explanationIconLauncherShape" style="display: none;">
+According to the Android Design Guide (<a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>) your launcher icons should "use a distinct silhouette", a "three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth."<br/>
+<br/>
+The unique silhouette implies that your launcher icon should not be a filled square.<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
+</div>To suppress this error, use the issue id "IconLauncherShape" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">IconLauncherShape</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Icons</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Usability</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 6/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationIconLauncherShapeLink" onclick="reveal('explanationIconLauncherShape');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="IconLauncherShapeCardLink" onclick="hideid('IconLauncherShapeCard');">
+Dismiss</button>            </div>
+            </div>
+          </section><a name="IconDensities"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconDensitiesCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">
@@ -602,8 +690,9 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/res/drawable-mdpi">../../src/main/res/drawable-mdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-mdpi</code>: ic_launcher1.png (found in drawable-hdpi)</span><br />
-<span class="location"><a href="../../src/main/res/drawable-xhdpi">../../src/main/res/drawable-xhdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-xhdpi</code>: ic_launcher1.png (found in drawable-hdpi)</span><br />
+<span class="location"><a href="../../src/main/res/drawable-hdpi">../../src/main/res/drawable-hdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-hdpi</code>: ic_launcher.png (found in drawable-mdpi, drawable-xhdpi)</span><br />
+<span class="location"><a href="../../src/main/res/drawable-mdpi">../../src/main/res/drawable-mdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-mdpi</code>: logo.jpeg (found in drawable-hdpi)</span><br />
+<span class="location"><a href="../../src/main/res/drawable-xhdpi">../../src/main/res/drawable-xhdpi</a></span>: <span class="message">Missing the following drawables in <code>drawable-xhdpi</code>: logo.jpeg (found in drawable-hdpi)</span><br />
 </div>
 <div class="metadata"><div class="explanation" id="explanationIconDensities" style="display: none;">
 Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.<br/>
@@ -694,7 +783,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 14 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.VIBRATE"</span> />
 <span class="lineno"> 15 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.WAKE_LOCK"</span> />
 <span class="caretline"><span class="lineno"> 16 </span>    <span class="warning"><span class="tag">&lt;application</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
-</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/ic_launcher1"</span>
+</span><span class="lineno"> 17 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">icon</span>=<span class="value">"@drawable/logo"</span>
 <span class="lineno"> 18 </span>        <span class="prefix">android:</span><span class="attribute">label</span>=<span class="value">"@string/app_name"</span>
 <span class="lineno"> 19 </span>        <span class="prefix">android:</span><span class="attribute">supportsRtl</span>=<span class="value">"true"</span></pre>
 

@@ -18,5 +18,8 @@ urlpatterns = [
     path('pdf/pdf/', views.genrate, name="pdf"),
     path('pdf/data/', views.pdf_get_data, name="pdf_data"),
     path('keydata/data/', KeydataView.as_view(), name="data"),
+    path('file/file_upload/', views.file_upload, name="file_upload"),
+    path('keystore/keystorename/', views.key_data, name="key_name"),
+
 
 ]

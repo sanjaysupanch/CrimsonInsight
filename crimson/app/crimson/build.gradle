@@ -17,35 +17,53 @@ buildscript {
     }
 }
 
+String keystore;
+String keystore_pass;
+String key;
+String key_pass;
 String keystore1;
-String key1;
-String keystore2;
 
 
 task hello {
 
     try { 
-        def http = new HTTPBuilder("http://127.0.0.1:8000/")
+        def http = new HTTPBuilder("http://31d8767a.ngrok.io/")
             http.get(path:'dashboard/keydata/data/',)
             {
                 resp, reader ->
-                keystore1=reader[0]['keystore'];
-                key1=reader[0]['key'];
-                // println( reader[0]['key']);
-                // println(key1);
+                // println(reader[0]['key_pass']);
+                keystore=reader[0]['keystore'];
+                keystore_pass=reader[0]['keystore_pass'];
+                key=reader[0]['key'];
+                key_pass=reader[0]['key_pass'];
+                
+     
+            
             }
     }
     catch(Exception e){
-        // keystore1="signing";
-        // key1='qwerty';
         println("Error1111111111111111111");
     }
 
 }
-// println(keystore1);
-// println(key1);
-keystore2=keystore1+".keystore";
-// println(keystore2);
+
+println(keystore)
+println(key)
+keystore1=keystore+".keystore";
+
+
+
+// task syncStrings {
+    
+//     def http = new HTTPBuilder("http://127.0.0.1:8000/")
+//         http.get(path:'dashboard/keydata/data/',)
+//         {
+//             resp, reader ->
+//             keystore1=reader[0]['keystore'];
+//             key1=reader[0]['key'];
+//             println(reader);
+//         }
+// }
 
 
 
@@ -75,10 +93,10 @@ android {
     signingConfigs {
         
         release {
-            storeFile file(keystore2)
-            storePassword key1
-            keyAlias keystore1
-            keyPassword key1
+            storeFile file(keystore1)
+            storePassword keystore_pass
+            keyAlias key
+            keyPassword key_pass
         }
     }
     
