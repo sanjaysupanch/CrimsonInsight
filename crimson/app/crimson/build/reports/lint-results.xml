@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="5" by="lint 3.5.2">
+<issues format="5" by="lint 3.6.0">
 
     <issue
-        id="SdCardPath"
-        severity="Warning"
-        message="Do not hardcode &quot;`/data/`&quot;; use `Context.getFilesDir().getPath()` instead"
+        id="MissingSuperCall"
+        severity="Error"
+        message="Overriding method should call `super.onSaveInstanceState`"
         category="Correctness"
-        priority="6"
-        summary="Hardcoded reference to `/sdcard`"
-        explanation="Your code should not reference the `/sdcard` path directly; instead use `Environment.getExternalStorageDirectory().getPath()`.&#xA;&#xA;Similarly, do not reference the `/data/data/` path directly; it can vary in multi-user scenarios. Instead, use `Context.getFilesDir().getPath()`."
-        url="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal"
-        urls="http://developer.android.com/guide/topics/data/data-storage.html#filesExternal"
-        errorLine1="        webView.getSettings().setDatabasePath(&quot;/data/data/&quot; + webView.getContext().getPackageName() + &quot;/databases/&quot;);"
-        errorLine2="                                              ~~~~~~~~~~~~~">
+        priority="9"
+        summary="Missing Super Call"
+        explanation="Some methods, such as `View#onDetachedFromWindow`, require that you also call the super implementation as part of your method."
+        errorLine1="    protected void onSaveInstanceState(Bundle outState) {"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/java/com/example/crimson/MainActivity.java"
-            line="60"
-            column="47"/>
-    </issue>
-
-    <issue
-        id="UnusedAttribute"
-        severity="Warning"
-        message="Attribute `usesCleartextTraffic` is only used in API level 23 and higher (current min is 21)"
-        category="Correctness"
-        priority="6"
-        summary="Attribute unused on older versions"
-        explanation="This check finds attributes set in XML files that were introduced in a version newer than the oldest version targeted by your application (with the `minSdkVersion` attribute).&#xA;&#xA;This is not an error; the application will simply ignore the attribute. However, if the attribute is important to the appearance or functionality of your application, you should consider finding an alternative way to achieve the same result with only available attributes, and then you can optionally create a copy of the layout in a layout-vNN folder which will be used on API NN or higher where you can take advantage of the newer attribute.&#xA;&#xA;Note: This check does not only apply to attributes. For example, some tags can be unused too, such as the new `&lt;tag>` element in layouts introduced in API 21."
-        errorLine1="        android:usesCleartextTraffic=&quot;true&quot;"
-        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
-            line="20"
-            column="9"/>
+            line="44"
+            column="20"/>
     </issue>
 
     <issue
         id="GradleDependency"
         severity="Warning"
-        message="A newer version of com.android.tools.build:gradle than 3.5.2 is available: 3.6.2"
+        message="A newer version of com.android.tools.build:gradle than 3.6.0 is available: 3.6.3"
         category="Correctness"
         priority="4"
         summary="Obsolete Gradle Dependency"
         explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="        classpath &apos;com.android.tools.build:gradle:3.5.2&apos;"
+        errorLine1="        classpath &apos;com.android.tools.build:gradle:3.6.0&apos;"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/build.gradle"
@@ -154,32 +136,14 @@
         category="Security"
         priority="3"
         summary="AllowBackup/FullBackupContent Problems"
-        explanation="The `allowBackup` attribute determines if an application&apos;s data can be backed up and restored. It is documented at http://developer.android.com/reference/android/R.attr.html#allowBackup&#xA;&#xA;By default, this flag is set to `true`. When this flag is set to `true`, application data can be backed up and restored by the user using `adb backup` and `adb restore`.&#xA;&#xA;This may have security consequences for an application. `adb backup` allows users who have enabled USB debugging to copy application data off of the device. Once backed up, all application data can be read by the user. `adb restore` allows creation of application data from a source specified by the user. Following a restore, applications should not assume that the data, file permissions, and directory permissions were created by the application itself.&#xA;&#xA;Setting `allowBackup=&quot;false&quot;` opts an application out of both backup and restore.&#xA;&#xA;To fix this warning, decide whether your application should support backup, and explicitly set `android:allowBackup=(true|false)&quot;`.&#xA;&#xA;If not set to false, and if targeting API 23 or later, lint will also warn that you should set `android:fullBackupContent` to configure auto backup."
+        explanation="The `allowBackup` attribute determines if an application&apos;s data can be backed up and restored. It is documented at http://developer.android.com/reference/android/R.attr.html#allowBackup&#xA;&#xA;By default, this flag is set to `true` which means application data can be backed up and restored by the OS. Setting `allowBackup=&quot;false&quot;` opts the application out of being backed up and so users can&apos;t restore data related to it when they go through the device setup wizard.&#xA;&#xA;Allowing backups may have security consequences for an application. Currently `adb backup` allows users who have enabled USB debugging to copy application data off of the device. Once backed up, all application data can be read by the user. `adb restore` allows creation of application data from a source specified by the user. Following a restore, applications should not assume that the data, file permissions, and directory permissions were created by the application itself.&#xA;&#xA;To fix this warning, decide whether your application should support backup, and explicitly set `android:allowBackup=(true|false)&quot;`.&#xA;&#xA;If not set to false, and if targeting API 23 or later, lint will also warn that you should set `android:fullBackupContent` to configure auto backup."
         url="https://developer.android.com/training/backup/autosyncapi.html"
         urls="https://developer.android.com/training/backup/autosyncapi.html,http://developer.android.com/reference/android/R.attr.html#allowBackup"
         errorLine1="    &lt;application"
         errorLine2="     ~~~~~~~~~~~">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
-            line="16"
-            column="6"/>
-    </issue>
-
-    <issue
-        id="AllowBackup"
-        severity="Warning"
-        message="Should explicitly set `android:allowBackup` to `true` or `false` (it&apos;s `true` by default, and that can have some security implications for the application&apos;s data)"
-        category="Security"
-        priority="3"
-        summary="AllowBackup/FullBackupContent Problems"
-        explanation="The `allowBackup` attribute determines if an application&apos;s data can be backed up and restored. It is documented at http://developer.android.com/reference/android/R.attr.html#allowBackup&#xA;&#xA;By default, this flag is set to `true`. When this flag is set to `true`, application data can be backed up and restored by the user using `adb backup` and `adb restore`.&#xA;&#xA;This may have security consequences for an application. `adb backup` allows users who have enabled USB debugging to copy application data off of the device. Once backed up, all application data can be read by the user. `adb restore` allows creation of application data from a source specified by the user. Following a restore, applications should not assume that the data, file permissions, and directory permissions were created by the application itself.&#xA;&#xA;Setting `allowBackup=&quot;false&quot;` opts an application out of both backup and restore.&#xA;&#xA;To fix this warning, decide whether your application should support backup, and explicitly set `android:allowBackup=(true|false)&quot;`.&#xA;&#xA;If not set to false, and if targeting API 23 or later, lint will also warn that you should set `android:fullBackupContent` to configure auto backup."
-        url="https://developer.android.com/training/backup/autosyncapi.html"
-        urls="https://developer.android.com/training/backup/autosyncapi.html,http://developer.android.com/reference/android/R.attr.html#allowBackup"
-        errorLine1="    &lt;application"
-        errorLine2="     ~~~~~~~~~~~">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
-            line="16"
+            line="21"
             column="6"/>
     </issue>
 
@@ -197,22 +161,6 @@
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/values/dimens.xml"
             line="2"
             column="12"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.drawable.ic_launcher` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests=true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests=true.">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-ldpi/ic_launcher.png"/>
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi/ic_launcher.png"/>
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi/ic_launcher.png"/>
     </issue>
 
     <issue
@@ -248,65 +196,9 @@
     </issue>
 
     <issue
-        id="IconLauncherShape"
-        severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
-        category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (http://developer.android.com/design/style/iconography.html) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square."
-        url="http://developer.android.com/design/style/iconography.html"
-        urls="http://developer.android.com/design/style/iconography.html">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/logo.jpeg"/>
-    </issue>
-
-    <issue
-        id="IconDensities"
-        severity="Warning"
-        message="Missing the following drawables in `drawable-hdpi`: ic_launcher.png (found in drawable-mdpi, drawable-xhdpi)"
-        category="Usability:Icons"
-        priority="4"
-        summary="Icon densities validation"
-        explanation="Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.&#xA;&#xA;Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable `ANDROID_LINT_INCLUDE_LDPI=true`. For more information on current density usage, see http://developer.android.com/resources/dashboard/screens.html"
-        url="http://developer.android.com/guide/practices/screens_support.html"
-        urls="http://developer.android.com/guide/practices/screens_support.html">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi"/>
-    </issue>
-
-    <issue
-        id="IconDensities"
-        severity="Warning"
-        message="Missing the following drawables in `drawable-mdpi`: logo.jpeg (found in drawable-hdpi)"
-        category="Usability:Icons"
-        priority="4"
-        summary="Icon densities validation"
-        explanation="Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.&#xA;&#xA;Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable `ANDROID_LINT_INCLUDE_LDPI=true`. For more information on current density usage, see http://developer.android.com/resources/dashboard/screens.html"
-        url="http://developer.android.com/guide/practices/screens_support.html"
-        urls="http://developer.android.com/guide/practices/screens_support.html">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-mdpi"/>
-    </issue>
-
-    <issue
-        id="IconDensities"
-        severity="Warning"
-        message="Missing the following drawables in `drawable-xhdpi`: logo.jpeg (found in drawable-hdpi)"
-        category="Usability:Icons"
-        priority="4"
-        summary="Icon densities validation"
-        explanation="Icons will look best if a custom version is provided for each of the major screen density classes (low, medium, high, extra high). This lint check identifies icons which do not have complete coverage across the densities.&#xA;&#xA;Low density is not really used much anymore, so this check ignores the ldpi density. To force lint to include it, set the environment variable `ANDROID_LINT_INCLUDE_LDPI=true`. For more information on current density usage, see http://developer.android.com/resources/dashboard/screens.html"
-        url="http://developer.android.com/guide/practices/screens_support.html"
-        urls="http://developer.android.com/guide/practices/screens_support.html">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-xhdpi"/>
-    </issue>
-
-    <issue
         id="IconMissingDensityFolder"
         severity="Warning"
-        message="Missing density variation folders in `src/main/res`: drawable-xxhdpi"
+        message="Missing density variation folders in `src/main/res`: drawable-mdpi, drawable-xhdpi, drawable-xxhdpi"
         category="Usability:Icons"
         priority="3"
         summary="Missing density folder"
@@ -315,24 +207,6 @@
         urls="http://developer.android.com/guide/practices/screens_support.html">
         <location
             file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/res"/>
-    </issue>
-
-    <issue
-        id="GoogleAppIndexingWarning"
-        severity="Warning"
-        message="App is not indexable by Google Search; consider adding at least one Activity with an ACTION-VIEW intent filter. See issue explanation for more details."
-        category="Usability"
-        priority="5"
-        summary="Missing support for Firebase App Indexing"
-        explanation="Adds URLs to get your app into the Google index, to get installs and traffic to your app from Google Search."
-        url="https://g.co/AppIndexing/AndroidStudio"
-        urls="https://g.co/AppIndexing/AndroidStudio"
-        errorLine1="    &lt;application"
-        errorLine2="    ^">
-        <location
-            file="/home/san/CrimsonInsight/crimson/app/crimson/src/main/AndroidManifest.xml"
-            line="16"
-            column="5"/>
     </issue>
 
 </issues>

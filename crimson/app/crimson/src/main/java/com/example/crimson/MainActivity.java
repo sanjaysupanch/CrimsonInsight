@@ -1,102 +1,129 @@
 package com.example.crimson;
+
+import android.os.Bundle;
+import android.webkit.*;
+import androidx.appcompat.app.AppCompatActivity;
+import android.*;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Bundle;
+
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.webkit.*;
+
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.content.Intent;
+import android.widget.FrameLayout;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+
 import java.io.*;
 import java.net.URL;
 import java.util.Scanner;
-// import groovyx.net.http.HTTPBuilder;
-// import groovyx.net.http.EncoderRegistry;
-// import static groovyx.net.http.Method.*;
-// import static groovyx.net.http.ContentType.*;
-// import groovy.json.JsonSlurper;
-// import groovy.json.JsonOutput;
 
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
-    String url = "";
-    String main_activity_title="crimson";
-    
+    String url;
+    String domain_url;
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        webView.saveState(outState);
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        android_permission();
+        // RequestQueue queue = Volley.newRequestQueue(this);
+        // String urls ="http://0b1fe95c.ngrok.io/dashboard/keydata/data/";
 
-        try {
-            url = readFile();
-            System.out.println(url);
-            System.out.println(url.getClass());
-            Log.i("DDDOD", url);
-            setUpWebView("http://" + url + "/");
-        } 
-        catch (final Exception e) {
-            e.printStackTrace();
-        }
+        // StringRequest stringRequest = new StringRequest(Request.Method.GET, urls,
+        //             new Response.Listener<String>() {
+        //     @Override
+        //     public void onResponse(String response) {
+        //         domain_url=response.toString();
+        //         System.out.println("Response is: "+ response);
+        //     }
+        // }, new Response.ErrorListener() {
+        //     @Override
+        //     public void onErrorResponse(VolleyError error) {
+        //         System.out.println("!!!!!!!!!!!!!!!!");
+        //     }
+        // });
+
+        // queue.add(stringRequest);
+
+        android_permission();
+        setUpWebView(savedInstanceState);
+
+
     }
 
+    // ==============================function============================================================
+
     @SuppressLint("SetJavaScriptEnabled")
-    public void setUpWebView(final String url) {
-        webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setDatabasePath("/data/data/" + webView.getContext().getPackageName() + "/databases/");
+    // @Override
+    public void setUpWebView(final Bundle savedInstanceState) {
 
-        webView.getSettings().setDatabaseEnabled(true);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webView.getSettings().setAppCacheEnabled(true);
-        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.getSettings().setAllowContentAccess(true);
+        webView = (WebView) findViewById(R.id.webview);// .restoreState(savedInstanceState);
+
+        WebSettings webSettings = webView.getSettings();
+
+        webView.setWebChromeClient(new ChromeClient());
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowContentAccess(true);
+        webSettings.setDisplayZoomControls(true);
+        // webSettings.setAppCacheEnabled(true);
+        // webSettings.setUserAgentString(
+        // "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko)
+        // Chrome/81.0.4044.96 Mobile Safari/537.36");
+        webSettings.setUserAgentString(
+                "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36");
+        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webSettings.setSavePassword(true);
+        webSettings.setSaveFormData(true);
+        webSettings.setEnableSmoothTransition(true);
+
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setDatabaseEnabled(true);
+        webSettings.setBlockNetworkLoads(false);
         // webView.setWebViewClient(new WebViewClient());
-
         webView.setWebViewClient(new WebViewClient() {
-            // shouldOverrideUrlLoading makes this `WebView` the default handler for URLs
-            // inside the app, so that links are not kicked out to other apps.
             @Override
-            public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-                // Use an external email program if the link begins with "mailto:".
-                if (url.startsWith("mailto:")) {
-                    // We use `ACTION_SENDTO` instead of `ACTION_SEND` so that only email programs
-                    // are launched.
-                    final Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-
-                    // Parse the url and set it as the data for the `Intent`.
-                    emailIntent.setData(Uri.parse(url));
-
-                    // `FLAG_ACTIVITY_NEW_TASK` opens the email program in a new task instead as
-                    // part of this application.
-                    emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    // Make it so.
-                    startActivity(emailIntent);
-                    return true;
-                } else {
-                    // Returning false causes WebView to load the URL while preventing it from
-                    // adding URL redirects to the WebView history.
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (URLUtil.isNetworkUrl(url)) {
                     return false;
                 }
+                if (appInstalledOrNot(url)) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                } else {
+                    // do something if app is not installed
+                }
+                return true;
             }
-        });
 
-        webView.loadUrl(url);
+        });
 
         webView.setDownloadListener(new DownloadListener() {
             @Override
@@ -119,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
             }
         });
+
+        if (savedInstanceState != null)
+            ((WebView) findViewById(R.id.webview)).restoreState(savedInstanceState);
+        else
+            loadWebSite();
+
     }
 
     public String readFile() {
@@ -138,6 +171,25 @@ public class MainActivity extends AppCompatActivity {
         final int i = Log.i("Error", "DODO");
 
         return text.toString();
+    }
+
+    private void loadWebSite() {
+        String domain;
+        domain = readFile();
+        url = "http://"+domain+"/";
+        
+        webView.loadUrl(url);
+    }
+
+    private boolean appInstalledOrNot(String uri) {
+        PackageManager pm = getPackageManager();
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+
+        return false;
     }
 
     public void android_permission() {
@@ -162,6 +214,46 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             Log.v("permission", "Permission is granted2");
+        }
+    }
+
+    private class ChromeClient extends WebChromeClient {
+        private View mCustomView;
+        private WebChromeClient.CustomViewCallback mCustomViewCallback;
+        protected FrameLayout mFullscreenContainer;
+        private int mOriginalOrientation;
+        private int mOriginalSystemUiVisibility;
+
+        ChromeClient() {
+        }
+
+        public Bitmap getDefaultVideoPoster() {
+            if (mCustomView == null) {
+                return null;
+            }
+            return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
+        }
+
+        public void onHideCustomView() {
+            ((FrameLayout) getWindow().getDecorView()).removeView(this.mCustomView);
+            this.mCustomView = null;
+            getWindow().getDecorView().setSystemUiVisibility(this.mOriginalSystemUiVisibility);
+            setRequestedOrientation(this.mOriginalOrientation);
+            this.mCustomViewCallback.onCustomViewHidden();
+            this.mCustomViewCallback = null;
+        }
+
+        public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {
+            if (this.mCustomView != null) {
+                onHideCustomView();
+                return;
+            }
+            this.mCustomView = paramView;
+            this.mOriginalSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
+            this.mOriginalOrientation = getRequestedOrientation();
+            this.mCustomViewCallback = paramCustomViewCallback;
+            ((FrameLayout) getWindow().getDecorView()).addView(this.mCustomView, new FrameLayout.LayoutParams(-1, -1));
+            getWindow().getDecorView().setSystemUiVisibility(3846 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
     }
 

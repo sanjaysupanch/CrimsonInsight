@@ -1,0 +1,161 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block head %}
+<title>AppThisWeb</title>
+<style>
+  @media only screen and (max-width: 600px) {
+    .mob {
+      width: 100%;
+    }
+
+    .mob1 {
+      padding-top: 25px;
+    }
+
+    .sm {
+      font-size: 15px;
+    }
+  }
+
+  @media only screen and (min-width: 720px) {
+    .web {
+      width: 50%;
+    }
+
+    .web1 {
+      padding-top: 80px;
+    }
+  }
+  .file-upload{
+      display: block;
+  }
+  .loader-display{
+      display: none;
+  }
+  .build-app{
+      display: none;
+  }
+  .after-build{
+      display: none;
+  }
+  .sec-25{
+      display: none;
+  }
+</style>
+{% endblock %}
+{% block body %}
+
+<div class="main-content">
+  <section class="section ">
+    <div class="section-body">
+      <div class="row ">
+        <div class="col-12 col-sm-12 col-lg-9">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="container mob1 web1 border border-info border-rounded text-center ">
+                <div class="loader loader-display"></div>
+                <div class="sec-25">
+                    <h1>Your app is building please wait.</h1>
+                    <img src="/media/default/30.gif" alt="25">
+                  </div>
+                  
+                <form enctype="multipart/form-data" id="id_ajax_upload_form" method="POST" novalidate=""
+                  class="file-upload">
+                  {% csrf_token %}
+                  <h4 class="sm">Enter the <span class="text-danger">app name</span> of your website***</h4><br />
+                  <input type="text" name="app_name" class="mob web " maxlength="120" placeholder="Ex: Google" required
+                    id="id_app_name">
+                  <br><br>
+                  <h4 class="sm">Choose your <span class="text-success">app icon</span> for your website*** </h4>
+                  <br />
+                  <input type="file" class="border w-50" name="app_icon" accept="image/*" required id="id_app_icon">
+                  </p>
+                  <br />
+                  <button class="btn btn-outline-info mob web file-upload-submit" type="submit">Submit</button><br><br>
+
+                </form>
+
+                <div class="build-app">
+                    <h2>Do you want to make changes in this app?</h2><br><br><br>
+                    <button class="btn btn-outline-info w-75 no-build">No, I don't want to change in this app.</button><br><br>
+                    <button class="btn btn-outline-success w-75 yes-build">Yes, I want to changes in this app.</button><br><br><br><br>
+
+                </div>
+
+                <div class="after-build1">
+                    <h2>Your app is builded <span class="text-success">Successfuly!</span> </h2><br>
+                    <a href="/dashboard/converted_app" class="btn btn-outline-info">Click here </a>
+                    <br><br>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="text/javascript">
+
+    $('#id_ajax_upload_form').submit(function (e) {
+      e.preventDefault();
+      var val = document.querySelector('#id_app_name').value;
+      console.log(val)
+      val === '' ? alert('Please Enter App Name') : document.querySelector('.file-upload').style.display = 'none';
+      document.querySelector('.loader-display').style.display = 'block';
+  
+      $form = $(this)
+      var formData = new FormData(this);
+      $.ajax({
+        url: '/dashboard/file/file_upload/',
+        type: 'POST',
+        data: formData, 
+        success: function (data, response) {
+          document.querySelector('.loader-display').style.display = 'none';
+          document.querySelector('.build-app').style.display='block';
+        },
+        
+        error: function () {
+          alert('Please upload logo of your app');
+          document.querySelector('.loader-display').style.display = 'none';
+          document.querySelector('.file-upload').style.display = 'block';
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    });
+
+    document.querySelector('.no-build').addEventListener('click', (e) => {
+        window.location.href="/dashboard/"
+  });
+  $('.yes-build').on('click', function (e) {
+    e.preventDefault();
+    document.querySelector('.build-app').style.display = 'none';
+    document.querySelector('.sec-25').style.display = "block";
+
+    $.ajax({
+      type: "POST",
+      url: '/dashboard/app_build/app_build/',
+      data: {
+        domain: $('#domain').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function (data) {
+        document.querySelector('.sec-25').style.display = "none";
+        document.querySelector('.after-build').style.display = "block";
+      },
+      error: function () {
+        alert('Please Retry and wait:');
+        document.querySelector('.sec-25').style.display = "none";
+        document.querySelector('.build-app').style.display = 'block';
+      },
+    });
+  });
+</script>
+{% endblock %}

@@ -57,11 +57,29 @@ def debugapk_view(request):
         user_instance=CustomUser.objects.get(email=request.user)
         domain_data=releaseapk.objects.filter(user=user_instance)
         flag4=0
+        flag5=0
+        # print(list(domain.split('/')), "@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        dummy=["http:", "/", "https:"]
+        data={}
+        for i in range(2):
+            if(dummy[i] in domain):
+                flag5=1
+                data={'flag5':flag5}
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                return JsonResponse(data)
+
         for i in domain_data:
-            if(i.domain_name==domain):
+            if(domain in i.domain_name):
+                flag4=1
+                print(domain, i.domain_name, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                data={'flag4':flag4}
+                return JsonResponse(data)
+            elif(i.domain_name==domain):
                 flag4=1
                 data={'flag4':flag4}
                 return JsonResponse(data)
+            
+            
         
         request.session['domain']=domain
         email_id = str(request.user)
@@ -82,7 +100,7 @@ def debugapk_view(request):
             os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
             link = 'http://'+request.get_host()+'/accounts/debug/'+app
             print("linkkk", link)
-            send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link is here  %s' %
+            send_mail('AppThisWeb WebApp', 'Hello!! Your Debug WebApp dowload link is here  %s' %
                       link, 'pioneer.deo@gmail.com', [receiver_mail])
             os.chdir("../../")
             return redirect("/dashboard/debugapk/")
@@ -205,6 +223,62 @@ def pdf_get_data(request):
         redirect('/dashboard/pdf/pdf/')
     return HttpResponse('')
 
+@login_required
+def update(request):
+    if request.method=='POST':
+        form= request.POST
+        app_name=form['app_name']
+        request.session['app_name']=app_name
+        # print(app_name, "2222222222222222222222222222222222")
+        # redirect('/dashboard/update_app/update_app/')
+    return HttpResponse('')
+
+@login_required
+def update_app(request):
+    return render(request, 'dashboard/update_app.html', {})
+    
+@login_required
+def app_builded(request):
+    app_name=request.session.get('app_name')
+    app=request.session.get('app') #updated name
+    app=app+".apk"
+
+    user_instance=CustomUser.objects.get(email=request.user)
+    app_and_keys=app_and_keystore.objects.get(user=user_instance, app_name=app_name)    
+    keystore=app_and_keys.keystore
+    app_and_keys.app_name=app
+    app_and_keys.save()
+
+    apk_data=releaseapk.objects.get(app_name=app_name, user=user_instance)
+    apk_data.app_name=app
+    apk_data.save()
+
+    keystore_data=keystore_table.objects.get(keystore=keystore)
+    keystore_pass=keystore_data.keystore_pass
+
+    key_data=key_table.objects.get(keystore=keystore_data)
+    key=key_data.key
+    key_pass=key_data.key_pass
+    
+    temp.objects.create(keystore=keystore, keystore_pass=keystore_pass, key=key, key_pass=key_pass)
+
+    os.chdir("app/crimson/")
+    os.system("./gradlew build")
+    os.system("./gradlew assembleRelease")
+    os.system("ls")
+    os.system("cp build/outputs/apk/release/crimson-release.apk ../../apk_store/release/%s" % app)
+    os.system("cp build/outputs/apk/release/crimson-release.apk ../../apk_store/debug/%s" % app)
+    link='http://'+request.get_host()+'/accounts/release/'+app 
+    receiver_mail=str(request.user)
+    print(link)
+    send_mail('AppThisWeb Sign WebApp', 'Hello!! Your sign WebApp download link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+    os.chdir("../../")
+    #temp.objects.all().delete()
+    
+    return HttpResponse('')
+
+
+@login_required
 def file_upload(request):
     os.chdir("media/icon/")
     os.system("rm -rf *")

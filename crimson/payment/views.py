@@ -20,9 +20,9 @@ def process_payment(request):
     last = releaseapk1[len(releaseapk1) - 1] if releaseapk1 else None
     
     try:
-        invoice="INV-000000"+str(last.invoice+1)
+        invoice="INV-000000000"+str(last.invoice+1)
     except:
-        invoice="INV-0000001"
+        invoice="INV-000000001"
 
     host = request.get_host()
     paypal_dict = {

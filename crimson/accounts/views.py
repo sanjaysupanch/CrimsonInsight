@@ -21,6 +21,10 @@ def debugapk_view(request):
         domain = form['domain']
         email_id=form['email']
         arr=["www", "com",]
+        os.chdir("app/crimson/src/main/res/drawable-hdpi/")
+        os.system('rm -rf *')
+        os.chdir("../../../../../../")
+        os.system("cp media/default/logo.png app/crimson/src/main/res/drawable-hdpi/logo.png")
         app_name=list(domain.split("."))
         for i in app_name:
             for j in arr:
@@ -43,7 +47,7 @@ def debugapk_view(request):
             os.system("cp build/outputs/apk/debug/crimson-debug.apk ../../apk_store/debug/%s" % app)
             link='http://'+request.get_host()+'/accounts/debug/'+app 
             
-            send_mail('Crimson Insight WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+            send_mail('AppThisWeb WebApp', 'Hello!! Your Debug WebApp dowload link here  %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
             os.chdir("../../")
             sleep(5)
             return redirect("/accounts/login/")
@@ -90,10 +94,11 @@ def releaseapk_view(request):
     if(keystore1 !=None):
         key_data['flag']=0
         key_data['flag3']=0
-    sleep(5)
+    # sleep(5)
     
     apk=releaseapk.objects.get(domain_name=str(domain))
     if (apk.paid==True):
+        
         print("###############__Operating System Command__##################")
         os.system("ls")
         os.chdir("app/crimson/")
@@ -104,6 +109,7 @@ def releaseapk_view(request):
             keystore_table.objects.create(keystore=key_data['keystore'], keystore_pass=key_data['keystore_pass'], keystore_link=keystore_link, user=user_instance)
             keystore_instance=keystore_table.objects.get(keystore=key_data['keystore'])
             key_table.objects.create(keystore=keystore_instance, key=key_data['key'], key_pass=key_data['key_pass'], key_user_name=key_data['key_user_name'], key_organization_unit=key_data['key_organization_unit'], key_organization=key_data['key_organization'],key_city= key_data['key_city'], key_state=key_data['key_state'], key_country=key_data['key_country'])
+            app_and_keystore.objects.create(user=user_instance, app_name=app, keystore=key_data['keystore'])
         else:
             
             keystore_instance=keystore_table.objects.get(keystore=keystore1)
@@ -113,6 +119,8 @@ def releaseapk_view(request):
             key=data.key
             key_pass=data.key_pass
             temp.objects.create(keystore=keystore1, keystore_pass=keystore_pass, key=key, key_pass=key_pass)
+            user_instance=CustomUser.objects.get(email=request.user)
+            app_and_keystore.objects.create(user=user_instance, app_name=app, keystore=keystore1)
         
         os.system("./gradlew build")
         os.system("./gradlew assembleRelease")
@@ -121,9 +129,9 @@ def releaseapk_view(request):
         link='http://'+request.get_host()+'/accounts/release/'+app 
         receiver_mail=str(request.user)
         print(link)
-        send_mail('Crimson Insight Sign WebApp', 'Hello!! Your sign WebApp download link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
+        send_mail('AppThisWeb Sign WebApp', 'Hello!! Your sign WebApp download link here : %s' % link, 'sanjaykumarsupanch@gmail.com', [receiver_mail])
         os.chdir("../../")
-        temp.objects.all().delete()
+        # temp.objects.all().delete()
         # request.session.flush()
         # return redirect('/payment/process/')
     else:

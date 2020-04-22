@@ -17,10 +17,16 @@ class releaseapk(models.Model):
 	
 class keystore_table(models.Model):
 	user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-	keystore=models.CharField(max_length=100, unique=True)
+	# app_name=models.ForeignKey(max_length=120, blank=True)
+	keystore=models.CharField(max_length=100)
 	keystore_pass=models.CharField(max_length=100)
 	keystore_link=models.CharField(max_length=120, default="/dashboard/")
+	
 	# storepass=models.CharField(max_length=2048, unique=True )
+class app_and_keystore(models.Model):
+	user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	keystore=models.CharField(max_length=120)
+	app_name=models.CharField(max_length=120)
 
 class key_table(models.Model):
 	keystore=models.ForeignKey(keystore_table, on_delete=models.CASCADE)

@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block head %}
-<title>Wep2App</title>
+<title>AppThisWeb</title>
+
 <style>
   @media only screen and (max-width: 600px) {
     .mob {
@@ -83,6 +84,10 @@
 
   .cool{
     display: none;
+  }
+  .auto-index td:first-child:before {
+    counter-increment: Serial;
+    content: counter(Serial);
   }
 </style>
 {% endblock %}
@@ -226,7 +231,7 @@
           <div class="card">
             <div class="card-body">
               <div class="table-responsive-sm">
-                <table class="table table-hover mb-0">
+                <table class="table table-hover mb-0 auto-index">
                   <thead>
                     <tr>
                       <th>S.No.</th>
@@ -236,7 +241,7 @@
                   <tbody>
                     {% for i in data %}
                     <tr>
-                      <td>{{i.id}}</td>
+                      <td></td>
                       <td> <span onclick="request_access(this)" id="{{i.keystore}}"
                           class="btn btn-outline-primary">{{i.keystore}}</span></td>
                     </tr>
@@ -300,7 +305,7 @@
 
       },
       error: function () {
-        alert('Please upload logo of your app');
+        alert('Please retry or refresh the page.');
         document.querySelector('.loader-display').style.display = 'none';
         document.querySelector('.file-upload').style.display = 'block';
       },
@@ -325,15 +330,20 @@
         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
       },
       success: function (data) {
-        console.log(data.flag4)
+        console.log(data.flag5)
+        
         if (data.flag4 === 1) {
           // alert("You already builded this app.");
           document.querySelector('.sec-26').style.display = "none";
           document.querySelector('.cool').style.display = 'block';
           setTimeout(() => {  window.location="/dashboard/"; }, 5000);
-
-          
         }
+        else if(data.flag5 ===1){
+          document.querySelector('.sec-26').style.display = "none";
+          alert("Enter your url in this format :\r\n 1. www.google.com\r\n 2. dev.to \r\nDon't use this format: \r\n 1. https://www.google.com/\r\n 2. http://google.com/" );
+          document.querySelector('#converted_web').style.display = 'block';
+        }
+        
         else {
           document.querySelector('.sec-26').style.display = "none";
           val !== '' ? document.querySelector('.after-submit').style.display = 'block' : '';

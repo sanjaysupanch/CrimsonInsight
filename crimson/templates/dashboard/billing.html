@@ -1,6 +1,13 @@
 {% extends "dashboard.html" %}
 {% load static %}
-
+{% block head %}
+<style>
+  .auto-index td:first-child:before {
+    counter-increment: Serial;
+    content: counter(Serial);
+  }
+</style>
+{% endblock %}
 {% block body %}
 <div class="main-content">
   <section class="section ">
@@ -10,7 +17,7 @@
           <div class="card">
             <div class="card-body">
               <div class="table-responsive-sm">
-                <table class="table table-hover mb-0">
+                <table class="table table-hover mb-0 auto-index">
                   <thead>
                     <tr> <center><h5>My Invoices</h5><hr></center>
                     </tr>
@@ -24,7 +31,7 @@
                   <tbody>
                     {% for i in data %}
                     <tr>
-                      <td>{{i.invoice}}</td>
+                      <td></td>
                       <td>INV-0000{{i.invoice}}</td>
                       <td>{{i.date}}</td>
                       <td>

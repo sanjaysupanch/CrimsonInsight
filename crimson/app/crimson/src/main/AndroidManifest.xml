@@ -3,7 +3,7 @@
       package="com.example.crimson"
       android:versionCode="1"
       android:versionName="1.0">
-
+    
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -13,14 +13,24 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    
     <application
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
         android:icon="@drawable/logo"
+        android:roundIcon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme.NoActionBar"
+        android:configChanges="orientation|screenSize"
         >
-
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
+                android:value="true" />
         <activity android:name="MainActivity" android:label="@string/main_activity_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +38,7 @@
             </intent-filter>
         </activity>
 
+
     </application>
 
 </manifest>
-
-
-        <!-- android:allowBackup="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme"> -->

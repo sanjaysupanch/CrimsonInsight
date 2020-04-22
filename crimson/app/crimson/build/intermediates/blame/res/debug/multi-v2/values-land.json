@@ -4,7 +4,7 @@
             "outputFile": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/san/.gradle/caches/transforms-2/files-2.1/ca9b64bdf3178a5829a3593f5e2ffc5c/appcompat-1.0.2/res/values-land/values-land.xml",
+                    "source": "/home/san/.gradle/caches/transforms-2/files-2.1/74047f4af90520a270b3b56bc00fec36/appcompat-1.0.2/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/san/.gradle/caches/transforms-2/files-2.1/fe597c64c340b8e08744211e76a784aa/material-1.0.0/res/values-land/values-land.xml",
+                    "source": "/home/san/.gradle/caches/transforms-2/files-2.1/6f9030a2830bb09b343d662b39492e5b/material-1.0.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -20,6 +20,9 @@ urlpatterns = [
     path('keydata/data/', KeydataView.as_view(), name="data"),
     path('file/file_upload/', views.file_upload, name="file_upload"),
     path('keystore/keystorename/', views.key_data, name="key_name"),
+    path('update/update/', views.update, name="update"),
+    path('update_app/update_app/', views.update_app, name="update_app"),
+    path('app_build/app_build/', views.app_builded, name="app_build"),
 
 
 ]
