@@ -1,4 +1,4 @@
-#Wed Apr 22 09:32:24 UTC 2020
+#Fri May 22 05:46:21 UTC 2020
 base.0=/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/dex/release/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

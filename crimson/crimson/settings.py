@@ -71,6 +71,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'crimson.urls'
 
+ADMIN_ENABLED = False
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -103,10 +105,14 @@ DATABASES = {
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'djongo',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'crimson',
+#         'USER': 'postgres',
+#         'password': 'sanjaykumar',
+#         'HOST': 'crimson.cytozqdbn6lb.ap-south-1.rds.amazonaws.com',
+#         'PORT': '5432',
 #        }
-#    }
+#    }    
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -156,7 +162,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pioneer.deo@gmail.com'
-EMAIL_HOST_PASSWORD = 'tommyjerry'
+EMAIL_HOST_PASSWORD = 'tommyjerry99'
 
 
 PAYPAL_RECEIVER_EMAIL='sb-obwuq1334185@business.example.com'
