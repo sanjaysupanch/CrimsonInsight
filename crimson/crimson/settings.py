@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'payment',
     'crispy_forms',
     'snowpenguin.django.recaptcha2',
+    'storages',
     
     
     
@@ -146,7 +147,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
@@ -188,6 +189,33 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.AllauthSignupForm'
 RECAPTCHA_PUBLIC_KEY = '6Lc189IUAAAAALiLOPk9cuEZw_oh5UL3P3ZlzCgI'
 RECAPTCHA_PRIVATE_KEY = '6Lc189IUAAAAAHDW6D3xfN-_dEVXnqndN84di2OZ'
 
+
+
+
+#S3 BUCKETS CONFIGURATION
+
+MEDIAFILES_LOCATION = 'media'
+
+AWS_ACCESS_KEY_ID = 'AKIA3PTCMOMSZOH7PTGX'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'san-crm1-bucket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, '/static'),
+# ]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
