@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-v22/values-v22.xml",
+            "outputFile": "/home/san/Desktop/CrimsonInsight/crimson/app/crimson/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-v22/values-v22.xml",
             "map": [
                 {
                     "source": "/home/san/.gradle/caches/transforms-2/files-2.1/74047f4af90520a270b3b56bc00fec36/appcompat-1.0.2/res/values-v22/values-v22.xml",
