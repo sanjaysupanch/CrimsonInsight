@@ -13,7 +13,7 @@ adb devices
 
 keytool -genkey -v -keystore signing.keystore -alias signing -keyalg RSA -keysize 2048 -validity 10000
 
-keytool -genkeypair -v  -keystore signing.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias crimson -dname "CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN"
+keytool -genkeypair -v  -keystore signing12.keystore -storepass qwerty -keyalg RSA -keysize 2048 -validity 10000  -alias crimson -dname "CN=CrimsonInsight, OU=SoftwareDeveloper, O=CrimsonInsight, L=Deo, S=Haryana, C=IN"
 
 
 ./gradlew assembleDebug
@@ -88,3 +88,21 @@ distributionPath=wrapper/dists
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
 distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+
+    <string name="app_name"> web2app </string>
+    <string name="main_activity_title">xyz</string>
+    <!-- <string name="app_name">MainActivity</string> -->
+</resources>
