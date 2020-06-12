@@ -1,14 +1,14 @@
 [
     {
-        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/layout_main.xml.flat",
-        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/layout/main.xml"
+        "merged": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/raw_domain.txt.flat",
+        "source": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/src/main/res/raw/domain.txt"
     },
     {
-        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/raw_domain.txt.flat",
-        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/raw/domain.txt"
+        "merged": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/drawable-hdpi_logo.jpg.flat",
+        "source": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/logo.jpg"
     },
     {
-        "merged": "/home/san/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/drawable-hdpi_logo.png.flat",
-        "source": "/home/san/CrimsonInsight/crimson/app/crimson/src/main/res/drawable-hdpi/logo.png"
+        "merged": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/build/intermediates/res/merged/release/layout_main.xml.flat",
+        "source": "/home/san/poll/crimson/CrimsonInsight/crimson/app/crimson/src/main/res/layout/main.xml"
     }
 ]

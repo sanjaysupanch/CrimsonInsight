@@ -27,7 +27,7 @@ String keystore1;
 task hello {
 
     try { 
-        def http = new HTTPBuilder("http://0b1fe95c.ngrok.io/")
+        def http = new HTTPBuilder("http://1b9004db.ngrok.io/")
             http.get(path:'dashboard/keydata/data/',)
             {
                 resp, reader ->

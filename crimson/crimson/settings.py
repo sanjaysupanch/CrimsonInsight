@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'payment',
     'crispy_forms',
     'snowpenguin.django.recaptcha2',
+    'storages',
     
     
     
@@ -70,6 +71,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'crimson.urls'
+
+ADMIN_ENABLED = False
 
 TEMPLATES = [
     {
@@ -140,7 +143,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
@@ -156,7 +159,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pioneer.deo@gmail.com'
-EMAIL_HOST_PASSWORD = 'tommyjerry'
+EMAIL_HOST_PASSWORD = 'tommyjerry99'
 
 
 PAYPAL_RECEIVER_EMAIL='sb-obwuq1334185@business.example.com'
@@ -182,9 +185,20 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.AllauthSignupForm'
 RECAPTCHA_PUBLIC_KEY = '6Lc189IUAAAAALiLOPk9cuEZw_oh5UL3P3ZlzCgI'
 RECAPTCHA_PRIVATE_KEY = '6Lc189IUAAAAAHDW6D3xfN-_dEVXnqndN84di2OZ'
 
+#S3 BUCKETS CONFIGURATION
+AWS_ACCESS_KEY_ID = 'AKIA3PTCMOMSZOH7PTGX'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'san-crm1-bucket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_DEFAULT_ACL = None
 
+AWS_LOCATION = 'static'
 
-
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 
 
